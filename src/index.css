@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@font-face {
+  font-family: "Nohemi";
+  src: url("/fonts/Nohemi.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Modernist";
+  src: url("/fonts/Modernist.woff2") format("woff2");
+}
+
+/* Swiper CSS */
+.swiper-pagination-bullet {
+  background-color: #78716c !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #292524 !important;
+  opacity: 1;
+}
