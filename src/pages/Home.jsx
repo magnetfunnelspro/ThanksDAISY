@@ -213,6 +213,46 @@ const Home = () => {
             ))}
         </Swiper>
       </div>
+
+      {/* Choose Us */}
+      <div className="w-full flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-center font-[Nohemi]">
+          WHY CHOOSE US?
+        </h2>
+        <p className="text-center">
+          Fresh flowers, heartfelt moments, and beautiful gifting made
+          effortless with ThanksDAISY—crafted to brighten every occasion.
+        </p>
+        {/* Features */}
+        <div className="w-full grid grid-cols-2 gap-4">
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+            <i class="ri-calendar-event-fill text-2xl text-rose-400"></i>
+            <h4 className="font-semibold text-center">
+              Never Miss Important Dates
+            </h4>
+          </div>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+            <i class="ri-e-bike-2-fill text-2xl text-rose-400"></i>
+            <h4 className="font-semibold text-center">
+              Quick Dispatch & 4-Hours Delivery
+            </h4>
+          </div>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+            <i class="ri-quill-pen-ai-fill text-2xl text-rose-400"></i>
+            <h4 className="font-semibold text-center">
+              Personalised Message Card
+            </h4>
+          </div>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+            <i class="ri-hand-heart-fill text-2xl text-rose-400"></i>
+            <h4 className="font-semibold text-center">
+              Free Exclusive Random Gifts
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
   );
 };

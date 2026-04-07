@@ -39,7 +39,7 @@ const Card = ({ data, badge }) => {
         <img
           src={data.image}
           alt={data.name}
-          className="w-full h-full object-cover group-hover:scale-105 duration-300"
+          className="w-full h-full object-cover"
         />
 
         {/* Badge */}
