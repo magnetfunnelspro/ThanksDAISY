@@ -252,7 +252,10 @@ const Home = () => {
         </div>
       </div>
 
-      
+      {/* Ad Banners */}
+      <div className="w-full flex flex-col gap-4">
+        <img src="/AdBanner.png" alt="" className="w-full" />
+      </div>
     </div>
   );
 };
