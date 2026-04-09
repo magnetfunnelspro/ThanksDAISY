@@ -14,6 +14,8 @@ import Card from "../components/Card";
 
 // Data
 import mainData from "../mainData";
+import reviewData from "../reviewData";
+import socialData from "../socialData";
 
 const Home = () => {
   const collection = [
@@ -85,15 +87,15 @@ const Home = () => {
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
-          <div className="w-full h-[20vh] rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full h-[20vh] rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full h-[20vh] rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
       </Swiper>
 
@@ -170,7 +172,7 @@ const Home = () => {
                 src={cat.image}
                 alt=""
                 loading="lazy"
-                className="w-full h-20 rounded-md object-cover"
+                className="w-full aspect-square rounded-md object-cover"
               />
               <span className="text-xs font-semibold text-center">
                 {cat.title}
@@ -216,7 +218,7 @@ const Home = () => {
 
       {/* Choose Us */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center font-[Nohemi]">
+        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
           WHY CHOOSE US?
         </h2>
         <p className="text-center">
@@ -254,7 +256,116 @@ const Home = () => {
 
       {/* Ad Banners */}
       <div className="w-full flex flex-col gap-4">
-        <img src="/AdBanner.png" alt="" className="w-full" />
+        <img src="/AdBanner.png" alt="" className="w-full aspect-video" />
+      </div>
+
+      {/* Customer Reviews */}
+      <div className="w-full flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+          Our Customer Reviews
+        </h2>
+        <p className="text-center">
+          Every bouquet tells a story, and thanks to DAISY, every moment feels
+          timeless and beautiful.
+        </p>
+        <div className="mt-4 relative review-fade">
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1.15}
+            spaceBetween={16}
+            loop={true}
+            speed={5000}
+            allowTouchMove={false}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1.6,
+              },
+              768: {
+                slidesPerView: 2.2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="w-full review-swiper"
+          >
+            {reviewData.map((review) => (
+              <SwiperSlide key={review.id}>
+                <div className="w-full h-full p-4 rounded-md border flex flex-col gap-4">
+                  {/* Top */}
+                  <div className="w-full flex items-center gap-4">
+                    <div className="w-14 h-14 aspect-square rounded-md overflow-hidden">
+                      <img
+                        src={review.image}
+                        alt={review.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-0.5">
+                      <h4 className="font-semibold leading-none">
+                        {review.name}
+                      </h4>
+
+                      <div className="flex items-center gap-1 text-amber-500 text-sm">
+                        {Array.from({ length: review.rating }).map(
+                          (_, index) => (
+                            <i key={index} className="ri-star-fill"></i>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Review */}
+                  <p className="text-sm">{review.review}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+
+      {/* Social Content */}
+      <div className="w-full flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+          Instagram Posts
+        </h2>
+        <p className="text-center">
+          A little glimpse into our floral world — handcrafted bouquets and
+          beautiful gifting moments captured with love.
+        </p>
+
+        <div className="w-full mt-4 flex flex-col items-center gap-4">
+          <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4">
+            {socialData.map((item) => (
+              <div
+                key={item.id}
+                className="w-full aspect-square rounded-md overflow-hidden"
+              >
+                <img
+                  src={item.image}
+                  alt="ThanksDAISY Instagram Post"
+                  className="w-full aspect-square object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="https://instagram.com/"
+            className="mt-4 p-2.5 px-4 rounded-md flex gap-2 text-white bg-stone-800"
+          >
+            <span>
+              Follow <i class="ri-threads-line"></i>thanksdaisy
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   );

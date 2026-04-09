@@ -35,7 +35,7 @@ const Card = ({ data, badge }) => {
   return (
     <div className="w-full flex flex-col gap-2 cursor-pointer">
       {/* Image */}
-      <div className="w-full h-40 rounded-md overflow-hidden relative">
+      <div className="w-full aspect-square rounded-md overflow-hidden relative">
         <img
           src={data.image}
           alt={data.name}

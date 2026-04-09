@@ -23,3 +23,38 @@
   background-color: #292524 !important;
   opacity: 1;
 }
+
+/* Customer Reviews */
+.review-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.review-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Fade Edges */
+.review-fade {
+  position: relative;
+}
+
+.review-fade::before,
+.review-fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 48px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.review-fade::before {
+  left: -4px;
+  background: linear-gradient(to right, #fafaf9, transparent);
+}
+
+.review-fade::after {
+  right: -4px;
+  background: linear-gradient(to left, #fafaf9, transparent);
+}
