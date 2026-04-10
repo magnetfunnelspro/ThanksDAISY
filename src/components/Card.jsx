@@ -46,7 +46,7 @@ const Card = ({ data, badge }) => {
         {badge && (
           <span
             className={
-              "p-0.5 pb-1.5 px-2 rounded-md text-xs tracking-wide absolute top-2 left-2 font-['Modernist'] text-white bg-stone-800"
+              "p-1.5 pb-2 px-2 rounded-md text-xs leading-none tracking-wide absolute top-2 left-2 font-['Modernist'] text-white bg-stone-800"
             }
           >
             {badge}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Swiper
@@ -16,6 +17,7 @@ import Card from "../components/Card";
 import mainData from "../mainData";
 import reviewData from "../reviewData";
 import socialData from "../socialData";
+import faqData from "../faqData";
 
 const Home = () => {
   const collection = [
@@ -72,6 +74,55 @@ const Home = () => {
     },
   ];
 
+  // FAQs
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // Newsletter
+  const [number, setNumber] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!/^[6-9]\d{9}$/.test(number)) {
+      alert("Please enter a valid WhatsApp number");
+      return;
+    }
+
+    const BOT_TOKEN = import.meta.env.VITE_BOT_TOKEN;
+    const NEWSLETTER_CHAT_ID = import.meta.env.VITE_NEWSLETTER_CHAT_ID;
+
+    const message = `
+🌸 Newsletter Subscribed
+
+📞 WhatsApp: ${number}
+⏰ Time: ${new Date().toLocaleString()}
+  `;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: NEWSLETTER_CHAT_ID,
+          text: message,
+        }),
+      });
+
+      setSuccess(true);
+      setNumber("");
+    } catch (error) {
+      console.error("Telegram Error:", error);
+      alert("Something went wrong. Try again.");
+    }
+  };
+
   return (
     <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
       {/* Promotional Banner */}
@@ -87,15 +138,15 @@ const Home = () => {
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <div className="w-full aspect-video bg-slate-200"></div>
         </SwiperSlide>
       </Swiper>
 
@@ -228,25 +279,25 @@ const Home = () => {
         {/* Features */}
         <div className="w-full grid grid-cols-2 gap-4">
           <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
-            <i class="ri-calendar-event-fill text-2xl text-rose-400"></i>
+            <i className="ri-calendar-event-fill text-2xl text-rose-400"></i>
             <h4 className="font-semibold text-center">
               Never Miss Important Dates
             </h4>
           </div>
           <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
-            <i class="ri-e-bike-2-fill text-2xl text-rose-400"></i>
+            <i className="ri-e-bike-2-fill text-2xl text-rose-400"></i>
             <h4 className="font-semibold text-center">
               Quick Dispatch & 4-Hours Delivery
             </h4>
           </div>
           <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
-            <i class="ri-quill-pen-ai-fill text-2xl text-rose-400"></i>
+            <i className="ri-quill-pen-ai-fill text-2xl text-rose-400"></i>
             <h4 className="font-semibold text-center">
               Personalised Message Card
             </h4>
           </div>
           <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
-            <i class="ri-hand-heart-fill text-2xl text-rose-400"></i>
+            <i className="ri-hand-heart-fill text-2xl text-rose-400"></i>
             <h4 className="font-semibold text-center">
               Free Exclusive Random Gifts
             </h4>
@@ -299,7 +350,7 @@ const Home = () => {
                 <div className="w-full h-full p-4 rounded-md border flex flex-col gap-4">
                   {/* Top */}
                   <div className="w-full flex items-center gap-4">
-                    <div className="w-14 h-14 aspect-square rounded-md overflow-hidden">
+                    <div className="w-14 h-14 aspect-square rounded-full overflow-hidden">
                       <img
                         src={review.image}
                         alt={review.name}
@@ -358,14 +409,116 @@ const Home = () => {
           </div>
 
           <a
-            href="https://instagram.com/"
+            href="https://www.instagram.com/thanksdaisyofficial/"
+            target="_blank"
             className="mt-4 p-2.5 px-4 rounded-md flex gap-2 text-white bg-stone-800"
           >
             <span>
-              Follow <i class="ri-threads-line"></i>thanksdaisy
+              Follow <i className="ri-threads-line"></i>thanksdaisy
             </span>
           </a>
         </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="w-full flex flex-col gap-4">
+        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+          Most FAQs
+        </h2>
+        <p className="text-center">
+          Some common questions our lovely customers usually asks
+        </p>
+
+        <div className="w-full flex flex-col gap-4">
+          {faqData.map((faq, index) => (
+            <div
+              key={faq.id}
+              className="w-full rounded-md border-2 border-stone-200"
+            >
+              {/* Question */}
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full p-4 flex items-center justify-between gap-4"
+              >
+                <h4 className="text-left">{faq.question}</h4>
+
+                <span
+                  className={`transition-transform duration-200 ${
+                    activeIndex === index ? "rotate-45" : ""
+                  }`}
+                >
+                  <i className="ri-add-large-line"></i>
+                </span>
+              </button>
+
+              {/* Answer */}
+              <div
+                className={`grid transition-all duration-200 ease-in-out ${
+                  activeIndex === index
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="p-4 pt-0 text-sm text-stone-600">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Newsletter */}
+      <div className="w-full p-4 rounded-md flex flex-col items-center gap-4 bg-stone-200">
+        {/* Heading */}
+        <div className="flex flex-col gap-2 max-w-xl">
+          <span className="text-sm text-center uppercase tracking-widest font-['Nohemi']">
+            Exclusive Offer
+          </span>
+
+          <h2 className="text-2xl text-center font-semibold font-[Modernist]">
+            Get ₹249 Off or a Surprise Gift on Next Order
+          </h2>
+
+          <p className="mt-2 text-sm text-center text-stone-600">
+            Join ThanksDAISY on WhatsApp for exclusive offers, early access, and
+            beautiful floral surprises crafted just for you.
+          </p>
+        </div>
+
+        {/* Form */}
+        {!success ? (
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-md flex items-center rounded-md overflow-hidden font-['Nohemi']"
+          >
+            <input
+              type="tel"
+              placeholder="Your WhatsApp No."
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+              className="w-full p-4 outline-none text-sm"
+            />
+
+            <button
+              type="submit"
+              className="p-4 text-sm text-white bg-stone-800"
+            >
+              Subscribe
+            </button>
+          </form>
+        ) : (
+          <div className="font-semibold text-center text-green-600">
+            You're in! Check WhatsApp for updates.
+          </div>
+        )}
+
+        {/* Trust Note */}
+        <p className="text-xs text-stone-600">
+          No spam. Only beautiful offers and floral updates.
+        </p>
       </div>
     </div>
   );
