@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full p-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800 bg-fuchsia-200">
+    <div className="w-full p-4 px-0 border-t flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800 bg-white">
       {/* Top Section */}
       <div className="w-full flex flex-col gap-8">
         {/* Brand */}
@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       {/* Divider */}
-      <div className="w-full h-px bg-stone-800"></div>
+      <div className="border"></div>
 
       {/* Bottom Section */}
       <div className="w-full flex flex-col gap-4 items-center">
@@ -53,13 +53,13 @@ const Footer = () => {
         </div>
 
         {/* Legal */}
-        <div className="flex gap-4 text-xs font-semibold">
+        <div className="flex gap-4 text-xs">
           <span>Privacy Policy</span>
           <span>Terms</span>
         </div>
 
         {/* Copyright */}
-        <p className="text-xs font-semibold text-center">
+        <p className="text-xs text-center">
           © {new Date().getFullYear()} ThanksDAISY. All rights reserved.
         </p>
       </div>

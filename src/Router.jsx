@@ -22,7 +22,9 @@ import NotFound from "./pages/NotFound";
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      <div className="px-4">
+        <Navbar />
+      </div>
 
       <Routes>
         {/* Pages */}
@@ -43,7 +45,9 @@ const AppRouter = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <Footer />
+      <div className="px-4">
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 };
