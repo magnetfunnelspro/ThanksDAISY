@@ -1,204 +1,201 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 // Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
-// Data
-import mainData from "../mainData";
+import { Swiper } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 // Components
 import Card from "../components/Card";
 
+// Data
+import mainData from "../mainData";
+
 const Product = () => {
   const { id } = useParams();
-
   const product = mainData.find((item) => item.id === id);
+  const [mainImage, setMainImage] = useState(product.images[0]);
 
-  const [qty, setQty] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  // Cart Logic
+  const [isInCart, setIsInCart] = useState(false);
 
-  const discount = Math.round(
-    ((product.originalPirce - product.price) / product.originalPirce) * 100
-  );
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const exists = cart.find((item) => item.id === product.id);
+    setIsInCart(!!exists);
+  }, [product.id]);
+
+  const handleCart = (e) => {
+    e.stopPropagation();
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const exists = cart.find((item) => item.id === product.id);
+
+    let updatedCart = [];
+
+    if (exists) {
+      updatedCart = cart.filter((item) => item.id !== product.id);
+      setIsInCart(false);
+    } else {
+      updatedCart = [...cart, { ...product, qty: 1 }];
+      setIsInCart(true);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
 
   // Wishlist Logic
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
   useEffect(() => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const exists = wishlist.find((item) => item.id === product.id);
     setIsWishlisted(!!exists);
   }, [product.id]);
 
-  const toggleWishlist = () => {
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const handleWishlist = (e) => {
+    e.stopPropagation();
 
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const exists = wishlist.find((item) => item.id === product.id);
 
-    let updated;
+    let updatedWishlist = [];
 
     if (exists) {
-      updated = wishlist.filter((item) => item.id !== product.id);
+      updatedWishlist = wishlist.filter((item) => item.id !== product.id);
       setIsWishlisted(false);
     } else {
-      updated = [...wishlist, product];
+      updatedWishlist = [...wishlist, product];
       setIsWishlisted(true);
     }
 
-    localStorage.setItem("wishlist", JSON.stringify(updated));
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
 
-  // Cart Logic
-  const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const exists = cart.find((item) => item.id === product.id);
-
-    let updated;
-
-    if (exists) {
-      updated = cart.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + qty }
-          : item
+  // Related Products Logic
+  const relatedProducts = mainData
+    .filter((item) => {
+      return (
+        item.cat === product.cat &&
+        item.id !== product.id &&
+        (item.isTrending || item.isBestseller)
       );
-    } else {
-      updated = [...cart, { ...product, quantity: qty }];
-    }
-
-    localStorage.setItem("cart", JSON.stringify(updated));
-
-    alert("Added to cart");
-  };
-
-  // Related Products
-  const related = mainData.filter((item) => item.id !== id).slice(0, 4);
+    })
+    .slice(0, 4);
 
   return (
-    <div className="w-full p-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
-      
-      {/* Top Section */}
-      <div className="w-full flex flex-col gap-6 md:flex-row md:gap-8">
-        
-        {/* Image Slider */}
-        <div className="w-full md:w-1/2">
-          <Swiper className="w-full rounded-md overflow-hidden">
-            <SwiperSlide>
-              <img
-                src={product.image}
-                alt=""
-                className="w-full aspect-square object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src={product.image}
-                alt=""
-                className="w-full aspect-square object-cover"
-              />
-            </SwiperSlide>
-          </Swiper>
+    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
+      {/* Main Product */}
+      <div className="w-full flex flex-col gap-6">
+        {/* Images */}
+        <div className="flex flex-col gap-4">
+          {/* Main Image */}
+          <div className="w-full aspect-square rounded-md overflow-hidden">
+            <img
+              src={mainImage}
+              alt={product.name}
+              className="w-full h-full rounded-md object-cover"
+            />
+          </div>
+
+          {/* Thumbnails */}
+          <div className="grid grid-cols-4 gap-2">
+            {product.images.map((img, index) => (
+              <div
+                key={index}
+                onClick={() => setMainImage(img)}
+                className="w-full aspect-square overflow-hidden relative"
+              >
+                <div className="w-full h-full rounded-md absolute inset-0 bg-stone-800/25"></div>
+                <img
+                  src={img}
+                  alt="thumbnail"
+                  className="w-full h-full rounded-md object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Product Info */}
-        <div className="w-full md:w-1/2 flex flex-col gap-4">
-          
-          <h1 className="text-xl md:text-2xl font-semibold">
-            {product.name}
-          </h1>
+        {/* Details */}
+        <div className="flex flex-col gap-2">
+          <h2 className="text-xl font-semibold">{product.name}</h2>
 
-          {/* Price */}
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-semibold">₹{product.price}</span>
+          <p className="text-sm text-stone-600">{product.description}</p>
 
-            <span className="text-sm line-through text-stone-500">
-              ₹{product.originalPirce}
+          {/* Pricing */}
+          <div className="flex items-center gap-2 tracking-wide font-['Nohemi']">
+            <span className="text-xl font-semibold">₹{product.price}</span>
+            <span className="text-base line-through text-stone-600">
+              ₹{product.originalPrice}
             </span>
-
-            <span className="text-sm text-green-600 font-semibold">
-              {discount}% off
+            <span className="text-sm font-semibold text-green-600">
+              (
+              {Math.round(
+                ((product.originalPrice - product.price) /
+                  product.originalPrice) *
+                  100,
+              )}
+              % off)
             </span>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-stone-600">
-            A beautifully handcrafted bouquet designed to make your moments feel
-            truly special and unforgettable.
-          </p>
-
-          {/* Delivery Info */}
-          <div className="p-3 rounded-md bg-stone-100 text-sm">
-            ⚡ Delivered within <b>4 hours</b> in Delhi NCR  
-            💌 Free personalized message card included  
-            🎁 Surprise gift with every order
-          </div>
-
-          {/* Quantity */}
-          <div className="flex items-center gap-4">
-            <span className="text-sm">Quantity:</span>
-
-            <div className="flex items-center border rounded-md overflow-hidden">
-              <button
-                onClick={() => setQty((prev) => Math.max(1, prev - 1))}
-                className="px-3 py-1"
-              >
-                -
-              </button>
-
-              <span className="px-4">{qty}</span>
-
-              <button
-                onClick={() => setQty((prev) => prev + 1)}
-                className="px-3 py-1"
-              >
-                +
-              </button>
-            </div>
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-3">
+          <div className="mt-4 flex gap-4">
             <button
-              onClick={handleAddToCart}
-              className="w-full p-3 rounded-md text-white bg-stone-800"
+              onClick={handleCart}
+              className="w-full p-4 rounded-md leading-none text-white bg-stone-800"
             >
-              Add to Cart
+              {isInCart ? "Remove from Cart" : "Add to Cart"}
             </button>
 
             <button
-              onClick={toggleWishlist}
-              className="p-3 rounded-md border"
+              onClick={handleWishlist}
+              className="p-4 rounded-lg text-xl leading-none border-2"
             >
               <i
                 className={
                   isWishlisted
-                    ? "ri-heart-fill text-red-500"
-                    : "ri-heart-line"
+                    ? "ri-poker-hearts-fill text-red-600"
+                    : "ri-poker-hearts-line"
                 }
               ></i>
             </button>
           </div>
-
-          {/* Features */}
-          <div className="flex flex-col gap-2 text-sm text-stone-600">
-            <span>✔ Fresh handpicked flowers</span>
-            <span>✔ Elegant premium packaging</span>
-            <span>✔ Perfect for every occasion</span>
-          </div>
         </div>
       </div>
 
-      {/* Related Products */}
+      {/* Related Products*/}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-xl font-semibold font-[Nohemi]">
-          You may also like
+        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
+          You Might Also Like
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {related.map((item, index) => (
-            <Card key={index} data={item} />
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={2}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.5,
+            },
+            768: {
+              slidesPerView: 3.2,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
+          modules={[Navigation]}
+          className="w-full"
+        >
+          {mainData.map((data, index) => (
+            <SwiperSlide key={index}>
+              <Card data={data} badge="Related" />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Card = ({ data, badge }) => {
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  const discountPercentage = Math.round(
-    ((data.originalPirce - data.price) / data.originalPirce) * 100,
+   const discountPercentage = Math.round(
+    ((data.originalPrice - data.price) / data.originalPrice) * 100,
   );
+
+  const [isWishlisted, setIsWishlisted] = useState(false);
 
   useEffect(() => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -40,7 +40,7 @@ const Card = ({ data, badge }) => {
       <Link to={`/product/${data.id}`} className="w-full">
         <div className="w-full aspect-square rounded-md overflow-hidden relative">
           <img
-            src={data.image}
+            src={data.images[0]}
             alt={data.name}
             className="w-full h-full object-cover"
           />
@@ -58,14 +58,14 @@ const Card = ({ data, badge }) => {
       <div className="flex flex-col">
         {/* Title Clickable */}
         <Link to={`/product/${data.id}`}>
-          <h4 className="line-clamp-1 hover:underline">{data.name}</h4>
+          <h4 className="font-semibold line-clamp-1 hover:underline">{data.name}</h4>
         </Link>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 tracking-wide font-['Nohemi']">
           <span className="text-sm font-semibold">₹{data.price}</span>
 
           <span className="text-xs line-through text-stone-600">
-            ₹{data.originalPirce}
+            ₹{data.originalPrice}
           </span>
 
           <span className="text-xs font-semibold text-green-600">
@@ -82,7 +82,7 @@ const Card = ({ data, badge }) => {
         <i
           className={
             isWishlisted
-              ? "ri-poker-hearts-fill text-red-500"
+              ? "ri-poker-hearts-fill text-red-600"
               : "ri-poker-hearts-line"
           }
         ></i>
