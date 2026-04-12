@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Card = ({ data, badge }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -33,44 +35,31 @@ const Card = ({ data, badge }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-2 cursor-pointer">
+    <div className="w-full flex flex-col gap-2">
       {/* Image */}
-      <div className="w-full aspect-square rounded-md overflow-hidden relative">
-        <img
-          src={data.image}
-          alt={data.name}
-          className="w-full h-full object-cover"
-        />
+      <Link to={`/product/${data.id}`} className="w-full">
+        <div className="w-full aspect-square rounded-md overflow-hidden relative">
+          <img
+            src={data.image}
+            alt={data.name}
+            className="w-full h-full object-cover"
+          />
 
-        {/* Badge */}
-        {badge && (
-          <span
-            className={
-              "p-1.5 pb-2 px-2 rounded-md text-xs leading-none tracking-wide absolute top-2 left-2 font-['Modernist'] text-white bg-stone-800"
-            }
-          >
-            {badge}
-          </span>
-        )}
-
-        {/* Wishlist Button */}
-        <button
-          onClick={handleWishlist}
-          className="p-0.5 px-2 rounded-md text-lg absolute top-2 right-2 text-white bg-stone-800"
-        >
-          <i
-            className={
-              isWishlisted
-                ? "ri-poker-hearts-fill text-red-500"
-                : "ri-poker-hearts-line"
-            }
-          ></i>
-        </button>
-      </div>
+          {/* Badge */}
+          {badge && (
+            <span className="p-1.5 pb-2 px-2 rounded-md text-xs leading-none tracking-wide absolute top-2 left-2 font-['Modernist'] text-white bg-stone-800">
+              {badge}
+            </span>
+          )}
+        </div>
+      </Link>
 
       {/* Content */}
       <div className="flex flex-col">
-        <h4 className="line-clamp-1">{data.name}</h4>
+        {/* Title Clickable */}
+        <Link to={`/product/${data.id}`}>
+          <h4 className="line-clamp-1 hover:underline">{data.name}</h4>
+        </Link>
 
         <div className="flex items-center gap-1.5">
           <span className="text-sm font-semibold">₹{data.price}</span>
@@ -84,6 +73,20 @@ const Card = ({ data, badge }) => {
           </span>
         </div>
       </div>
+
+      {/* Wishlist Button (outside Link) */}
+      <button
+        onClick={handleWishlist}
+        className="p-0.5 px-2 rounded-md text-lg absolute top-2 right-2 text-white bg-stone-800"
+      >
+        <i
+          className={
+            isWishlisted
+              ? "ri-poker-hearts-fill text-red-500"
+              : "ri-poker-hearts-line"
+          }
+        ></i>
+      </button>
     </div>
   );
 };

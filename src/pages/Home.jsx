@@ -28,22 +28,16 @@ const Home = () => {
       route: "4-hours-deliver",
     },
     {
-      title: "Bouquets Gifting",
-      image:
-        "https://i.pinimg.com/1200x/e1/b2/9f/e1b29fd0d812bf874a0bbaa1ca9f2e6f.jpg",
-      route: "4-hours-deliver",
-    },
-    {
       title: "Subscription Flowers",
       image:
         "https://i.pinimg.com/736x/2a/e1/d9/2ae1d92b470f227ded3b9d6e8ced5929.jpg",
-      route: "4-hours-deliver",
+      route: "subscriptoin",
     },
     {
       title: "Corporate Gifting",
       image:
         "https://i.pinimg.com/avif/1200x/93/ab/8c/93ab8c4747d23016d3b6cbc1194c0a63.avf",
-      route: "4-hours-deliver",
+      route: "corporate-gifting",
     },
   ];
 
@@ -70,6 +64,18 @@ const Home = () => {
       title: "Wedding",
       image:
         "https://i.pinimg.com/736x/b7/da/7b/b7da7b04e2144d447ec87a97c0467dfe.jpg",
+      route: "4-hours-deliver",
+    },
+    {
+      title: "Event",
+      image:
+        "https://i.pinimg.com/736x/99/5c/d9/995cd9f476901054035d10221db619dc.jpg",
+      route: "4-hours-deliver",
+    },
+    {
+      title: "Celebration",
+      image:
+        "https://i.pinimg.com/1200x/2c/18/37/2c18373c0916d5bbc5bd67838e2728e5.jpg",
       route: "4-hours-deliver",
     },
   ];
@@ -138,15 +144,15 @@ const Home = () => {
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
-          <div className="w-full aspect-video bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video bg-slate-200"></div>
+          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
         </SwiperSlide>
       </Swiper>
 
@@ -155,7 +161,7 @@ const Home = () => {
         <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
           Are You Looking for
         </h2>
-        <div className="w-full grid grid-cols-4 gap-4">
+        <div className="w-full grid grid-cols-3 gap-4">
           {collection.map((cat, index) => (
             <Link
               key={index}
@@ -166,9 +172,9 @@ const Home = () => {
                 src={cat.image}
                 alt=""
                 loading="lazy"
-                className="w-full h-20 rounded-md object-cover"
+                className="w-full aspect-square rounded-md object-cover"
               />
-              <span className="text-xs font-semibold text-center">
+              <span className="text-sm font-semibold text-center">
                 {cat.title}
               </span>
             </Link>
@@ -212,7 +218,7 @@ const Home = () => {
         <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
           Looking for Occasion
         </h2>
-        <div className="w-full grid grid-cols-4 gap-4">
+        <div className="w-full grid grid-cols-3 gap-4">
           {occasion.map((cat, index) => (
             <Link
               key={index}
@@ -225,7 +231,7 @@ const Home = () => {
                 loading="lazy"
                 className="w-full aspect-square rounded-md object-cover"
               />
-              <span className="text-xs font-semibold text-center">
+              <span className="text-sm font-semibold text-center">
                 {cat.title}
               </span>
             </Link>
@@ -414,7 +420,7 @@ const Home = () => {
             className="mt-4 p-2.5 px-4 rounded-md flex gap-2 text-white bg-stone-800"
           >
             <span>
-              Follow <i className="ri-threads-line"></i>thanksdaisy
+              Follow <i className="ri-threads-line"></i>thanksdaisyofficial
             </span>
           </a>
         </div>
@@ -471,7 +477,7 @@ const Home = () => {
       </div>
 
       {/* Newsletter */}
-      <div className="w-full p-4 rounded-md flex flex-col items-center gap-4 bg-stone-200">
+      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 bg-stone-200">
         {/* Heading */}
         <div className="flex flex-col gap-2 max-w-xl">
           <span className="text-sm text-center uppercase tracking-widest font-['Nohemi']">

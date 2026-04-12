@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full p-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-200 bg-stone-800">
+    <div className="w-full p-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800 bg-fuchsia-200">
       {/* Top Section */}
       <div className="w-full flex flex-col gap-8">
         {/* Brand */}
         <div className="flex flex-col gap-2 items-center text-center">
           <div className="flex items-center gap-2">
             <i className="ri-flower-fill text-xl"></i>
-            <h2 className="text-lg font-['Nohemi']">ThanksDAISY</h2>
+            <h2 className="text-lg font-semibold font-['Nohemi']">ThanksDAISY</h2>
           </div>
 
           <p className="text-sm">
@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       {/* Divider */}
-      <div className="w-full h-px bg-stone-200"></div>
+      <div className="w-full h-px bg-stone-800"></div>
 
       {/* Bottom Section */}
       <div className="w-full flex flex-col gap-4 items-center">
@@ -53,13 +53,13 @@ const Footer = () => {
         </div>
 
         {/* Legal */}
-        <div className="flex gap-4 text-xs text-stone-200">
+        <div className="flex gap-4 text-xs font-semibold">
           <span>Privacy Policy</span>
-          <span>Terms & Conditions</span>
+          <span>Terms</span>
         </div>
 
         {/* Copyright */}
-        <p className="text-xs text-center text-stone-200">
+        <p className="text-xs font-semibold text-center">
           © {new Date().getFullYear()} ThanksDAISY. All rights reserved.
         </p>
       </div>
