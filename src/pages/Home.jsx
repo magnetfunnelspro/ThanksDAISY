@@ -417,7 +417,7 @@ const Home = () => {
           <a
             href="https://www.instagram.com/thanksdaisyofficial/"
             target="_blank"
-            className="mt-4 p-2.5 px-4 rounded-md flex gap-2 text-white bg-stone-800"
+            className="mt-4 p-4 rounded-md flex gap-2 text-white bg-stone-800"
           >
             <span>
               Follow <i className="ri-threads-line"></i>thanksdaisyofficial
