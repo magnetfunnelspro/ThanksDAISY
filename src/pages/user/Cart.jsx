@@ -1,20 +1,51 @@
-import { useCart } from "../../context/CartContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Context
+import { useCart } from "../../context/CartContext";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQty, totalPrice } = useCart();
   const navigate = useNavigate();
 
+  // Coupon State
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [couponMsg, setCouponMsg] = useState("");
+
+  // Shipping Charges
+  const shippingCost = totalPrice > 999 ? 0 : 50;
+
+  // Coupon Codes
+  const handleAppliedCoupon = () => {
+    if (coupon === "DAISY15") {
+      const disc = Math.round(totalPrice * 0.15);
+      setDiscount(disc);
+      setCouponMsg("Horah! You got 15% discount.");
+    } else if (coupon === "SURAJ100") {
+      setDiscount(totalPrice * 1);
+      setCouponMsg("Yahoo! Free bouquets & gifts from us.");
+    } else if (coupon === "FREESHIP") {
+      setDiscount(shippingCost);
+      setCouponMsg("Congrats! You got free delivery.");
+    } else {
+      setDiscount(0);
+      setCouponMsg("Oops! Invalid coupon code.");
+    }
+  };
+
+  const finalTotal = totalPrice + shippingCost - discount;
+
   return (
     <div className="w-full p-8 px-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
       {/* Empty State */}
       {cart.length === 0 ? (
-        <div className="flex flex-col items-center gap-4 py-16">
-          <p className="text-stone-500">Your cart is empty</p>
+        <div className="p-8 flex flex-col items-center gap-4">
+          <p className="text-stone-600">Your cart is empty</p>
 
           <button
             onClick={() => navigate("/shop")}
-            className="px-6 py-3 bg-pink-600 text-white rounded-md"
+            className="p-4 bg-pink-600 text-white rounded-md"
           >
             Continue Shopping
           </button>
@@ -64,7 +95,7 @@ const Cart = () => {
                   {/* Remove */}
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="text-lg text-red-500"
+                    className="text-lg text-red-600"
                   >
                     <i className="ri-delete-bin-5-line"></i>
                   </button>
@@ -73,16 +104,58 @@ const Cart = () => {
             ))}
           </div>
 
+          {/* COUPON */}
+          <div className="flex flex-col gap-4">
+            <h4 className="text-lg font-semibold">Have coupon code?</h4>
+
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Enter coupon code"
+                value={coupon}
+                onChange={(e) => setCoupon(e.target.value.toUpperCase())}
+                className="flex-1 p-4 rounded-md border-2 outline-none text-lg leading-none font-[Modernist]"
+              />
+
+              <button
+                onClick={handleAppliedCoupon}
+                className="p-4 rounded-md text-white bg-pink-600"
+              >
+                Apply
+              </button>
+            </div>
+
+            {couponMsg && <p className={`${discount === 0 ? "text-red-600" : "text-green-600"}`}>{couponMsg}</p>}
+          </div>
+
           {/* SUMMARY */}
-          <div className="border-t pt-4 flex flex-col gap-4">
-            {/* Total */}
-            <div className="flex justify-between text-lg font-semibold">
-              <span>Total</span>
+          <div className="border-t pt-4 flex flex-col gap-3">
+            <div className="flex justify-between">
+              <span className="font-semibold">Subtotal</span>
               <span>₹{totalPrice}</span>
             </div>
 
+            <div className="flex justify-between">
+              <span className="font-semibold">Delivery Charges</span>
+              <span>
+                {shippingCost === 0 ? "Free" : `₹${shippingCost}`}
+              </span>
+            </div>
+
+            {discount > 0 && (
+              <div className="flex justify-between text-green-600">
+                <span className="font-semibold">Discount</span>
+                <span>-₹{discount}</span>
+              </div>
+            )}
+
+            <div className="flex justify-between text-lg font-semibold border-t pt-2">
+              <span>Total</span>
+              <span>₹{finalTotal}</span>
+            </div>
+
             {/* Buttons */}
-            <div className="flex flex-col md:flex-row gap-3">
+            <div className="flex flex-col md:flex-row gap-3 mt-2">
               <button
                 onClick={() => navigate("/checkout")}
                 className="w-full p-4 bg-pink-600 text-white rounded-md"
@@ -92,7 +165,7 @@ const Cart = () => {
 
               <button
                 onClick={() => navigate("/shop")}
-                className="w-full p-4 border border-pink-600 text-pink-600 rounded-md"
+                className="w-full p-4 border-2 border-pink-600 text-pink-600 rounded-md"
               >
                 Continue Shopping
               </button>

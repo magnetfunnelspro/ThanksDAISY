@@ -169,7 +169,7 @@ const Product = () => {
 
       {/* Cart Drawer */}
       <div
-        className={`w-[280px] h-full fixed top-0 right-0 bg-white z-50 transform transition-transform duration-200 ${showCartDrawer ? "translate-x-0" : "translate-x-full"}`}
+        className={`w-[320px] h-full fixed top-0 right-0 bg-white z-50 transform transition-transform duration-200 ${showCartDrawer ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="p-4 flex flex-col h-full">
           {/* Header */}
@@ -225,7 +225,7 @@ const Product = () => {
                     {/* Remove */}
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="text-red-500"
+                      className="text-red-600"
                     >
                       <i className="ri-delete-bin-5-line"></i>
                     </button>
@@ -239,20 +239,20 @@ const Product = () => {
           {cart.length > 0 && (
             <div className="pt-2 border-t flex flex-col gap-2">
               <div className="flex justify-between">
-                <span>Total</span>
-                <span className="font-semibold">₹{totalPrice}</span>
+                <span className="text-lg font-semibold">Total</span>
+                <span className="text-lg font-semibold">₹{totalPrice}</span>
               </div>
 
               <button
                 onClick={() => navigate("/cart")}
-                className="p-4 rounded-md text-white bg-pink-600"
+                className="p-4 rounded-md font-semibold text-white bg-pink-600"
               >
                 View Cart
               </button>
 
               <button
                 onClick={() => setShowCartDrawer(false)}
-                className="p-4 rounded-md border-2 border-pink-600 text-pink-600"
+                className="p-4 rounded-md font-semibold border-2 border-pink-600 text-pink-600"
               >
                 Continue Shopping
               </button>
