@@ -35,7 +35,7 @@ const Navbar = () => {
 
           {/* Overlay */}
           <div
-            className={`fixed inset-0 z-50 bg-black/25 backdrop-blur-sm transition-all duration-300 ${
+            className={`fixed inset-0 z-50 bg-black/25 backdrop-blur-sm transition-all duration-200 ${
               toggleNav ? "opacity-100 visible" : "opacity-0 invisible"
             }`}
             onClick={() => setToggleNav(false)}

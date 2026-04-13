@@ -1,49 +1,48 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Swiper
 import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import { Navigation } from "swiper/modules";
-
-// Components
-import Card from "../components/Card";
 
 // Data
 import mainData from "../mainData";
 
+// Context
+import { useCart } from "../context/CartContext";
+
 const Product = () => {
   const { id } = useParams();
-  const product = mainData.find((item) => item.id === id);
-  const [mainImage, setMainImage] = useState(product.images[0]);
+  const navigate = useNavigate();
 
-  // Cart Logic
-  const [isInCart, setIsInCart] = useState(false);
+  const product = mainData.find(
+    (item) => item.id.toLowerCase() === id?.toLowerCase(),
+  );
 
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const exists = cart.find((item) => item.id === product.id);
-    setIsInCart(!!exists);
-  }, [product.id]);
+  // Prevent crash
+  if (!product)
+    return <div className="p-4 font-['Space_Grotesk']">Product not found</div>;
 
-  const handleCart = (e) => {
-    e.stopPropagation();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showCartDrawer, setShowCartDrawer] = useState(false);
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const exists = cart.find((item) => item.id === product.id);
+  // Context Cart
+  const { cart, addToCart, removeFromCart, updateQty, totalPrice } = useCart();
 
-    let updatedCart = [];
+  const isInCart = cart.some((item) => item.id === product.id);
 
-    if (exists) {
-      updatedCart = cart.filter((item) => item.id !== product.id);
-      setIsInCart(false);
-    } else {
-      updatedCart = [...cart, { ...product, qty: 1 }];
-      setIsInCart(true);
+  const handleCart = () => {
+    if (isInCart) {
+      setShowCartDrawer(true);
+      return;
     }
 
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    addToCart(product);
+    setShowCartDrawer(true);
   };
 
   // Wishlist Logic
@@ -55,13 +54,11 @@ const Product = () => {
     setIsWishlisted(!!exists);
   }, [product.id]);
 
-  const handleWishlist = (e) => {
-    e.stopPropagation();
-
+  const handleWishlist = () => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const exists = wishlist.find((item) => item.id === product.id);
 
-    let updatedWishlist = [];
+    let updatedWishlist;
 
     if (exists) {
       updatedWishlist = wishlist.filter((item) => item.id !== product.id);
@@ -74,45 +71,47 @@ const Product = () => {
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
 
-  // Related Products Logic
-  const relatedProducts = mainData
-    .filter((item) => {
-      return (
-        item.cat === product.cat &&
-        item.id !== product.id &&
-        (item.isTrending || item.isBestseller)
-      );
-    })
-    .slice(0, 4);
-
   return (
     <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
       {/* Main Product */}
       <div className="w-full flex flex-col gap-6">
         {/* Images */}
         <div className="flex flex-col gap-4">
-          {/* Main Image */}
-          <div className="w-full aspect-square rounded-md overflow-hidden">
-            <img
-              src={mainImage}
-              alt={product.name}
-              className="w-full h-full rounded-md object-cover"
-            />
-          </div>
+          {/* Main Slider */}
+          <Swiper
+            spaceBetween={16}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            modules={[Navigation, Autoplay]}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            className="w-full aspect-square rounded-md overflow-hidden"
+          >
+            {product.images.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt="product"
+                  className="w-full h-full rounded-md object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           {/* Thumbnails */}
           <div className="grid grid-cols-4 gap-2">
             {product.images.map((img, index) => (
               <div
                 key={index}
-                onClick={() => setMainImage(img)}
-                className="w-full aspect-square overflow-hidden relative"
+                className={`cursor-pointer rounded-md overflow-hidden border-2 transition ${
+                  activeIndex === index
+                    ? "border-pink-600 scale-105"
+                    : "border-transparent opacity-80"
+                }`}
               >
-                <div className="w-full h-full rounded-md absolute inset-0 bg-stone-800/25"></div>
                 <img
                   src={img}
-                  alt="thumbnail"
-                  className="w-full h-full rounded-md object-cover"
+                  alt="thumb"
+                  className="w-full aspect-square object-cover"
                 />
               </div>
             ))}
@@ -126,7 +125,7 @@ const Product = () => {
           <p className="text-sm text-stone-600">{product.description}</p>
 
           {/* Pricing */}
-          <div className="flex items-center gap-2 tracking-wide font-['Nohemi']">
+          <div className="flex items-center gap-2">
             <span className="text-xl font-semibold">₹{product.price}</span>
             <span className="text-base line-through text-stone-600">
               ₹{product.originalPrice}
@@ -146,57 +145,129 @@ const Product = () => {
           <div className="mt-4 flex gap-4">
             <button
               onClick={handleCart}
-              className="w-full p-4 rounded-md leading-none text-white bg-stone-800"
+              className="w-full p-4 rounded-md font-semibold leading-none text-white bg-pink-600"
             >
-              {isInCart ? "Remove from Cart" : "Add to Cart"}
+              {isInCart ? "View in Cart" : "Add to Cart"}
             </button>
 
             <button
               onClick={handleWishlist}
-              className="p-4 rounded-lg text-xl leading-none border-2"
+              className="p-4 rounded-lg text-xl leading-none border-2 border-b-4 border-r-4 border-pink-600 transition-all duration-200 active:scale-0"
             >
               <i
-                className={
-                  isWishlisted
-                    ? "ri-poker-hearts-fill text-red-600"
-                    : "ri-poker-hearts-line"
-                }
+                className={`transition-all duration-200
+                  ${
+                    isWishlisted
+                      ? "ri-poker-hearts-fill text-pink-600 scale-105"
+                      : "ri-poker-hearts-line text-pink-600"
+                  }`}
               ></i>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Related Products*/}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
-          You Might Also Like
-        </h2>
+      {/* Cart Drawer */}
+      <div
+        className={`w-[280px] h-full fixed top-0 right-0 bg-white z-50 transform transition-transform duration-200 ${showCartDrawer ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="p-4 flex flex-col h-full">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-xl font-semibold">Your Cart</h4>
+            <i
+              onClick={() => setShowCartDrawer(false)}
+              className="ri-close-large-line cursor-pointer text-xl"
+            ></i>
+          </div>
 
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={2}
-          breakpoints={{
-            640: {
-              slidesPerView: 2.5,
-            },
-            768: {
-              slidesPerView: 3.2,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-          }}
-          modules={[Navigation]}
-          className="w-full"
-        >
-          {mainData.map((data, index) => (
-            <SwiperSlide key={index}>
-              <Card data={data} badge="Related" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          {/* Items */}
+          <div className="flex-1 overflow-auto flex flex-col gap-4">
+            {cart.length === 0 ? (
+              <p className="text-stone-600">Cart is empty</p>
+            ) : (
+              cart.map((item) => (
+                <div key={item.id} className="flex gap-2 border-b pb-4">
+                  <img
+                    src={item.images[0]}
+                    className="w-14 h-14 aspect-square rounded-md object-cover"
+                  />
+
+                  <div className="flex flex-col gap-2">
+                    <h4 className="text-sm line-clamp-1">{item.name}</h4>
+
+                    {/* Qty */}
+                    <div className="text-sm flex items-center gap-2.5">
+                      <button
+                        onClick={() => updateQty(item.id, "dec")}
+                        className="px-0.5 border"
+                      >
+                        <i className="ri-subtract-line"></i>
+                      </button>
+
+                      <span className="w-4 text-center">{item.qty}</span>
+
+                      <button
+                        onClick={() => updateQty(item.id, "inc")}
+                        className="px-0.5 border"
+                      >
+                        <i className="ri-add-line"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-end gap-2">
+                    {/* Price */}
+                    <span className="text-sm font-semibold">
+                      ₹{item.price * item.qty}
+                    </span>
+
+                    {/* Remove */}
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="text-red-500"
+                    >
+                      <i className="ri-delete-bin-5-line"></i>
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Footer */}
+          {cart.length > 0 && (
+            <div className="pt-2 border-t flex flex-col gap-2">
+              <div className="flex justify-between">
+                <span>Total</span>
+                <span className="font-semibold">₹{totalPrice}</span>
+              </div>
+
+              <button
+                onClick={() => navigate("/cart")}
+                className="p-4 rounded-md text-white bg-pink-600"
+              >
+                View Cart
+              </button>
+
+              <button
+                onClick={() => setShowCartDrawer(false)}
+                className="p-4 rounded-md border-2 border-pink-600 text-pink-600"
+              >
+                Continue Shopping
+              </button>
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Overlay */}
+      {showCartDrawer && (
+        <div
+          onClick={() => setShowCartDrawer(false)}
+          className="fixed inset-0 bg-black/25 z-40"
+        />
+      )}
     </div>
   );
 };

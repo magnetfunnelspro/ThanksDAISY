@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 // Pages
+import Loader from "./pages/Loader";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Collection from "./pages/Collection";
@@ -22,6 +23,8 @@ import NotFound from "./pages/NotFound";
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <Loader />
+
       <div className="px-4">
         <Navbar />
       </div>

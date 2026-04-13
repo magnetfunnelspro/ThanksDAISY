@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Card = ({ data, badge }) => {
-   const discountPercentage = Math.round(
+const Card = ({ data }) => {
+  const discountPercentage = Math.round(
     ((data.originalPrice - data.price) / data.originalPrice) * 100,
   );
 
@@ -44,13 +44,6 @@ const Card = ({ data, badge }) => {
             alt={data.name}
             className="w-full h-full object-cover"
           />
-
-          {/* Badge */}
-          {badge && (
-            <span className="p-1.5 pb-2 px-2 rounded-md text-xs leading-none tracking-wide absolute top-2 left-2 font-['Modernist'] text-white bg-stone-800">
-              {badge}
-            </span>
-          )}
         </div>
       </Link>
 
@@ -58,10 +51,12 @@ const Card = ({ data, badge }) => {
       <div className="flex flex-col">
         {/* Title Clickable */}
         <Link to={`/product/${data.id}`}>
-          <h4 className="font-semibold line-clamp-1 hover:underline">{data.name}</h4>
+          <h4 className="font-semibold line-clamp-1 hover:underline">
+            {data.name}
+          </h4>
         </Link>
 
-        <div className="flex items-center gap-1.5 tracking-wide font-['Nohemi']">
+        <div className="flex items-center gap-1.5">
           <span className="text-sm font-semibold">₹{data.price}</span>
 
           <span className="text-xs line-through text-stone-600">
@@ -73,20 +68,6 @@ const Card = ({ data, badge }) => {
           </span>
         </div>
       </div>
-
-      {/* Wishlist Button (outside Link) */}
-      <button
-        onClick={handleWishlist}
-        className="p-0.5 px-2 rounded-md text-lg absolute top-2 right-2 text-white bg-stone-800"
-      >
-        <i
-          className={
-            isWishlisted
-              ? "ri-poker-hearts-fill text-red-600"
-              : "ri-poker-hearts-line"
-          }
-        ></i>
-      </button>
     </div>
   );
 };
