@@ -25,7 +25,24 @@ const Product = () => {
 
   // Prevent crash
   if (!product)
-    return <div className="p-4 font-['Space_Grotesk']">Product not found</div>;
+    return (
+      <div className="p-4 font-['Space_Grotesk']">
+        <div className="p-8 flex flex-col items-center gap-4">
+          <i class="ri-file-damage-line text-4xl leading-none text-pink-600"></i>
+
+          <p className="text-lg text-center text-stone-600">
+            Oops! Looks like you lost your way.
+          </p>
+
+          <button
+            onClick={() => navigate("/shop")}
+            className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-pink-600"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    );
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [showCartDrawer, setShowCartDrawer] = useState(false);
