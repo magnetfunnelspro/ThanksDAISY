@@ -16,8 +16,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/user/Cart";
 import Checkout from "./pages/user/Checkout";
 import Wishlist from "./pages/user/Wishlist";
-import TrackOrder from "./pages/user/TrackOrder";
-import Thanks from "./pages/Thanks";
+import Thanks from "./pages/user/Thanks";
 import NotFound from "./pages/NotFound";
 
 const AppRouter = () => {
@@ -34,7 +33,6 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/collection" element={<Collection />} />
-        <Route path="/track-order" element={<TrackOrder />} />
         <Route path="/contact" element={<Contact />} />
 
         {/* User Pages */}

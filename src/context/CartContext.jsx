@@ -8,7 +8,6 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  // Initialize from localStorage
   const [cart, setCart] = useState(() => {
     try {
       const stored = localStorage.getItem("cart");
@@ -19,7 +18,6 @@ export const CartProvider = ({ children }) => {
     }
   });
 
-  // Sync to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -28,40 +26,61 @@ export const CartProvider = ({ children }) => {
     }
   }, [cart]);
 
-  // Add to cart
+  // Add to Cart
   const addToCart = (product) => {
-    const exists = cart.find((item) => item.id === product.id);
+    setCart((prev) => {
+      const exists = prev.find((item) => item.id === product.id);
 
-    if (exists) {
-      setCart(
-        cart.map((item) =>
+      if (exists) {
+        return prev.map((item) =>
           item.id === product.id ? { ...item, qty: item.qty + 1 } : item,
-        ),
-      );
-    } else {
-      setCart([...cart, { ...product, qty: 1 }]);
-    }
+        );
+      }
+
+      return [...prev, { ...product, qty: 1 }];
+    });
   };
 
-  // Remove item
+  //  Remove Item
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Update quantity
+  //  Qty Control
   const updateQty = (id, type) => {
-    setCart(
-      cart.map((item) => {
-        if (item.id === id) {
-          if (type === "inc") return { ...item, qty: item.qty + 1 };
-          if (type === "dec" && item.qty > 1)
-            return { ...item, qty: item.qty - 1 };
-        }
-        return item;
-      }),
+    setCart((prev) =>
+      prev
+        .map((item) => {
+          if (item.id === id) {
+            if (type === "inc") {
+              return { ...item, qty: item.qty + 1 };
+            }
+
+            if (type === "dec") {
+              if (item.qty > 1) {
+                return { ...item, qty: item.qty - 1 };
+              } else {
+                return null;
+              }
+            }
+          }
+          return item;
+        })
+        .filter(Boolean),
     );
   };
 
+  // Clear Cart
+  const clearCart = () => {
+    try {
+      setCart([]);
+      localStorage.removeItem("cart");
+    } catch (err) {
+      console.error("Clear cart error:", err);
+    }
+  };
+
+  // Total Price
   const totalPrice = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
 
   return (
@@ -71,6 +90,7 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQty,
+        clearCart,
         totalPrice,
       }}
     >

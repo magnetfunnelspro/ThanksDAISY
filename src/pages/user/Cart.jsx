@@ -18,30 +18,45 @@ const Cart = () => {
 
   // Coupon Codes
   const handleAppliedCoupon = () => {
+    let disc = 0;
+    let message = "";
+
     if (coupon === "DAISY15") {
-      const disc = Math.round(totalPrice * 0.15);
-      setDiscount(disc);
-      setCouponMsg("Horah! You got 15% discount.");
+      disc = Math.round(totalPrice * 0.15);
+      message = "Horah! You got 15% discount.";
     } else if (coupon === "SURAJ100") {
-      setDiscount(totalPrice * 1);
-      setCouponMsg("Yahoo! Free bouquets & gifts from us.");
+      disc = totalPrice;
+      message = "Yahoo! Free bouquets & gifts from us.";
     } else if (coupon === "FREESHIP") {
-      setDiscount(shippingCost);
-      setCouponMsg("Congrats! You got free delivery.");
+      disc = shippingCost;
+      message = "Congrats! You got free delivery.";
     } else {
-      setDiscount(0);
-      setCouponMsg("Oops! Invalid coupon code.");
+      disc = 0;
+      message = "Oops! Invalid coupon code.";
     }
+
+    setDiscount(disc);
+    setCouponMsg(message);
+
+    // ✅ SAVE TO LOCALSTORAGE (FIXED)
+    localStorage.setItem(
+      "coupon",
+      JSON.stringify({
+        code: coupon,
+        discount: disc,
+      })
+    );
   };
 
   const finalTotal = totalPrice + shippingCost - discount;
 
   return (
     <div className="w-full p-8 px-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
+      
       {/* Empty State */}
       {cart.length === 0 ? (
         <div className="p-8 flex flex-col items-center gap-4">
-          <i class="ri-file-unknow-line text-4xl leading-none text-pink-600"></i>
+          <i className="ri-file-unknow-line text-4xl leading-none text-pink-600"></i>
 
           <p className="text-lg text-center text-stone-600">
             Seems like you haven't added something in your cart yet.
@@ -56,21 +71,20 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex flex-col gap-8">
+
           {/* ITEMS */}
           <div className="flex flex-col gap-4">
             {cart.map((item) => (
               <div key={item.id} className="flex gap-4 border-b pb-4">
-                {/* Image */}
+
                 <img
                   src={item.images[0]}
-                  className="w-20 h-20 aspect-square rounded-md object-cover"
+                  className="w-20 h-20 rounded-md object-cover"
                 />
 
-                {/* Info */}
                 <div className="flex-1 flex flex-col gap-2">
                   <h2 className="line-clamp-1">{item.name}</h2>
 
-                  {/* Qty Controls */}
                   <div className="text-sm flex items-center gap-2.5">
                     <button
                       onClick={() => updateQty(item.id, "dec")}
@@ -91,12 +105,10 @@ const Cart = () => {
                 </div>
 
                 <div className="flex flex-col items-end gap-2">
-                  {/* Price */}
                   <span className="font-semibold">
                     ₹{item.price * item.qty}
                   </span>
 
-                  {/* Remove */}
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="text-lg text-red-600"
@@ -118,7 +130,7 @@ const Cart = () => {
                 placeholder="Enter coupon code"
                 value={coupon}
                 onChange={(e) => setCoupon(e.target.value.toUpperCase())}
-                className="flex-1 p-4 rounded-md border-2 outline-none text-lg leading-none font-[Modernist]"
+                className="flex-1 p-4 rounded-md border-2 outline-none text-lg font-['Modernist']"
               />
 
               <button
@@ -130,9 +142,7 @@ const Cart = () => {
             </div>
 
             {couponMsg && (
-              <p
-                className={`${discount === 0 ? "text-red-600" : "text-green-600"}`}
-              >
+              <p className={`${discount === 0 ? "text-red-600" : "text-green-600"}`}>
                 {couponMsg}
               </p>
             )}

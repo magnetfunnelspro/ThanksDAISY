@@ -1,27 +1,40 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Context
 import { useCart } from "../../context/CartContext";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { cart, totalPrice } = useCart();
+  const { cart, totalPrice, clearCart } = useCart();
 
-  // Order Type
   const [orderFor, setOrderFor] = useState("self");
 
-  // Form State
   const [form, setForm] = useState({
     senderName: "",
     receiverName: "",
     phone: "",
-    address: "",
+    street: "",
+    city: "",
+    state: "",
+    pincode: "",
     relation: "",
     message: "",
     date: "",
     timeSlot: "",
   });
 
-  // Valid Pincodes
+  const [showRelation, setShowRelation] = useState(false);
+  const [showTime, setShowTime] = useState(false);
+
+  // ✅ GET COUPON FROM CART
+  const couponData = JSON.parse(localStorage.getItem("coupon")) || {};
+  const discount = couponData.discount || 0;
+  const couponCode = couponData.code || null;
+
+  const finalTotal = totalPrice - discount;
+
+  // Delhi NCR Pincodes
   const validPincodes = [
     "110001",
     "110002",
@@ -43,36 +56,119 @@ const Checkout = () => {
 
   const isDeliverable = validPincodes.includes(form.pincode);
 
+  // Pincode Auto Detect
+  const fetchLocation = async (pin) => {
+    if (pin.length !== 6) return;
+
+    try {
+      const res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
+      const data = await res.json();
+
+      if (data[0].Status === "Success") {
+        const loc = data[0].PostOffice[0];
+
+        setForm((prev) => ({
+          ...prev,
+          city: loc.District,
+          state: loc.State,
+        }));
+      }
+    } catch {
+      console.log("Pincode error");
+    }
+  };
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handlePlaceOrder = () => {
+  // Send Data to Telegram
+  const sendToTelegram = async (order) => {
+    const BOT_TOKEN = import.meta.env.VITE_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_DATABASE_CHAT_ID;
+
+    const text = `
+🌸 New Order
+
+🆔 Order ID - ${order.id}
+👤 Name - ${order.address.senderName}
+👤 Receiver - ${order.address.receiverName || "N/A"}
+💑 Relation - ${order.address.relation || "N/A"}
+📞 Contact - ${order.address.phone}
+
+📍 Address - ${order.address.street}, ${order.address.city}, ${order.address.state} - ${order.address.pincode}
+
+📦 Order SUMMARY 
+${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
+
+🎟 Coupon - ${order.coupon || "None"}
+💸 Discount - ₹${order.discount}
+
+💰 Total - ₹${order.total}
+🕒 Timeslot - ${order.address.timeSlot}
+📅 Date - ${order.address.date}
+💌 Message - ${order.address.message || "N/A"}
+`;
+
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: CHAT_ID, text }),
+    });
+  };
+
+  // Order Placement
+  const handlePlaceOrder = async () => {
     if (!form.senderName || !form.phone || !form.pincode) {
-      alert("Please fill required fields");
+      alert("Fill required fields");
       return;
     }
 
     if (!isDeliverable) {
-      alert("Sorry! We only deliver in Delhi NCR 🚫");
+      alert("Only Delhi NCR delivery available 🚫");
       return;
     }
 
-    const orderId = "ORD" + Date.now();
-
     const order = {
-      id: orderId,
+      id: "ORD" + Date.now(),
       items: cart,
-      total: totalPrice,
+      total: finalTotal,
+      discount,
+      coupon: couponCode,
       address: form,
       status: "Processing",
-      createdAt: new Date().toISOString(),
     };
 
-    // Save order
     localStorage.setItem("order", JSON.stringify(order));
 
-    navigate("/track-order");
+    try {
+      await sendToTelegram(order);
+
+      // SAFE CLEAR CART
+      if (typeof clearCart === "function") {
+        clearCart();
+      }
+
+      // REMOVE COUPON AFTER ORDER
+      localStorage.removeItem("coupon");
+
+      navigate("/thanks", {
+        state: {
+          name: form.senderName,
+          orderId: order.id,
+        },
+      });
+    } catch (err) {
+      console.error(err);
+
+      // ALWAYS NAVIGATE (IMPORTANT)
+      navigate("/thanks", {
+        state: {
+          name: form.senderName,
+          orderId: order.id,
+        },
+      });
+    }
   };
 
   return (
@@ -102,14 +198,15 @@ const Checkout = () => {
         </div>
       </div>
 
-      {/* ================= FORM ================= */}
+      {/* FORM */}
       <div className="flex flex-col gap-4">
         {/* Names */}
         <div className="grid md:grid-cols-2 gap-4">
           <input
+            required
             type="text"
             name="senderName"
-            placeholder="Your Name (ex. Suraj)"
+            placeholder="Your Name"
             value={form.senderName}
             onChange={handleChange}
             className="p-4 border rounded-md outline-none"
@@ -129,6 +226,7 @@ const Checkout = () => {
 
         {/* Phone */}
         <input
+          required
           type="tel"
           name="phone"
           placeholder="Phone Number"
@@ -138,96 +236,132 @@ const Checkout = () => {
         />
 
         {/* Address */}
-        {/* Address Fields */}
         <div className="grid md:grid-cols-2 gap-4">
-          <input
-            type="text"
+          <textarea
+            required
             name="street"
             placeholder="Street Address"
-            value={form.street || ""}
             onChange={handleChange}
             className="p-4 border rounded-md outline-none"
           />
-
           <input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={form.city || ""}
-            onChange={handleChange}
-            className="p-4 border rounded-md outline-none"
-          />
-
-          <input
-            type="text"
-            name="state"
-            placeholder="State"
-            value={form.state || ""}
-            onChange={handleChange}
-            className="p-4 border rounded-md outline-none"
-          />
-
-          <input
-            type="number"
+            required
             name="pincode"
             placeholder="Pincode"
-            value={form.pincode || ""}
-            onChange={handleChange}
+            value={form.pincode}
+            onChange={(e) => {
+              handleChange(e);
+              fetchLocation(e.target.value);
+            }}
+            className="p-4 border rounded-md outline-none"
+          />
+          <input
+            name="city"
+            placeholder="City"
+            value={form.city}
+            readOnly
+            className="p-4 border rounded-md outline-none"
+          />
+          <input
+            name="state"
+            placeholder="State"
+            value={form.state}
+            readOnly
             className="p-4 border rounded-md outline-none"
           />
         </div>
 
         {/* Relation */}
         {orderFor === "someone" && (
-          <select
-            name="relation"
-            value={form.relation}
-            onChange={handleChange}
-            className="p-4 border rounded-md outline-none"
-          >
-            <option value="">Select Relation</option>
-            <option>Girlfriend ❤️</option>
-            <option>Boyfriend 💙</option>
-            <option>Wife 💕</option>
-            <option>Husband 💖</option>
-            <option>Friend 🤝</option>
-            <option>Family 👨‍👩‍👧</option>
-          </select>
+          <div className="relative">
+            <div
+              onClick={() => setShowRelation(!showRelation)}
+              className="p-4 border rounded-md flex justify-between cursor-pointer"
+            >
+              {form.relation || "Select Relation"}
+              <i className="ri-arrow-down-s-line"></i>
+            </div>
+
+            {showRelation && (
+              <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
+                {[
+                  "Girlfriend",
+                  "Boyfriend",
+                  "Wife",
+                  "Husband",
+                  "Friend",
+                  "Family",
+                  "Other",
+                ].map((r) => (
+                  <div
+                    key={r}
+                    onClick={() => {
+                      setForm({ ...form, relation: r });
+                      setShowRelation(false);
+                    }}
+                    className="p-4 border-b hover:bg-pink-50 cursor-pointer"
+                  >
+                    {r}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         )}
 
         {/* Delivery Date */}
         <input
+          required
           type="date"
           name="date"
           value={form.date}
           onChange={handleChange}
-          className="p-4 border rounded-md outline-none"
+          className="w-full p-4 border rounded-md outline-none"
         />
 
-        {/* Time Slot */}
-        <select
-          name="timeSlot"
-          value={form.timeSlot}
-          onChange={handleChange}
-          className="p-4 border rounded-md outline-none"
-        >
-          <option value="">Select Time Slot</option>
-          <option>Morning (8 AM - 12 PM)</option>
-          <option>Afternoon (12 PM - 4 PM)</option>
-          <option>Evening (4 PM - 8 PM)</option>
-        </select>
+        {/* Time */}
+        <div className="relative">
+          <div
+            onClick={() => setShowTime(!showTime)}
+            className="p-4 border rounded-md flex justify-between cursor-pointer"
+          >
+            {form.timeSlot || "Select Time Slot"}
+            <i className="ri-arrow-down-s-line"></i>
+          </div>
+
+          {showTime && (
+            <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
+              {[
+                "Morning (8 AM - 12 PM)",
+                "Afternoon (12 PM - 4 PM)",
+                "Evening (4 PM - 8 PM)",
+              ].map((t) => (
+                <div
+                  key={t}
+                  onClick={() => {
+                    setForm({ ...form, timeSlot: t });
+                    setShowTime(false);
+                  }}
+                  className="p-4 border-b hover:bg-pink-50 cursor-pointer"
+                >
+                  {t}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Message */}
         <textarea
           name="message"
-          placeholder="Add a personal message (any words if any, promise this will be safe)"
+          placeholder="Add a personal message (any words, if any promise this will be safe)"
           value={form.message}
           onChange={handleChange}
           className="p-4 border rounded-md outline-none"
         />
       </div>
 
-      {/* ================= ORDER SUMMARY ================= */}
+      {/* ORDER SUMMARY */}
       <div className="border-t pt-4 flex flex-col gap-4">
         <h4 className="font-semibold text-xl">Order Summary</h4>
 
@@ -242,9 +376,16 @@ const Checkout = () => {
           ))}
         </div>
 
+        {discount > 0 && (
+          <div className="flex justify-between text-green-600">
+            <span>Discount</span>
+            <span>-₹{discount}</span>
+          </div>
+        )}
+
         <div className="flex justify-between font-semibold border-t pt-4">
-          <span className="text-xl font-semibold">Total</span>
-          <span className="text-lg font-semibold">₹{totalPrice}</span>
+          <span>Total</span>
+          <span>₹{finalTotal}</span>
         </div>
       </div>
 
