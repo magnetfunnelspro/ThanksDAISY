@@ -14,75 +14,17 @@ import "swiper/css/pagination";
 import Card from "../components/Card";
 
 // Data
-import mainData from "../mainData";
-import reviewData from "../reviewData";
-import socialData from "../socialData";
-import faqData from "../faqData";
+import mainData from "../data/mainData";
+import catData from "../data/catData";
+import occData from "../data/occData";
+import faqData from "../data/faqData";
+import reviewData from "../data/reviewData";
+import socialData from "../data/socialData";
 
 const Home = () => {
-  const collection = [
-    {
-      title: "4-Hours Delivery",
-      image:
-        "https://i.pinimg.com/736x/a4/a8/62/a4a862a08a77ec94d397b929db5fb89e.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Subscription Flowers",
-      image:
-        "https://i.pinimg.com/736x/2a/e1/d9/2ae1d92b470f227ded3b9d6e8ced5929.jpg",
-      route: "subscriptoin",
-    },
-    {
-      title: "Corporate Gifting",
-      image:
-        "https://i.pinimg.com/avif/1200x/93/ab/8c/93ab8c4747d23016d3b6cbc1194c0a63.avf",
-      route: "corporate-gifting",
-    },
-  ];
-
-  const occasion = [
-    {
-      title: "Birthday",
-      image:
-        "https://i.pinimg.com/736x/44/66/de/4466de0d1cc83f55fc36e2241b02aa21.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Romance",
-      image:
-        "https://i.pinimg.com/1200x/6e/b1/29/6eb1299a70ce00becc7064170a39660d.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Anniversary",
-      image:
-        "https://i.pinimg.com/1200x/f6/63/9d/f6639da2cdbb6f9805fee3043e15e3be.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Wedding",
-      image:
-        "https://i.pinimg.com/736x/b7/da/7b/b7da7b04e2144d447ec87a97c0467dfe.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Event",
-      image:
-        "https://i.pinimg.com/736x/99/5c/d9/995cd9f476901054035d10221db619dc.jpg",
-      route: "4-hours-deliver",
-    },
-    {
-      title: "Celebration",
-      image:
-        "https://i.pinimg.com/1200x/2c/18/37/2c18373c0916d5bbc5bd67838e2728e5.jpg",
-      route: "4-hours-deliver",
-    },
-  ];
-
-  // FAQs
   const [activeIndex, setActiveIndex] = useState(null);
 
+  // FAQs
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -156,13 +98,13 @@ const Home = () => {
         </SwiperSlide>
       </Swiper>
 
-      {/* Collection */}
+      {/* Categories */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold leading-none">
           Are You Looking for
         </h2>
         <div className="w-full grid grid-cols-3 gap-4">
-          {collection.map((cat, index) => (
+          {catData.map((cat, index) => (
             <Link
               key={index}
               to={cat.route}
@@ -184,7 +126,7 @@ const Home = () => {
 
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold leading-none">
           Most People Loved It
         </h2>
 
@@ -215,11 +157,11 @@ const Home = () => {
 
       {/* Occasion */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold leading-none">
           Looking for Occasion
         </h2>
         <div className="w-full grid grid-cols-3 gap-4">
-          {occasion.map((cat, index) => (
+          {occData.map((cat, index) => (
             <Link
               key={index}
               to={cat.route}
@@ -241,9 +183,7 @@ const Home = () => {
 
       {/* New Arrivals */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none tracking-wide font-[Nohemi]">
-          New Arrivals
-        </h2>
+        <h2 className="text-2xl font-semibold leading-none">New Arrivals</h2>
 
         <Swiper
           spaceBetween={16}
@@ -275,34 +215,34 @@ const Home = () => {
 
       {/* Choose Us */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
-          WHY CHOOSE US?
+        <h2 className="text-2xl font-semibold text-center leading-none">
+          Why Choose Us?
         </h2>
         <p className="text-center">
-          Fresh flowers, heartfelt moments, and beautiful gifting made
-          effortless with ThanksDAISY—crafted to brighten every occasion.
+          No guesswork, we offer real photo of your bouquet before it is
+          delivered, so you know exactly what you are gifting.
         </p>
         {/* Features */}
         <div className="w-full grid grid-cols-2 gap-4">
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
             <i className="ri-calendar-event-fill text-2xl text-pink-600"></i>
             <h4 className="font-semibold text-center">
               Never Miss Important Dates
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
             <i className="ri-e-bike-2-fill text-2xl text-pink-600"></i>
             <h4 className="font-semibold text-center">
               Quick Dispatch & 4-Hours Delivery
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
             <i className="ri-quill-pen-ai-fill text-2xl text-pink-600"></i>
             <h4 className="font-semibold text-center">
               Personalised Message Card
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-200">
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
             <i className="ri-hand-heart-fill text-2xl text-pink-600"></i>
             <h4 className="font-semibold text-center">
               Free Exclusive Random Gifts
@@ -318,7 +258,7 @@ const Home = () => {
 
       {/* Customer Reviews */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold text-center leading-none">
           Our Customer Reviews
         </h2>
         <p className="text-center">
@@ -390,7 +330,7 @@ const Home = () => {
 
       {/* Social Content */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold text-center leading-none">
           Instagram Posts
         </h2>
         <p className="text-center">
@@ -417,7 +357,7 @@ const Home = () => {
           <a
             href="https://www.instagram.com/thanksdaisyofficial/"
             target="_blank"
-            className="mt-4 p-4 rounded-md flex gap-2 text-white bg-stone-800"
+            className="mt-4 p-4 px-8 font-semibold rounded-md border-2 border-r-4 border-b-4 border-pink-600 text-pink-600"
           >
             <span>
               Follow <i className="ri-threads-line"></i>thanksdaisyofficial
@@ -428,7 +368,7 @@ const Home = () => {
 
       {/* FAQ Section */}
       <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center tracking-wide font-[Nohemi]">
+        <h2 className="text-2xl font-semibold text-center leading-none">
           Most FAQs
         </h2>
         <p className="text-center">
@@ -477,7 +417,7 @@ const Home = () => {
       </div>
 
       {/* Newsletter */}
-      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 bg-stone-200">
+      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 text-pink-600 bg-pink-50">
         {/* Heading */}
         <div className="flex flex-col gap-2 max-w-xl">
           <span className="text-sm text-center uppercase tracking-widest font-['Nohemi']">
@@ -488,7 +428,7 @@ const Home = () => {
             Get ₹249 Off or a Surprise Gift on Next Order
           </h2>
 
-          <p className="mt-2 text-sm text-center text-stone-600">
+          <p className="mt-2 text-sm text-center text-pink-400">
             Join ThanksDAISY on WhatsApp for exclusive offers, early access, and
             beautiful floral surprises crafted just for you.
           </p>
@@ -498,19 +438,19 @@ const Home = () => {
         {!success ? (
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-md flex items-center rounded-md overflow-hidden font-['Nohemi']"
+            className="w-full max-w-md flex items-center overflow-hidden"
           >
             <input
               type="tel"
               placeholder="Your WhatsApp No."
               value={number}
               onChange={(e) => setNumber(e.target.value)}
-              className="w-full p-4 outline-none text-sm"
+              className="w-full p-4 outline-none text-sm font-semibold rounded-md rounded-r-none border-2 border-b-4 border-pink-600 placeholder-pink-400"
             />
 
             <button
               type="submit"
-              className="p-4 text-sm text-white bg-stone-800"
+              className="p-4 text-sm font-semibold rounded-md rounded-l-none border-2 border-b-4 border-pink-600 text-white bg-pink-600"
             >
               Subscribe
             </button>
@@ -522,7 +462,7 @@ const Home = () => {
         )}
 
         {/* Trust Note */}
-        <p className="text-xs text-stone-600">
+        <p className="text-xs text-pink-400">
           No spam. Only beautiful offers and floral updates.
         </p>
       </div>

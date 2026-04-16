@@ -55,7 +55,9 @@ const Navbar = () => {
                 ></i>
                 <div className="flex gap-2 items-center">
                   <i className="ri-flower-fill text-xl"></i>
-                  <h2 className="text-lg font-semibold font-['Nohemi']">ThanksDAISY</h2>
+                  <h2 className="text-lg font-semibold font-['Nohemi']">
+                    ThanksDAISY
+                  </h2>
                 </div>
               </div>
 
@@ -77,24 +79,24 @@ const Navbar = () => {
                 </Link>
                 <Link
                   onClick={() => setToggleNav(false)}
-                  to="/collection"
+                  to="/subscription"
                   className="text-lg leading-none"
                 >
-                  Collection
+                  Subscribe
+                </Link>
+                <Link
+                  onClick={() => setToggleNav(false)}
+                  to="/corporate-gifting"
+                  className="text-lg leading-none"
+                >
+                  Corporate
                 </Link>
                 <Link
                   onClick={() => setToggleNav(false)}
                   to="/contact"
                   className="text-lg leading-none"
                 >
-                  Contact
-                </Link>
-                <Link
-                  onClick={() => setToggleNav(false)}
-                  to="/track-order"
-                  className="text-lg leading-none"
-                >
-                  Track Order
+                  Contact Us
                 </Link>
               </div>
             </div>

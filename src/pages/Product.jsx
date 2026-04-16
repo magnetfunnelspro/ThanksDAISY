@@ -10,7 +10,7 @@ import { Autoplay } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 
 // Data
-import mainData from "../mainData";
+import mainData from "../data/mainData";
 
 // Context
 import { useCart } from "../context/CartContext";

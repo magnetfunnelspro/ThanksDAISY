@@ -10,14 +10,17 @@ import Footer from "./components/Footer";
 import Loader from "./pages/Loader";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
-import Collection from "./pages/Collection";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
+import Subscription from "./pages/Subscription";
+import Corporate from "./pages/Corporate";
+import NotFound from "./pages/NotFound";
+
+// User Pages
 import Cart from "./pages/user/Cart";
 import Checkout from "./pages/user/Checkout";
 import Wishlist from "./pages/user/Wishlist";
 import Thanks from "./pages/user/Thanks";
-import NotFound from "./pages/NotFound";
 
 const AppRouter = () => {
   return (
@@ -32,7 +35,8 @@ const AppRouter = () => {
         {/* Pages */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/collection" element={<Collection />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/corporate-gifting" element={<Corporate />} />
         <Route path="/contact" element={<Contact />} />
 
         {/* User Pages */}

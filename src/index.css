@@ -58,3 +58,8 @@
   right: -4px;
   background: linear-gradient(to left, #fafaf9, transparent);
 }
+
+/* Shop Scrollbar */
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}

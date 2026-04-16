@@ -357,7 +357,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           placeholder="Add a personal message (any words, if any promise this will be safe)"
           value={form.message}
           onChange={handleChange}
-          className="p-4 border rounded-md outline-none"
+          className="p-4 border rounded-md outline-none resize-none"
         />
       </div>
 
