@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Context
@@ -27,15 +27,20 @@ const Checkout = () => {
   const [showRelation, setShowRelation] = useState(false);
   const [showTime, setShowTime] = useState(false);
 
-  // ✅ GET COUPON FROM CART
-  const couponData = JSON.parse(localStorage.getItem("coupon")) || {};
-  const discount = couponData.discount || 0;
-  const couponCode = couponData.code || null;
-
-  const finalTotal = totalPrice - discount;
+  // GET COUPON FROM CART
+  const { finalTotal, discount, couponCode } = useMemo(() => {
+    const couponData = JSON.parse(localStorage.getItem("coupon")) || {};
+    const disc = Number(couponData.discount) || 0;
+    return {
+      discount: disc,
+      couponCode: couponData.code || null,
+      finalTotal: totalPrice - disc,
+    };
+  }, [totalPrice]);
 
   // Delhi NCR Pincodes
   const validPincodes = [
+    // --- DELHI (CORE) ---
     "110001",
     "110002",
     "110003",
@@ -46,19 +51,57 @@ const Checkout = () => {
     "110008",
     "110009",
     "110010",
+    "110011",
+    "110012",
+    "110016",
+    "110017",
+    "110019",
+    "110020",
+    "110021",
+    "110024",
+    "110027",
+    "110030",
+    "110034",
+    "110044",
+    "110058",
+    "110075",
+    "110085",
+    "110092",
+
+    // --- NOIDA & GHAZIABAD (UP) ---
     "201301",
     "201303",
     "201304",
+    "201305",
+    "201307",
+    "201310", // Noida/Greater Noida
+    "201001",
+    "201002",
+    "201005",
+    "201009",
+    "201010",
+    "201014", // Ghaziabad/Indirapuram
+
+    // --- GURGAON & FARIDABAD (HARYANA) ---
     "122001",
     "122002",
     "122003",
+    "122017",
+    "122018", // Gurgaon
+    "121001",
+    "121002",
+    "121003",
+    "121004", // Faridabad
   ];
 
   const isDeliverable = validPincodes.includes(form.pincode);
 
   // Pincode Auto Detect
+  const [isFetchingZip, setIsFetchingZip] = useState(false);
+
   const fetchLocation = async (pin) => {
     if (pin.length !== 6) return;
+    setIsFetchingZip(true);
 
     try {
       const res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
@@ -73,13 +116,72 @@ const Checkout = () => {
           state: loc.State,
         }));
       }
-    } catch {
-      console.log("Pincode error");
+    } finally {
+      setIsFetchingZip(false);
     }
   };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // Record Voice
+  const [isRecording, setIsRecording] = useState(false);
+  const [audioBlob, setAudioBlob] = useState(null);
+  const [mediaRecorder, setMediaRecorder] = useState(null);
+
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const recorder = new MediaRecorder(stream);
+      const chunks = [];
+
+      recorder.ondataavailable = (e) => chunks.push(e.data);
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" });
+        setAudioBlob(blob);
+      };
+
+      recorder.start();
+      setMediaRecorder(recorder);
+      setIsRecording(true);
+    } catch (err) {
+      alert("Microphone access denied or not supported.");
+    }
+  };
+
+  const stopRecording = () => {
+    mediaRecorder.stop();
+    setIsRecording(false);
+    // Stop all tracks to turn off the recording light/icon in browser
+    mediaRecorder.stream.getTracks().forEach((track) => track.stop());
+
+    const clearVoice = () => {
+      if (audioBlob) {
+        URL.revokeObjectURL(audioBlob); // Clean up memory
+        setAudioBlob(null);
+      }
+    };
+  };
+
+  const [recordingTime, setRecordingTime] = useState(0);
+
+  useEffect(() => {
+    let interval;
+    if (isRecording) {
+      interval = setInterval(() => setRecordingTime((prev) => prev + 1), 1000);
+    } else {
+      setRecordingTime(0);
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isRecording]);
+
+  // Format time utility: 0 -> "0:00"
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
   // Send Data to Telegram
@@ -110,24 +212,58 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 💌 Message - ${order.address.message || "N/A"}
 `;
 
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: CHAT_ID, text }),
-    });
+    try {
+      // Send text first
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: CHAT_ID, text }),
+      });
+
+      // 2. Send Voice Note if it exists
+      if (audioBlob) {
+        const formData = new FormData();
+        formData.append("chat_id", CHAT_ID);
+        // We name the file 'voice.ogg' so Telegram recognizes it as a voice message
+        formData.append("voice", audioBlob, "voice.ogg");
+        formData.append("caption", `Voice for Order: ${order.id}`);
+
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendVoice`, {
+          method: "POST",
+          // Note: Do NOT set Content-Type header; fetch handles boundaries for FormData automatically
+          body: formData,
+        });
+      }
+    } catch (error) {
+      console.error("Telegram Sync Error:", error);
+      // We don't throw the error here so that the UI can still navigate to /thanks
+    }
   };
 
   // Order Placement
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const handlePlaceOrder = async () => {
-    if (!form.senderName || !form.phone || !form.pincode) {
+    // 1. VALIDATION FIRST
+    if (
+      !form.senderName ||
+      !form.phone ||
+      !form.street ||
+      !form.pincode ||
+      !form.date ||
+      !form.timeSlot
+    ) {
       alert("Fill required fields");
-      return;
+      return; // Exit here. isProcessing is still false.
     }
 
     if (!isDeliverable) {
       alert("Only Delhi NCR delivery available 🚫");
-      return;
+      return; // Exit here. isProcessing is still false.
     }
+
+    // 2. SET PROCESSING ONLY AFTER VALIDATION PASSES
+    setIsProcessing(true);
 
     const order = {
       id: "ORD" + Date.now(),
@@ -142,32 +278,22 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     localStorage.setItem("order", JSON.stringify(order));
 
     try {
+      // 3. TELEGRAM SYNC
       await sendToTelegram(order);
 
-      // SAFE CLEAR CART
-      if (typeof clearCart === "function") {
-        clearCart();
-      }
-
-      // REMOVE COUPON AFTER ORDER
+      // 4. CLEANUP
+      if (typeof clearCart === "function") clearCart();
       localStorage.removeItem("coupon");
 
+      // 5. NAVIGATE
       navigate("/thanks", {
-        state: {
-          name: form.senderName,
-          orderId: order.id,
-        },
+        state: { name: form.senderName, orderId: order.id },
       });
     } catch (err) {
-      console.error(err);
-
-      // ALWAYS NAVIGATE (IMPORTANT)
-      navigate("/thanks", {
-        state: {
-          name: form.senderName,
-          orderId: order.id,
-        },
-      });
+      console.error("Order process error:", err);
+      // If something goes wrong, reset the button so they can try again
+      setIsProcessing(false);
+      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -257,10 +383,10 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           />
           <input
             name="city"
-            placeholder="City"
+            placeholder={isFetchingZip ? "Detecting City..." : "City"}
             value={form.city}
             readOnly
-            className="p-4 border rounded-md outline-none"
+            className={`p-4 border rounded-md outline-none ${isFetchingZip ? "animate-pulse" : ""}`}
           />
           <input
             name="state"
@@ -314,6 +440,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           required
           type="date"
           name="date"
+          min={new Date().toISOString().split("T")[0]}
           value={form.date}
           onChange={handleChange}
           className="w-full p-4 border rounded-md outline-none"
@@ -359,6 +486,57 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           onChange={handleChange}
           className="p-4 border rounded-md outline-none resize-none"
         />
+
+        {/* Voice Message Section */}
+        <div className="p-4 border rounded-md flex flex-col gap-2">
+          <label className="text-sm font-semibold">Voice Note (Optional)</label>
+          <div className="flex items-center justify-between gap-4">
+            {!isRecording ? (
+              <button
+                type="button"
+                onClick={startRecording}
+                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-pink-600 bg-pink-50"
+              >
+                <i className="ri-mic-line text-lg"></i>
+                {audioBlob ? "Record Again" : "Record Voice"}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={stopRecording}
+                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-white bg-pink-600 animate-pulse"
+              >
+                <i className="ri-stop-circle-line text-lg"></i>
+                Stop Recording
+              </button>
+            )}
+
+            {isRecording && (
+              <span className="text-sm animate-pulse text-red-600">
+                {formatTime(recordingTime)}
+              </span>
+            )}
+
+            {audioBlob && !isRecording && (
+              <div className="flex items-center gap-2">
+                <audio
+                  src={URL.createObjectURL(audioBlob)}
+                  controls
+                  className="h-8 w-40"
+                />
+                <button
+                  onClick={() => setAudioBlob(null)}
+                  className="text-red-600"
+                >
+                  <i className="ri-delete-bin-line"></i>
+                </button>
+              </div>
+            )}
+          </div>
+          <p className="text-xs text-stone-600">
+            Record a sweet message for the recipient!
+          </p>
+        </div>
       </div>
 
       {/* ORDER SUMMARY */}
@@ -392,9 +570,14 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
       {/* ACTION */}
       <button
         onClick={handlePlaceOrder}
-        className="w-full p-4 rounded-md font-semibold text-white bg-pink-600"
+        disabled={isProcessing}
+        className={`w-full p-4 rounded-md font-semibold text-white transition-all ${
+          isProcessing
+            ? "bg-stone-400 cursor-not-allowed"
+            : "bg-pink-600 hover:bg-pink-700 active:scale-95"
+        }`}
       >
-        Place Order
+        {isProcessing ? "Processing Order..." : "Place Order"}
       </button>
     </div>
   );
