@@ -35,7 +35,7 @@ const Shop = () => {
   }
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-4 font-['Space_Grotesk'] text-stone-800">
+    <div className="w-full p-8 px-4 flex flex-col gap-4 font-['Space_Grotesk'] text-stone-600">
       {/* HEADER */}
       <h2 className="text-xl font-semibold leading-none">Shop All Products</h2>
 
@@ -47,9 +47,9 @@ const Shop = () => {
             <button
               key={cat}
               onClick={() => setSelectedCat(cat)}
-              className={`p-2 px-4 text-sm capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-pink-600 text-pink-600 transition duration-200 ${
+              className={`p-2 px-4 text-sm capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 transition duration-200 ${
                 selectedCat === cat
-                  ? "bg-pink-600 text-white border-pink-600"
+                  ? "bg-stone-600 text-white border-stone-600"
                   : "bg-white"
               }`}
             >
@@ -62,7 +62,7 @@ const Shop = () => {
         <div className="relative">
           <button
             onClick={() => setShowSort(!showSort)}
-            className="p-2 px-4 text-sm font-semibold rounded-md border-2 border-r-4 border-b-4 border-pink-600 text-pink-600"
+            className="p-2 px-4 text-sm font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
           >
             <i class="ri-equalizer-2-line"></i>
           </button>
@@ -81,7 +81,7 @@ const Shop = () => {
                     setSortBy(opt.value);
                     setShowSort(false);
                   }}
-                  className="p-4 border-b text-sm tracking-wide hover:bg-pink-50 cursor-pointer "
+                  className="p-4 border-b text-sm tracking-wide hover:bg-stone-100 cursor-pointer "
                 >
                   {opt.label}
                 </div>

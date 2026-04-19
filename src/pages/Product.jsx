@@ -28,7 +28,7 @@ const Product = () => {
     return (
       <div className="p-4 font-['Space_Grotesk']">
         <div className="p-8 flex flex-col items-center gap-4">
-          <i class="ri-file-damage-line text-4xl leading-none text-pink-600"></i>
+          <i class="ri-file-damage-line text-4xl leading-none text-stone-600"></i>
 
           <p className="text-lg text-center text-stone-600">
             Oops! Looks like you lost your way.
@@ -36,7 +36,7 @@ const Product = () => {
 
           <button
             onClick={() => navigate("/shop")}
-            className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-pink-600"
+            className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-stone-600"
           >
             Continue Shopping
           </button>
@@ -121,7 +121,7 @@ const Product = () => {
                 key={index}
                 className={`cursor-pointer rounded-md overflow-hidden border-2 transition ${
                   activeIndex === index
-                    ? "border-pink-600 scale-105"
+                    ? "border-stone-600 scale-105"
                     : "border-transparent opacity-80"
                 }`}
               >
@@ -162,21 +162,21 @@ const Product = () => {
           <div className="mt-4 flex gap-4">
             <button
               onClick={handleCart}
-              className="w-full p-4 rounded-md font-semibold leading-none text-white bg-pink-600"
+              className="w-full p-4 rounded-md font-semibold leading-none text-white bg-stone-600"
             >
               {isInCart ? "View in Cart" : "Add to Cart"}
             </button>
 
             <button
               onClick={handleWishlist}
-              className="p-4 rounded-lg text-xl leading-none border-2 border-b-4 border-r-4 border-pink-600 transition-all duration-200 active:scale-0"
+              className="p-4 rounded-lg text-xl leading-none border-2 border-b-4 border-r-4 border-stone-600 transition-all duration-200 active:scale-0"
             >
               <i
                 className={`transition-all duration-200
                   ${
                     isWishlisted
-                      ? "ri-poker-hearts-fill text-pink-600 scale-105"
-                      : "ri-poker-hearts-line text-pink-600"
+                      ? "ri-poker-hearts-fill text-stone-600 scale-105"
+                      : "ri-poker-hearts-line text-stone-600"
                   }`}
               ></i>
             </button>
@@ -204,32 +204,37 @@ const Product = () => {
               <p className="text-stone-600">Cart is empty</p>
             ) : (
               cart.map((item) => (
-                <div key={item.id} className="flex gap-2 border-b pb-4">
-                  <img
-                    src={item.images[0]}
-                    className="w-14 h-14 aspect-square rounded-md object-cover"
-                  />
+                <div
+                  key={item.id}
+                  className="flex justify-between gap-2 border-b pb-4"
+                >
+                  <div className="flex gap-2">
+                    <img
+                      src={item.images[0]}
+                      className="w-14 h-14 aspect-square rounded-md object-cover"
+                    />
 
-                  <div className="flex flex-col gap-2">
-                    <h4 className="text-sm line-clamp-1">{item.name}</h4>
+                    <div className="flex flex-col gap-2">
+                      <h4 className="text-sm line-clamp-1">{item.name}</h4>
 
-                    {/* Qty */}
-                    <div className="text-sm flex items-center gap-2.5">
-                      <button
-                        onClick={() => updateQty(item.id, "dec")}
-                        className="px-0.5 border"
-                      >
-                        <i className="ri-subtract-line"></i>
-                      </button>
+                      {/* Qty */}
+                      <div className="text-sm flex items-center gap-2.5">
+                        <button
+                          onClick={() => updateQty(item.id, "dec")}
+                          className="px-0.5 border"
+                        >
+                          <i className="ri-subtract-line"></i>
+                        </button>
 
-                      <span className="w-4 text-center">{item.qty}</span>
+                        <span className="w-4 text-center">{item.qty}</span>
 
-                      <button
-                        onClick={() => updateQty(item.id, "inc")}
-                        className="px-0.5 border"
-                      >
-                        <i className="ri-add-line"></i>
-                      </button>
+                        <button
+                          onClick={() => updateQty(item.id, "inc")}
+                          className="px-0.5 border"
+                        >
+                          <i className="ri-add-line"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -262,14 +267,14 @@ const Product = () => {
 
               <button
                 onClick={() => navigate("/cart")}
-                className="p-4 rounded-md font-semibold text-white bg-pink-600"
+                className="p-4 rounded-md font-semibold text-white bg-stone-600"
               >
                 View Cart
               </button>
 
               <button
                 onClick={() => setShowCartDrawer(false)}
-                className="p-4 rounded-md font-semibold border-2 border-pink-600 text-pink-600"
+                className="p-4 rounded-md font-semibold border-2 border-stone-600 text-stone-600"
               >
                 Continue Shopping
               </button>

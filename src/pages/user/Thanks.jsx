@@ -47,8 +47,8 @@ const Thanks = () => {
   return (
     <div className="w-full p-8 px-4 flex flex-col items-center gap-4 font-['Space_Grotesk'] text-stone-800">
       {/* Success Icon */}
-      <div className="p-4 rounded-full bg-pink-50">
-        <i className="ri-check-line text-4xl text-pink-600"></i>
+      <div className="p-4 rounded-full bg-stone-100">
+        <i className="ri-check-line text-4xl text-stone-600"></i>
       </div>
 
       {/* Heading */}
@@ -63,7 +63,7 @@ const Thanks = () => {
 
           <button
             onClick={handleCopy}
-            className="text-pink-600 text-sm underline"
+            className="text-stone-600 text-sm underline"
           >
             {copied ? "Copied!" : "Copy"}
           </button>
@@ -81,7 +81,7 @@ const Thanks = () => {
             key={index}
             className="p-4 rounded-md border flex gap-4 items-start"
           >
-            <div className="p-2.5 px-4 rounded-full text-sm font-semibold text-white bg-pink-600">
+            <div className="p-2.5 px-4 rounded-full text-sm font-semibold text-white bg-stone-600">
               {index + 1}
             </div>
 
@@ -97,14 +97,14 @@ const Thanks = () => {
       <div className="flex flex-col md:flex-row gap-3 mt-6 w-full max-w-md">
         <button
           onClick={() => navigate("/")}
-          className="w-full p-4 rounded-md font-semibold text-white bg-pink-600"
+          className="w-full p-4 rounded-md font-semibold text-white bg-stone-600"
         >
           Go to Home
         </button>
 
         <button
           onClick={() => navigate("/contact")}
-          className="w-full p-4 rounded-md font-semibold border-2 border-r-4 border-b-4 border-pink-600 text-pink-600"
+          className="w-full p-4 rounded-md font-semibold border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
         >
           Contact us
         </button>

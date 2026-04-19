@@ -72,7 +72,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
+    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-600">
       {/* Promotional Banner */}
       <Swiper
         spaceBetween={"16px"}
@@ -224,26 +224,26 @@ const Home = () => {
         </p>
         {/* Features */}
         <div className="w-full grid grid-cols-2 gap-4">
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
-            <i className="ri-calendar-event-fill text-2xl text-pink-600"></i>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
+            <i className="ri-calendar-event-fill text-2xl text-stone-600"></i>
             <h4 className="font-semibold text-center">
               Never Miss Important Dates
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
-            <i className="ri-e-bike-2-fill text-2xl text-pink-600"></i>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
+            <i className="ri-e-bike-2-fill text-2xl text-stone-600"></i>
             <h4 className="font-semibold text-center">
               Quick Dispatch & 4-Hours Delivery
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
-            <i className="ri-quill-pen-ai-fill text-2xl text-pink-600"></i>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
+            <i className="ri-quill-pen-ai-fill text-2xl text-stone-600"></i>
             <h4 className="font-semibold text-center">
               Personalised Message Card
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50">
-            <i className="ri-hand-heart-fill text-2xl text-pink-600"></i>
+          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
+            <i className="ri-hand-heart-fill text-2xl text-stone-600"></i>
             <h4 className="font-semibold text-center">
               Free Exclusive Random Gifts
             </h4>
@@ -357,7 +357,7 @@ const Home = () => {
           <a
             href="https://www.instagram.com/thanksdaisyofficial/"
             target="_blank"
-            className="mt-4 p-4 px-8 font-semibold rounded-md border-2 border-r-4 border-b-4 border-pink-600 text-pink-600"
+            className="mt-4 p-4 px-8 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
           >
             <span>
               Follow <i className="ri-threads-line"></i>thanksdaisyofficial
@@ -417,7 +417,7 @@ const Home = () => {
       </div>
 
       {/* Newsletter */}
-      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 text-pink-600 bg-pink-50">
+      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 text-stone-600 bg-stone-100">
         {/* Heading */}
         <div className="flex flex-col gap-2 max-w-xl">
           <span className="text-sm text-center uppercase tracking-widest font-['Nohemi']">
@@ -428,7 +428,7 @@ const Home = () => {
             Get ₹249 Off or a Surprise Gift on Next Order
           </h2>
 
-          <p className="mt-2 text-sm text-center text-pink-400">
+          <p className="mt-2 text-sm text-center text-stone-400">
             Join ThanksDAISY on WhatsApp for exclusive offers, early access, and
             beautiful floral surprises crafted just for you.
           </p>
@@ -445,12 +445,12 @@ const Home = () => {
               placeholder="Your WhatsApp No."
               value={number}
               onChange={(e) => setNumber(e.target.value)}
-              className="w-full p-4 outline-none text-sm font-semibold rounded-md rounded-r-none border-2 border-b-4 border-pink-600 placeholder-pink-400"
+              className="w-full p-4 outline-none text-sm font-semibold rounded-md rounded-r-none border-2 border-b-4 border-stone-600 placeholder-stone-600"
             />
 
             <button
               type="submit"
-              className="p-4 text-sm font-semibold rounded-md rounded-l-none border-2 border-b-4 border-pink-600 text-white bg-pink-600"
+              className="p-4 text-sm font-semibold rounded-md rounded-l-none border-2 border-b-4 border-stone-600 text-white bg-stone-600"
             >
               Subscribe
             </button>
@@ -462,7 +462,7 @@ const Home = () => {
         )}
 
         {/* Trust Note */}
-        <p className="text-xs text-pink-400">
+        <p className="text-xs text-stone-600">
           No spam. Only beautiful offers and floral updates.
         </p>
       </div>

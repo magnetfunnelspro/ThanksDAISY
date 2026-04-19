@@ -74,7 +74,6 @@ const Checkout = () => {
     "201304",
     "201305",
     "201307",
-    "201310", // Noida/Greater Noida
     "201001",
     "201002",
     "201005",
@@ -306,8 +305,8 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
         <div className="flex gap-4">
           <button
             onClick={() => setOrderFor("self")}
-            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-pink-600 text-pink-600 ${
-              orderFor === "self" ? "text-white bg-pink-600" : ""
+            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
+              orderFor === "self" ? "text-white bg-stone-600" : ""
             }`}
           >
             Myself
@@ -315,8 +314,8 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
           <button
             onClick={() => setOrderFor("someone")}
-            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-pink-600 text-pink-600 ${
-              orderFor === "someone" ? "bg-pink-600 text-white" : ""
+            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
+              orderFor === "someone" ? "bg-stone-600 text-white" : ""
             }`}
           >
             Someone Else
@@ -370,17 +369,20 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
             onChange={handleChange}
             className="p-4 border rounded-md outline-none"
           />
-          <input
-            required
-            name="pincode"
-            placeholder="Pincode"
-            value={form.pincode}
-            onChange={(e) => {
-              handleChange(e);
-              fetchLocation(e.target.value);
-            }}
-            className="p-4 border rounded-md outline-none"
-          />
+          <div className="flex flex-col gap-2">
+            <input
+              required
+              name="pincode"
+              placeholder="Pincode"
+              value={form.pincode}
+              onChange={(e) => {
+                handleChange(e);
+                fetchLocation(e.target.value);
+              }}
+              className="p-4 border rounded-md outline-none"
+            />
+            <span className={`text-xs px-2 ${isDeliverable ? "text-green-600" : "text-red-600"}`}>{isDeliverable ? "Yahoo! Available to ship." : "Sorry, we are only available in Delhi NCR. "}</span>
+          </div>
           <input
             name="city"
             placeholder={isFetchingZip ? "Detecting City..." : "City"}
@@ -489,13 +491,13 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
         {/* Voice Message Section */}
         <div className="p-4 border rounded-md flex flex-col gap-2">
-          <label className="text-sm font-semibold">Voice Note (Optional)</label>
+          <label className="text-sm font-semibold">Voice Note</label>
           <div className="flex items-center justify-between gap-4">
             {!isRecording ? (
               <button
                 type="button"
                 onClick={startRecording}
-                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-pink-600 bg-pink-50"
+                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-stone-600 bg-stone-100"
               >
                 <i className="ri-mic-line text-lg"></i>
                 {audioBlob ? "Record Again" : "Record Voice"}
@@ -504,7 +506,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
               <button
                 type="button"
                 onClick={stopRecording}
-                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-white bg-pink-600 animate-pulse"
+                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-white bg-stone-600 animate-pulse"
               >
                 <i className="ri-stop-circle-line text-lg"></i>
                 Stop Recording
@@ -574,7 +576,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
         className={`w-full p-4 rounded-md font-semibold text-white transition-all ${
           isProcessing
             ? "bg-stone-400 cursor-not-allowed"
-            : "bg-pink-600 hover:bg-pink-700 active:scale-95"
+            : "bg-stone-600"
         }`}
       >
         {isProcessing ? "Processing Order..." : "Place Order"}

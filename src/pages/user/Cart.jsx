@@ -14,7 +14,7 @@ const Cart = () => {
   const [couponMsg, setCouponMsg] = useState("");
 
   // Shipping Charges
-  const shippingCost = totalPrice > 999 ? 0 : 50;
+  const shippingCost = totalPrice > 500 ? 0 : 50;
 
   // Coupon Codes
   const handleAppliedCoupon = () => {
@@ -56,7 +56,7 @@ const Cart = () => {
       {/* Empty State */}
       {cart.length === 0 ? (
         <div className="p-8 flex flex-col items-center gap-4">
-          <i className="ri-file-unknow-line text-4xl leading-none text-pink-600"></i>
+          <i className="ri-file-unknow-line text-4xl leading-none text-stone-600"></i>
 
           <p className="text-lg text-center text-stone-600">
             Seems like you haven't added something in your cart yet.
@@ -64,7 +64,7 @@ const Cart = () => {
 
           <button
             onClick={() => navigate("/shop")}
-            className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-pink-600"
+            className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-stone-600"
           >
             Continue Shopping
           </button>
@@ -135,7 +135,7 @@ const Cart = () => {
 
               <button
                 onClick={handleAppliedCoupon}
-                className="p-4 rounded-md font-semibold text-white bg-pink-600"
+                className="p-4 rounded-md font-semibold text-white bg-stone-600"
               >
                 Apply
               </button>
@@ -176,14 +176,14 @@ const Cart = () => {
             <div className="flex flex-col md:flex-row gap-3 mt-2">
               <button
                 onClick={() => navigate("/checkout")}
-                className="w-full p-4 font-semibold bg-pink-600 text-white rounded-md"
+                className="w-full p-4 font-semibold bg-stone-600 text-white rounded-md"
               >
                 Proceed to Checkout
               </button>
 
               <button
                 onClick={() => navigate("/shop")}
-                className="w-full p-4 font-semibold border-2 border-r-4 border-b-4 border-pink-600 text-pink-600 rounded-md"
+                className="w-full p-4 font-semibold border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 rounded-md"
               >
                 Continue Shopping
               </button>
