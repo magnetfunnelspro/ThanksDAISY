@@ -7,10 +7,9 @@ const Footer = () => {
       <div className="w-full flex flex-col gap-8">
         {/* Brand */}
         <div className="flex flex-col gap-2 items-center text-center">
-          <div className="flex items-center gap-2">
-            <i className="ri-flower-fill text-xl"></i>
-            <h2 className="text-lg font-semibold font-['Nohemi']">ThanksDAISY</h2>
-          </div>
+          <Link to="/" className="flex gap-2 items-center">
+            <img src="/Logo.png" alt="" className="w-36" />
+          </Link>
 
           <p className="text-sm">
             Fresh flowers, heartfelt moments, and beautiful gifting made

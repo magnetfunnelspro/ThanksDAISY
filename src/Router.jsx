@@ -21,6 +21,7 @@ import Cart from "./pages/user/Cart";
 import Checkout from "./pages/user/Checkout";
 import Wishlist from "./pages/user/Wishlist";
 import Thanks from "./pages/user/Thanks";
+import Search from "./pages/user/Search";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
         <Route path="/contact" element={<Contact />} />
 
         {/* User Pages */}
+        <Route path="/search" element={<Search />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />

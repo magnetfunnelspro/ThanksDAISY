@@ -8,8 +8,7 @@ const Navbar = () => {
     <div className="w-full p-4 px-0 border-b flex items-center justify-between font-['Space_Grotesk'] text-stone-800">
       {/* Brand Logo */}
       <Link to="/" className="flex gap-2 items-center">
-        <i className="ri-flower-fill text-xl"></i>
-        <h2 className="text-lg font-semibold font-['Nohemi']">ThanksDAISY</h2>
+        <img src="/Logo.png" alt="" className="w-36" />
       </Link>
 
       {/* Navigation Links */}
