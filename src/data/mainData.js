@@ -12,7 +12,7 @@ const mainData = [
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
     ],
-    price: 1099,
+    price: 1,
     originalPrice: 1899,
   },
   {
@@ -28,7 +28,7 @@ const mainData = [
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
     ],
-    price: 1499,
+    price: 1,
     originalPrice: 2199,
   },
   {
@@ -44,7 +44,7 @@ const mainData = [
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
     ],
-    price: 999,
+    price: 1,
     originalPrice: 1499,
   },
   {
@@ -60,7 +60,7 @@ const mainData = [
       "https://i.pinimg.com/736x/2a/e1/d9/2ae1d92b470f227ded3b9d6e8ced5929.jpg",
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
     ],
-    price: 1999,
+    price: 1,
     originalPrice: 2799,
   },
   {
@@ -76,7 +76,7 @@ const mainData = [
       "https://i.pinimg.com/736x/99/5c/d9/995cd9f476901054035d10221db619dc.jpg",
       "https://i.pinimg.com/736x/2c/18/37/2c18373c0916d5bbc5bd67838e2728e5.jpg",
     ],
-    price: 1299,
+    price: 1,
     originalPrice: 1799,
   },
   {
@@ -92,7 +92,7 @@ const mainData = [
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
       "https://i.pinimg.com/736x/c9/86/ec/c986ecc95d22396d523a09597167236c.jpg",
     ],
-    price: 899,
+    price: 1,
     originalPrice: 1299,
   },
   {
@@ -108,7 +108,7 @@ const mainData = [
       "https://i.pinimg.com/736x/93/ab/8c/93ab8c4747d23016d3b6cbc1194c0a63.jpg",
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
     ],
-    price: 2499,
+    price: 1,
     originalPrice: 3299,
   },
   {
@@ -124,7 +124,7 @@ const mainData = [
       "https://i.pinimg.com/736x/b7/da/7b/b7da7b04e2144d447ec87a97c0467dfe.jpg",
       "https://i.pinimg.com/736x/f6/63/9d/f6639da2cdbb6f9805fee3043e15e3be.jpg",
     ],
-    price: 1199,
+    price: 1,
     originalPrice: 1699,
   },
   {
@@ -140,7 +140,7 @@ const mainData = [
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
     ],
-    price: 1599,
+    price: 1,
     originalPrice: 2299,
   },
   {
@@ -156,7 +156,7 @@ const mainData = [
       "https://i.pinimg.com/736x/44/0a/6f/440a6f6813f4c00ae045ca193052850a.jpg",
       "https://i.pinimg.com/736x/d4/e1/58/d4e1587e746c8a3b06b5d10114bf48dd.jpg",
     ],
-    price: 1099,
+    price: 1,
     originalPrice: 1699,
   },
 ];

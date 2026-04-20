@@ -51,19 +51,19 @@ const Card = ({ data }) => {
       <div className="flex flex-col">
         {/* Title Clickable */}
         <Link to={`/product/${data.id}`}>
-          <h4 className="font-semibold line-clamp-1 hover:underline">
+          <h4 className="xl:text-lg font-semibold line-clamp-1 hover:underline">
             {data.name}
           </h4>
         </Link>
 
-        <div className="flex items-center gap-1.5">
-          <span className="text-sm font-semibold">₹{data.price}</span>
+        <div className="flex items-center gap-1.5 xl:gap-2">
+          <span className="text-sm xl:text-base font-semibold">₹{data.price}</span>
 
-          <span className="text-xs line-through text-stone-600">
+          <span className="text-xs xl:text-sm line-through text-stone-600">
             ₹{data.originalPrice}
           </span>
 
-          <span className="text-xs font-semibold text-green-600">
+          <span className="text-xs xl:text-sm font-semibold text-green-600">
             ({discountPercentage}% off)
           </span>
         </div>

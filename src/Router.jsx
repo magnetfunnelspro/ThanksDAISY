@@ -28,7 +28,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Loader />
 
-      <div className="px-4">
+      <div className="px-4 xl:px-16">
         <Navbar />
       </div>
 
@@ -52,7 +52,7 @@ const AppRouter = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <div className="px-4">
+      <div className="px-4 xl:px-16">
         <Footer />
       </div>
     </BrowserRouter>

@@ -242,8 +242,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
   // Order Placement
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handlePlaceOrder = async () => {
-    // 1. VALIDATION FIRST
+  const handlePlaceOrder = async (paymentMethod) => {
     if (
       !form.senderName ||
       !form.phone ||
@@ -253,334 +252,388 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
       !form.timeSlot
     ) {
       alert("Fill required fields");
-      return; // Exit here. isProcessing is still false.
+      return;
     }
 
     if (!isDeliverable) {
-      alert("Only Delhi NCR delivery available 🚫");
-      return; // Exit here. isProcessing is still false.
+      alert("Sorry, we are currently available in Delhi NCR.");
+      return;
     }
 
-    // 2. SET PROCESSING ONLY AFTER VALIDATION PASSES
-    setIsProcessing(true);
-
-    const order = {
-      id: "ORD" + Date.now(),
+    const orderId = "ORD" + Date.now();
+    const orderData = {
+      id: orderId,
       items: cart,
       total: finalTotal,
       discount,
       coupon: couponCode,
       address: form,
+      paymentMethod: paymentMethod, // Store the method
       status: "Processing",
     };
 
-    localStorage.setItem("order", JSON.stringify(order));
+    if (paymentMethod === "COD") {
+      processFinalOrder(orderData);
+    } else {
+      initiateRazorpay(orderData);
+    }
+  };
 
+  // Separate the final sync logic
+  const processFinalOrder = async (order) => {
+    setIsProcessing(true);
     try {
-      // 3. TELEGRAM SYNC
+      localStorage.setItem("order", JSON.stringify(order));
       await sendToTelegram(order);
-
-      // 4. CLEANUP
       if (typeof clearCart === "function") clearCart();
       localStorage.removeItem("coupon");
-
-      // 5. NAVIGATE
       navigate("/thanks", {
         state: { name: form.senderName, orderId: order.id },
       });
     } catch (err) {
       console.error("Order process error:", err);
-      // If something goes wrong, reset the button so they can try again
       setIsProcessing(false);
-      alert("Something went wrong. Please try again.");
+      alert("Something went wrong.");
     }
   };
 
+  // Razorpay Logic
+  const initiateRazorpay = (orderData) => {
+    const options = {
+      key: import.meta.env.VITE_RZP_LIVE_KEY_ID,
+      amount: orderData.total * 100,
+      currency: "INR",
+      name: "Thanks Daisy",
+      description: `Order ${orderData.id}`,
+      image: "/Logo.png",
+      handler: function (response) {
+        // Payment Successful
+        const paidOrder = {
+          ...orderData,
+          paymentId: response.razorpay_payment_id,
+          status: "Paid",
+        };
+        processFinalOrder(paidOrder);
+      },
+      prefill: {
+        name: form.senderName,
+        contact: form.phone,
+      },
+      theme: {
+        color: "#57534e",
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
-      {/* ORDER TYPE */}
-      <div className="flex flex-col gap-4">
-        <h4 className="text-lg font-semibold">Who are you ordering for?</h4>
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col xl:flex-row gap-8 font-['Space_Grotesk'] text-stone-800">
+      {/* Form */}
+      <div className="w-full xl:w-[60%] flex flex-col gap-8">
+        {/* ORDER TYPE */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-lg font-semibold">Who are you ordering for?</h4>
 
-        <div className="flex gap-4">
-          <button
-            onClick={() => setOrderFor("self")}
-            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
-              orderFor === "self" ? "text-white bg-stone-600" : ""
-            }`}
-          >
-            Myself
-          </button>
+          <div className="xl:text-sm flex gap-4">
+            <button
+              onClick={() => setOrderFor("self")}
+              className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
+                orderFor === "self" ? "text-white bg-stone-600" : ""
+              }`}
+            >
+              Myself
+            </button>
 
-          <button
-            onClick={() => setOrderFor("someone")}
-            className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
-              orderFor === "someone" ? "bg-stone-600 text-white" : ""
-            }`}
-          >
-            Someone Else
-          </button>
+            <button
+              onClick={() => setOrderFor("someone")}
+              className={`p-4 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 ${
+                orderFor === "someone" ? "bg-stone-600 text-white" : ""
+              }`}
+            >
+              Someone Else
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* FORM */}
-      <div className="flex flex-col gap-4">
-        {/* Names */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <input
-            required
-            type="text"
-            name="senderName"
-            placeholder="Your Name"
-            value={form.senderName}
-            onChange={handleChange}
-            className="p-4 border rounded-md outline-none"
-          />
-
-          {orderFor === "someone" && (
+        {/* FORM */}
+        <div className="xl:text-sm flex flex-col gap-4">
+          {/* Names */}
+          <div className="grid grid-cols-1 gap-4">
             <input
+              required
               type="text"
-              name="receiverName"
-              placeholder="Receiver's Name"
-              value={form.receiverName}
+              name="senderName"
+              placeholder="Your Name"
+              value={form.senderName}
               onChange={handleChange}
               className="p-4 border rounded-md outline-none"
             />
-          )}
-        </div>
 
-        {/* Phone */}
-        <input
-          required
-          type="tel"
-          name="phone"
-          placeholder="Phone Number"
-          value={form.phone}
-          onChange={handleChange}
-          className="p-4 border rounded-md outline-none"
-        />
+            {orderFor === "someone" && (
+              <input
+                type="text"
+                name="receiverName"
+                placeholder="Receiver's Name"
+                value={form.receiverName}
+                onChange={handleChange}
+                className="p-4 border rounded-md outline-none"
+              />
+            )}
+          </div>
 
-        {/* Address */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <textarea
+          {/* Phone */}
+          <input
             required
-            name="street"
-            placeholder="Street Address"
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={form.phone}
             onChange={handleChange}
             className="p-4 border rounded-md outline-none"
           />
-          <div className="flex flex-col gap-2">
-            <input
+
+          {/* Address */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <textarea
               required
-              name="pincode"
-              placeholder="Pincode"
-              value={form.pincode}
-              onChange={(e) => {
-                handleChange(e);
-                fetchLocation(e.target.value);
-              }}
+              name="street"
+              placeholder="Street Address"
+              onChange={handleChange}
               className="p-4 border rounded-md outline-none"
             />
-            <span className={`text-xs px-2 ${isDeliverable ? "text-green-600" : "text-red-600"}`}>{isDeliverable ? "Yahoo! Available to ship." : "Sorry, we are only available in Delhi NCR. "}</span>
+            <div className="flex flex-col gap-2">
+              <input
+                required
+                name="pincode"
+                placeholder="Pincode"
+                value={form.pincode}
+                onChange={(e) => {
+                  handleChange(e);
+                  fetchLocation(e.target.value);
+                }}
+                className="p-4 border rounded-md outline-none"
+              />
+              <span
+                className={`text-xs px-2 ${isDeliverable ? "text-green-600" : "text-red-600"}`}
+              >
+                {isDeliverable
+                  ? "Yahoo! Available to ship."
+                  : "Sorry, we are only available in Delhi NCR. "}
+              </span>
+            </div>
+            <input
+              name="city"
+              placeholder={isFetchingZip ? "Detecting City..." : "City"}
+              value={form.city}
+              readOnly
+              className={`p-4 border rounded-md outline-none ${isFetchingZip ? "animate-pulse" : ""}`}
+            />
+            <input
+              name="state"
+              placeholder="State"
+              value={form.state}
+              readOnly
+              className="p-4 border rounded-md outline-none"
+            />
           </div>
-          <input
-            name="city"
-            placeholder={isFetchingZip ? "Detecting City..." : "City"}
-            value={form.city}
-            readOnly
-            className={`p-4 border rounded-md outline-none ${isFetchingZip ? "animate-pulse" : ""}`}
-          />
-          <input
-            name="state"
-            placeholder="State"
-            value={form.state}
-            readOnly
-            className="p-4 border rounded-md outline-none"
-          />
-        </div>
 
-        {/* Relation */}
-        {orderFor === "someone" && (
+          {/* Relation */}
+          {orderFor === "someone" && (
+            <div className="relative">
+              <div
+                onClick={() => setShowRelation(!showRelation)}
+                className="p-4 border rounded-md flex justify-between cursor-pointer"
+              >
+                {form.relation || "Select Relation"}
+                <i className="ri-arrow-down-s-line"></i>
+              </div>
+
+              {showRelation && (
+                <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
+                  {[
+                    "Girlfriend",
+                    "Boyfriend",
+                    "Wife",
+                    "Husband",
+                    "Friend",
+                    "Family",
+                    "Other",
+                  ].map((r) => (
+                    <div
+                      key={r}
+                      onClick={() => {
+                        setForm({ ...form, relation: r });
+                        setShowRelation(false);
+                      }}
+                      className="p-4 border-b hover:bg-pink-50 cursor-pointer"
+                    >
+                      {r}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Delivery Date */}
+          <input
+            required
+            type="date"
+            name="date"
+            min={new Date().toISOString().split("T")[0]}
+            value={form.date}
+            onChange={handleChange}
+            className="w-full p-4 border rounded-md outline-none"
+          />
+
+          {/* Time */}
           <div className="relative">
             <div
-              onClick={() => setShowRelation(!showRelation)}
+              onClick={() => setShowTime(!showTime)}
               className="p-4 border rounded-md flex justify-between cursor-pointer"
             >
-              {form.relation || "Select Relation"}
+              {form.timeSlot || "Select Time Slot"}
               <i className="ri-arrow-down-s-line"></i>
             </div>
 
-            {showRelation && (
+            {showTime && (
               <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
                 {[
-                  "Girlfriend",
-                  "Boyfriend",
-                  "Wife",
-                  "Husband",
-                  "Friend",
-                  "Family",
-                  "Other",
-                ].map((r) => (
+                  "Morning (8 AM - 12 PM)",
+                  "Afternoon (12 PM - 4 PM)",
+                  "Evening (4 PM - 8 PM)",
+                ].map((t) => (
                   <div
-                    key={r}
+                    key={t}
                     onClick={() => {
-                      setForm({ ...form, relation: r });
-                      setShowRelation(false);
+                      setForm({ ...form, timeSlot: t });
+                      setShowTime(false);
                     }}
                     className="p-4 border-b hover:bg-pink-50 cursor-pointer"
                   >
-                    {r}
+                    {t}
                   </div>
                 ))}
               </div>
             )}
           </div>
-        )}
 
-        {/* Delivery Date */}
-        <input
-          required
-          type="date"
-          name="date"
-          min={new Date().toISOString().split("T")[0]}
-          value={form.date}
-          onChange={handleChange}
-          className="w-full p-4 border rounded-md outline-none"
-        />
+          {/* Message */}
+          <textarea
+            name="message"
+            placeholder="Add a personal message (any words, if any promise this will be safe)"
+            value={form.message}
+            onChange={handleChange}
+            className="p-4 border rounded-md outline-none resize-none"
+          />
 
-        {/* Time */}
-        <div className="relative">
-          <div
-            onClick={() => setShowTime(!showTime)}
-            className="p-4 border rounded-md flex justify-between cursor-pointer"
-          >
-            {form.timeSlot || "Select Time Slot"}
-            <i className="ri-arrow-down-s-line"></i>
+          {/* Voice Message Section */}
+          <div className="p-4 border rounded-md flex flex-col gap-2">
+            <label className="text-sm font-semibold">Voice Note</label>
+            <div className="flex items-center justify-between gap-4">
+              {!isRecording ? (
+                <button
+                  type="button"
+                  onClick={startRecording}
+                  className="p-2 px-4 rounded-md xl:text-sm font-semibold flex items-center gap-2 text-stone-600 bg-stone-100"
+                >
+                  <i className="ri-mic-line text-lg"></i>
+                  {audioBlob ? "Record Again" : "Record Voice"}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={stopRecording}
+                  className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-white bg-stone-600 animate-pulse"
+                >
+                  <i className="ri-stop-circle-line text-lg"></i>
+                  Stop Recording
+                </button>
+              )}
+
+              {isRecording && (
+                <span className="text-sm animate-pulse text-red-600">
+                  {formatTime(recordingTime)}
+                </span>
+              )}
+
+              {audioBlob && !isRecording && (
+                <div className="flex items-center gap-2">
+                  <audio
+                    src={URL.createObjectURL(audioBlob)}
+                    controls
+                    className="h-8 w-40"
+                  />
+                  <button
+                    onClick={() => setAudioBlob(null)}
+                    className="text-red-600"
+                  >
+                    <i className="ri-delete-bin-line"></i>
+                  </button>
+                </div>
+              )}
+            </div>
+            <p className="text-xs text-stone-600">
+              Record a sweet message for the recipient!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Order */}
+      <div className="w-full xl:w-[40%] flex flex-col gap-8">
+        {/* ORDER SUMMARY */}
+        <div className="border-t pt-4 flex flex-col gap-4">
+          <h4 className="font-semibold text-xl">Order Summary</h4>
+
+          <div className="flex flex-col gap-2">
+            {cart.map((item) => (
+              <div key={item.id} className="flex justify-between text-sm">
+                <span>
+                  {item.name} x {item.qty}
+                </span>
+                <span>₹{item.price * item.qty}</span>
+              </div>
+            ))}
           </div>
 
-          {showTime && (
-            <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
-              {[
-                "Morning (8 AM - 12 PM)",
-                "Afternoon (12 PM - 4 PM)",
-                "Evening (4 PM - 8 PM)",
-              ].map((t) => (
-                <div
-                  key={t}
-                  onClick={() => {
-                    setForm({ ...form, timeSlot: t });
-                    setShowTime(false);
-                  }}
-                  className="p-4 border-b hover:bg-pink-50 cursor-pointer"
-                >
-                  {t}
-                </div>
-              ))}
+          {discount > 0 && (
+            <div className="flex justify-between text-green-600">
+              <span>Discount</span>
+              <span>-₹{discount}</span>
             </div>
           )}
+
+          <div className="flex justify-between font-semibold border-t pt-4">
+            <span>Total</span>
+            <span>₹{finalTotal}</span>
+          </div>
         </div>
 
-        {/* Message */}
-        <textarea
-          name="message"
-          placeholder="Add a personal message (any words, if any promise this will be safe)"
-          value={form.message}
-          onChange={handleChange}
-          className="p-4 border rounded-md outline-none resize-none"
-        />
-
-        {/* Voice Message Section */}
-        <div className="p-4 border rounded-md flex flex-col gap-2">
-          <label className="text-sm font-semibold">Voice Note</label>
-          <div className="flex items-center justify-between gap-4">
-            {!isRecording ? (
-              <button
-                type="button"
-                onClick={startRecording}
-                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-stone-600 bg-stone-100"
-              >
-                <i className="ri-mic-line text-lg"></i>
-                {audioBlob ? "Record Again" : "Record Voice"}
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={stopRecording}
-                className="p-2 px-4 rounded-md font-semibold flex items-center gap-2 text-white bg-stone-600 animate-pulse"
-              >
-                <i className="ri-stop-circle-line text-lg"></i>
-                Stop Recording
-              </button>
-            )}
-
-            {isRecording && (
-              <span className="text-sm animate-pulse text-red-600">
-                {formatTime(recordingTime)}
-              </span>
-            )}
-
-            {audioBlob && !isRecording && (
-              <div className="flex items-center gap-2">
-                <audio
-                  src={URL.createObjectURL(audioBlob)}
-                  controls
-                  className="h-8 w-40"
-                />
-                <button
-                  onClick={() => setAudioBlob(null)}
-                  className="text-red-600"
-                >
-                  <i className="ri-delete-bin-line"></i>
-                </button>
-              </div>
-            )}
-          </div>
-          <p className="text-xs text-stone-600">
-            Record a sweet message for the recipient!
-          </p>
+        {/* ACTION */}
+        <div className="flex flex-col xl:flex-row gap-2">
+          <button
+            onClick={() => handlePlaceOrder("Online")} // Pass "Online"
+            disabled={isProcessing}
+            className={`w-full p-4 rounded-md font-semibold text-white transition-all ${
+              isProcessing ? "bg-stone-400 cursor-not-allowed" : "bg-stone-600"
+            }`}
+          >
+            {isProcessing ? "Processing Order..." : "Online Payment"}
+          </button>
+          <button
+            onClick={() => handlePlaceOrder("COD")} // Pass "COD"
+            disabled={isProcessing}
+            className={`w-full p-4 rounded-md font-semibold border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 transition-all ${
+              isProcessing ? "bg-stone-400 cursor-not-allowed" : "bg-white"
+            }`}
+          >
+            {isProcessing ? "Processing Order..." : "Cash on Delivery"}
+          </button>
         </div>
       </div>
-
-      {/* ORDER SUMMARY */}
-      <div className="border-t pt-4 flex flex-col gap-4">
-        <h4 className="font-semibold text-xl">Order Summary</h4>
-
-        <div className="flex flex-col gap-2">
-          {cart.map((item) => (
-            <div key={item.id} className="flex justify-between text-sm">
-              <span>
-                {item.name} x {item.qty}
-              </span>
-              <span>₹{item.price * item.qty}</span>
-            </div>
-          ))}
-        </div>
-
-        {discount > 0 && (
-          <div className="flex justify-between text-green-600">
-            <span>Discount</span>
-            <span>-₹{discount}</span>
-          </div>
-        )}
-
-        <div className="flex justify-between font-semibold border-t pt-4">
-          <span>Total</span>
-          <span>₹{finalTotal}</span>
-        </div>
-      </div>
-
-      {/* ACTION */}
-      <button
-        onClick={handlePlaceOrder}
-        disabled={isProcessing}
-        className={`w-full p-4 rounded-md font-semibold text-white transition-all ${
-          isProcessing
-            ? "bg-stone-400 cursor-not-allowed"
-            : "bg-stone-600"
-        }`}
-      >
-        {isProcessing ? "Processing Order..." : "Place Order"}
-      </button>
     </div>
   );
 };

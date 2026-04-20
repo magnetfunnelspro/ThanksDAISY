@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Context
@@ -8,26 +9,47 @@ const Cart = () => {
   const { cart, removeFromCart, updateQty, totalPrice } = useCart();
   const navigate = useNavigate();
 
-  // Coupon State
-  const [coupon, setCoupon] = useState("");
+  const [couponInput, setCouponInput] = useState("");
+  const [activeCoupon, setActiveCoupon] = useState("");
+
   const [discount, setDiscount] = useState(0);
   const [couponMsg, setCouponMsg] = useState("");
 
   // Shipping Charges
   const shippingCost = totalPrice > 500 ? 0 : 50;
 
-  // Coupon Codes
+  // --- Apply Button Handler ---
+  // This ONLY sets the active coupon when clicked. It hands the math off to the useEffect.
   const handleAppliedCoupon = () => {
+    if (!couponInput.trim()) {
+      setCouponMsg("Please enter a code.");
+      setActiveCoupon("");
+      return;
+    }
+    setActiveCoupon(couponInput.trim().toUpperCase());
+  };
+
+  // --- Dynamic Recalculation ---
+  // This watches the cart total and the *applied* coupon.
+  // It recalculates when quantities change or a new coupon is successfully applied.
+  useEffect(() => {
+    if (!activeCoupon) {
+      setDiscount(0);
+      localStorage.removeItem("coupon");
+      return;
+    }
+
     let disc = 0;
     let message = "";
+    const code = activeCoupon;
 
-    if (coupon === "DAISY15") {
+    if (code === "DAISY15") {
       disc = Math.round(totalPrice * 0.15);
       message = "Horah! You got 15% discount.";
-    } else if (coupon === "SURAJ100") {
+    } else if (code === "SURAJ100") {
       disc = totalPrice;
       message = "Yahoo! Free bouquets & gifts from us.";
-    } else if (coupon === "FREESHIP") {
+    } else if (code === "FREESHIP") {
       disc = shippingCost;
       message = "Congrats! You got free delivery.";
     } else {
@@ -38,21 +60,30 @@ const Cart = () => {
     setDiscount(disc);
     setCouponMsg(message);
 
-    // ✅ SAVE TO LOCALSTORAGE (FIXED)
-    localStorage.setItem(
-      "coupon",
-      JSON.stringify({
-        code: coupon,
-        discount: disc,
-      })
-    );
-  };
+    // Save valid coupons to localStorage for the Checkout page
+    if (
+      disc > 0 ||
+      code === "DAISY15" ||
+      code === "SURAJ100" ||
+      code === "FREESHIP"
+    ) {
+      localStorage.setItem(
+        "coupon",
+        JSON.stringify({
+          code: code,
+          discount: disc,
+        }),
+      );
+    } else {
+      // Remove from storage if an invalid code was applied
+      localStorage.removeItem("coupon");
+    }
+  }, [totalPrice, shippingCost, activeCoupon]);
 
   const finalTotal = totalPrice + shippingCost - discount;
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
-      
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">
       {/* Empty State */}
       {cart.length === 0 ? (
         <div className="p-8 flex flex-col items-center gap-4">
@@ -70,13 +101,11 @@ const Cart = () => {
           </button>
         </div>
       ) : (
-        <div className="flex flex-col gap-8">
-
+        <div className="flex flex-col xl:flex-row gap-8 xl:gap-16">
           {/* ITEMS */}
-          <div className="flex flex-col gap-4">
+          <div className="w-full xl:w-[60%] flex flex-col gap-4">
             {cart.map((item) => (
               <div key={item.id} className="flex gap-4 border-b pb-4">
-
                 <img
                   src={item.images[0]}
                   className="w-20 h-20 rounded-md object-cover"
@@ -120,73 +149,79 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* COUPON */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-lg font-semibold">Have coupon code?</h4>
+          {/* CHECKOUT */}
+          <div className="w-full xl:w-[40%] flex flex-col gap-8">
+            {/* COUPON */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-lg font-semibold">Have coupon code?</h4>
 
-            <div className="flex gap-2">
-              <input
-                type="text"
-                placeholder="Enter coupon code"
-                value={coupon}
-                onChange={(e) => setCoupon(e.target.value.toUpperCase())}
-                className="flex-1 p-4 rounded-md border-2 outline-none text-lg font-['Modernist']"
-              />
+              <div className="flex gap-2 xl:gap-4">
+                {/* Bound to couponInput, NOT activeCoupon */}
+                <input
+                  type="text"
+                  placeholder="Enter coupon code"
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
+                  className="flex-1 p-4 rounded-md border-2 outline-none text-lg font-['Modernist']"
+                />
 
-              <button
-                onClick={handleAppliedCoupon}
-                className="p-4 rounded-md font-semibold text-white bg-stone-600"
-              >
-                Apply
-              </button>
-            </div>
-
-            {couponMsg && (
-              <p className={`${discount === 0 ? "text-red-600" : "text-green-600"}`}>
-                {couponMsg}
-              </p>
-            )}
-          </div>
-
-          {/* SUMMARY */}
-          <div className="border-t pt-4 flex flex-col gap-3">
-            <div className="flex justify-between">
-              <span className="font-semibold">Subtotal</span>
-              <span>₹{totalPrice}</span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="font-semibold">Delivery Charges</span>
-              <span>{shippingCost === 0 ? "Free" : `₹${shippingCost}`}</span>
-            </div>
-
-            {discount > 0 && (
-              <div className="flex justify-between text-green-600">
-                <span className="font-semibold">Discount</span>
-                <span>-₹{discount}</span>
+                <button
+                  onClick={handleAppliedCoupon}
+                  className="p-4 rounded-md font-semibold text-white bg-stone-600"
+                >
+                  Apply
+                </button>
               </div>
-            )}
 
-            <div className="flex justify-between text-lg font-semibold border-t pt-2">
-              <span>Total</span>
-              <span>₹{finalTotal}</span>
+              {couponMsg && (
+                <p
+                  className={`${discount === 0 ? "text-red-600" : "text-green-600"}`}
+                >
+                  {couponMsg}
+                </p>
+              )}
             </div>
 
-            {/* Buttons */}
-            <div className="flex flex-col md:flex-row gap-3 mt-2">
-              <button
-                onClick={() => navigate("/checkout")}
-                className="w-full p-4 font-semibold bg-stone-600 text-white rounded-md"
-              >
-                Proceed to Checkout
-              </button>
+            {/* SUMMARY */}
+            <div className="border-t pt-4 flex flex-col gap-3">
+              <div className="flex justify-between">
+                <span className="font-semibold">Subtotal</span>
+                <span>₹{totalPrice}</span>
+              </div>
 
-              <button
-                onClick={() => navigate("/shop")}
-                className="w-full p-4 font-semibold border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 rounded-md"
-              >
-                Continue Shopping
-              </button>
+              <div className="flex justify-between">
+                <span className="font-semibold">Delivery Charges</span>
+                <span>{shippingCost === 0 ? "Free" : `₹${shippingCost}`}</span>
+              </div>
+
+              {discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span className="font-semibold">Discount</span>
+                  <span>-₹{discount}</span>
+                </div>
+              )}
+
+              <div className="flex justify-between text-lg font-semibold border-t pt-2">
+                <span>Total</span>
+                <span>₹{finalTotal}</span>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex flex-col md:flex-row gap-2 xl:gap-4 mt-2">
+                <button
+                  onClick={() => navigate("/checkout")}
+                  className="w-full p-4 font-semibold bg-stone-600 text-white rounded-md"
+                >
+                  Proceed to Checkout
+                </button>
+
+                <button
+                  onClick={() => navigate("/shop")}
+                  className="w-full p-4 font-semibold border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 rounded-md"
+                >
+                  Continue Shopping
+                </button>
+              </div>
             </div>
           </div>
         </div>

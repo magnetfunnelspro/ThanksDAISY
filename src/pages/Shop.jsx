@@ -35,19 +35,19 @@ const Shop = () => {
   }
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-4 font-['Space_Grotesk'] text-stone-600">
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-4 xl:gap-8 font-['Space_Grotesk'] text-stone-600">
       {/* HEADER */}
-      <h2 className="text-xl font-semibold leading-none">Shop All Products</h2>
+      <h2 className="text-xl xl:text-2xl font-semibold leading-none">Shop All Products</h2>
 
       {/* FILTER BAR */}
-      <div className="pb-4 border-b flex items-center justify-between gap-4">
+      <div className="pb-4 xl:pb-8 border-b flex items-center justify-between gap-4">
         {/* Categories */}
         <div className="flex gap-2 overflow-x-auto scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCat(cat)}
-              className={`p-2 px-4 text-sm capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 transition duration-200 ${
+              className={`p-2 px-4 text-sm xl:text-base capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-stone-600 text-stone-600 transition duration-200 ${
                 selectedCat === cat
                   ? "bg-stone-600 text-white border-stone-600"
                   : "bg-white"
@@ -62,13 +62,13 @@ const Shop = () => {
         <div className="relative">
           <button
             onClick={() => setShowSort(!showSort)}
-            className="p-2 px-4 text-sm font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
+            className="p-2 px-4 text-sm xl:text-base font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
           >
             <i class="ri-equalizer-2-line"></i>
           </button>
 
           {showSort && (
-            <div className="w-48 mt-4 absolute right-0 border rounded-md shadow-md bg-white z-40">
+            <div className="w-48 mt-4 xl:mt-8 absolute right-0 border rounded-md shadow-md bg-white z-40">
               {[
                 { label: "Default", value: "default" },
                 { label: "Price: Low to High", value: "low" },
@@ -98,7 +98,7 @@ const Shop = () => {
       {products.length === 0 ? (
         <div className="p-8 text-center text-stone-600">No products found.</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8">
           {products.map((item) => (
             <Card key={item.id} data={item} />
           ))}

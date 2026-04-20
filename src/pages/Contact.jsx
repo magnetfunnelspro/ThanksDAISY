@@ -90,21 +90,21 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col xl:flex-row gap-12 xl:gap-24 font-['Space_Grotesk'] text-stone-800">
       {/* HEADER */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-xl font-semibold">Contact Us</h2>
+      <div className="w-full xl:w-[40%] flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-xl xl:text-2xl font-semibold">Contact Us</h2>
 
         {/* Quick Action */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 xl:grid-cols-1 gap-4 xl:gap-8">
           {/* WhatsApp */}
           <button
             onClick={handleWhatsApp}
-            className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50"
+            className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100"
           >
-            <i className="ri-whatsapp-line text-2xl text-pink-600"></i>
-            <h4 className="font-semibold text-pink-600">WhatsApp</h4>
-            <p className="text-sm text-pink-400 text-center">
+            <i className="ri-whatsapp-line text-2xl text-stone-600"></i>
+            <h4 className="font-semibold text-stone-600">WhatsApp</h4>
+            <p className="text-sm text-stone-400 text-center">
               Chat with our team
             </p>
           </button>
@@ -112,11 +112,11 @@ const Contact = () => {
           {/* Email */}
           <button
             onClick={handleEmail}
-            className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50"
+            className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100"
           >
-            <i className="ri-mail-line text-2xl text-pink-600"></i>
-            <h4 className="font-semibold text-pink-600">Email</h4>
-            <p className="text-sm text-pink-400 text-center">
+            <i className="ri-mail-line text-2xl text-stone-600"></i>
+            <h4 className="font-semibold text-stone-600">Email</h4>
+            <p className="text-sm text-stone-400 text-center">
               Send us an email
             </p>
           </button>
@@ -124,11 +124,11 @@ const Contact = () => {
           {/* Call */}
           <button
             onClick={handleCall}
-            className="p-4 rounded-md flex flex-col items-center gap-2 bg-pink-50"
+            className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100"
           >
-            <i className="ri-customer-service-line text-2xl text-pink-600"></i>
-            <h4 className="font-semibold text-pink-600">Call Us</h4>
-            <p className="text-sm text-pink-400 text-center">
+            <i className="ri-customer-service-line text-2xl text-stone-600"></i>
+            <h4 className="font-semibold text-stone-600">Call Us</h4>
+            <p className="text-sm text-stone-400 text-center">
               Talk to our expert
             </p>
           </button>
@@ -136,8 +136,8 @@ const Contact = () => {
       </div>
 
       {/* FORM */}
-      <div className="flex flex-col gap-4">
-        <h4 className="text-lg font-semibold">Or Send a Message</h4>
+      <div className="w-full xl:w-[60%] flex flex-col gap-4 xl:gap-8">
+        <h4 className="text-xl xl:text-2xl font-semibold">Or Send a Message</h4>
 
         {!success ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -148,7 +148,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               required
-              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-pink-600 outline-none placeholder:text-pink-400 text-pink-600"
+              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-stone-600 outline-none placeholder:text-stone-400 text-stone-600"
             />
 
             <input
@@ -158,7 +158,7 @@ const Contact = () => {
               value={form.number}
               onChange={handleChange}
               required
-              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-pink-600 outline-none placeholder:text-pink-400 text-pink-600"
+              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-stone-600 outline-none placeholder:text-stone-400 text-stone-600"
             />
 
             <textarea
@@ -168,18 +168,18 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               required
-              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-pink-600 outline-none placeholder:text-pink-400 text-pink-600 resize-none"
+              className="p-4 text-sm font-semibold rounded-md border-2 border-b-4 border-stone-600 outline-none placeholder:text-stone-400 text-stone-600 resize-none"
             ></textarea>
 
             <button
               type="submit"
-              className="p-4 font-semibold rounded-md border-2 border-b-4 border-pink-600 text-white bg-pink-600"
+              className="p-4 font-semibold rounded-md border-2 border-b-4 border-stone-600 text-white bg-stone-600"
             >
               Send Message
             </button>
           </form>
         ) : (
-          <div className="p-4 text-center font-semibold rounded-md text-pink-600 bg-pink-50">
+          <div className="p-4 text-center font-semibold rounded-md text-stone-600 bg-stone-100">
             Message sent! We'll contact you soon.
           </div>
         )}

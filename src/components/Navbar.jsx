@@ -11,8 +11,65 @@ const Navbar = () => {
         <img src="/Logo.png" alt="" className="w-36" />
       </Link>
 
-      {/* Navigation Links */}
-      <div className="flex gap-4 items-center">
+      {/* Navigation Link */}
+      <div className="hidden xl:flex items-center gap-8">
+        {/* Links */}
+        <div className="flex gap-8">
+          <Link
+            onClick={() => setToggleNav(false)}
+            to="/"
+            className="leading-none"
+          >
+            Home
+          </Link>
+          <Link
+            onClick={() => setToggleNav(false)}
+            to="/shop"
+            className="leading-none"
+          >
+            Shop
+          </Link>
+          <Link
+            onClick={() => setToggleNav(false)}
+            to="/subscription"
+            className="leading-none"
+          >
+            Subscribe
+          </Link>
+          <Link
+            onClick={() => setToggleNav(false)}
+            to="/corporate-gifting"
+            className="leading-none"
+          >
+            Corporate
+          </Link>
+          <Link
+            onClick={() => setToggleNav(false)}
+            to="/contact"
+            className="leading-none"
+          >
+            Contact Us
+          </Link>
+        </div>
+
+        {/* Search */}
+        <div className="text-lg">
+          <i className="ri-search-line"></i>
+        </div>
+
+        {/* Wishlist */}
+        <Link to="/wishlist" className="text-lg">
+          <i className="ri-poker-hearts-line"></i>
+        </Link>
+
+        {/* Shopping Cart */}
+        <Link to="/cart" className="text-lg">
+          <i className="ri-shopping-bag-line"></i>
+        </Link>
+      </div>
+
+      {/* Navigation Menu */}
+      <div className="flex xl:hidden items-center gap-4">
         {/* Search */}
         <div className="text-xl">
           <i className="ri-search-line"></i>

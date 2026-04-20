@@ -89,17 +89,22 @@ const Product = () => {
   };
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
       {/* Main Product */}
-      <div className="w-full flex flex-col gap-6">
+      <div className="w-full flex flex-col xl:flex-row gap-6 xl:gap-12">
         {/* Images */}
-        <div className="flex flex-col gap-4">
+        <div className="w-full xl:w-1/2 flex flex-col xl:flex-row-reverse gap-4">
           {/* Main Slider */}
           <Swiper
             spaceBetween={16}
+            breakpoints={{
+              1280: {
+                spaceBetween: 32,
+              },
+            }}
             loop={true}
             autoplay={{ delay: 3000 }}
-            modules={[Navigation, Autoplay]}
+            modules={[Autoplay]}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             className="w-full aspect-square rounded-md overflow-hidden"
           >
@@ -115,13 +120,13 @@ const Product = () => {
           </Swiper>
 
           {/* Thumbnails */}
-          <div className="grid grid-cols-4 gap-2">
+          <div className="xl:w-1/4 grid grid-cols-4 xl:grid-cols-1 gap-2">
             {product.images.map((img, index) => (
               <div
                 key={index}
                 className={`cursor-pointer rounded-md overflow-hidden border-2 transition ${
                   activeIndex === index
-                    ? "border-stone-600 scale-105"
+                    ? "border-stone-600"
                     : "border-transparent opacity-80"
                 }`}
               >
@@ -136,18 +141,18 @@ const Product = () => {
         </div>
 
         {/* Details */}
-        <div className="flex flex-col gap-2">
-          <h2 className="text-xl font-semibold">{product.name}</h2>
+        <div className="w-full xl:w-1/2 flex flex-col gap-2">
+          <h2 className="text-xl xl:text-2xl font-semibold">{product.name}</h2>
 
-          <p className="text-sm text-stone-600">{product.description}</p>
+          <p className="text-sm xl:text-lg text-stone-600">{product.description}</p>
 
           {/* Pricing */}
           <div className="flex items-center gap-2">
-            <span className="text-xl font-semibold">₹{product.price}</span>
-            <span className="text-base line-through text-stone-600">
+            <span className="text-xl xl:text-2xl font-semibold">₹{product.price}</span>
+            <span className="text-base xl:text-lg line-through text-stone-600">
               ₹{product.originalPrice}
             </span>
-            <span className="text-sm font-semibold text-green-600">
+            <span className="text-sm xl:text-base font-semibold text-green-600">
               (
               {Math.round(
                 ((product.originalPrice - product.price) /
@@ -159,7 +164,7 @@ const Product = () => {
           </div>
 
           {/* Buttons */}
-          <div className="mt-4 flex gap-4">
+          <div className="mt-4 flex gap-4 xl:gap-8">
             <button
               onClick={handleCart}
               className="w-full p-4 rounded-md font-semibold leading-none text-white bg-stone-600"
@@ -186,15 +191,15 @@ const Product = () => {
 
       {/* Cart Drawer */}
       <div
-        className={`w-[320px] h-full fixed top-0 right-0 bg-white z-50 transform transition-transform duration-200 ${showCartDrawer ? "translate-x-0" : "translate-x-full"}`}
+        className={`w-[320px] xl:w-[380px] h-full fixed top-0 right-0 bg-white z-50 transform transition-transform duration-200 ${showCartDrawer ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="p-4 flex flex-col h-full">
+        <div className="h-full p-4 xl:px-8 flex flex-col xl:gap-2">
           {/* Header */}
           <div className="flex justify-between items-center mb-4">
             <h4 className="text-xl font-semibold">Your Cart</h4>
             <i
               onClick={() => setShowCartDrawer(false)}
-              className="ri-close-large-line cursor-pointer text-xl"
+              className="ri-close-large-line cursor-pointer text-lg"
             ></i>
           </div>
 
@@ -208,7 +213,7 @@ const Product = () => {
                   key={item.id}
                   className="flex justify-between gap-2 border-b pb-4"
                 >
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 xl:gap-4">
                     <img
                       src={item.images[0]}
                       className="w-14 h-14 aspect-square rounded-md object-cover"
@@ -259,7 +264,7 @@ const Product = () => {
 
           {/* Footer */}
           {cart.length > 0 && (
-            <div className="pt-2 border-t flex flex-col gap-2">
+            <div className="pt-2 xl:pt-4 border-t flex flex-col gap-2 xl:gap-4">
               <div className="flex justify-between">
                 <span className="text-lg font-semibold">Total</span>
                 <span className="text-lg font-semibold">₹{totalPrice}</span>

@@ -72,17 +72,23 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full p-8 px-4 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-600">
+    <div className="w-full p-8 px-4 xl:px-16 flex flex-col items-center gap-12 xl:gap-16 font-['Space_Grotesk'] text-stone-600">
       {/* Promotional Banner */}
       <Swiper
-        spaceBetween={"16px"}
-        pagination={{ clickable: true }}
+        spaceBetween={16}
+        slidesPerView={1}
+        breakpoints={{
+          1280: {
+            spaceBetween: 32,
+            slidesPerView: 1.75,
+          },
+        }}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
         }}
         loop={true}
-        modules={[Pagination, Autoplay]}
+        modules={[Autoplay]}
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
@@ -99,16 +105,16 @@ const Home = () => {
       </Swiper>
 
       {/* Categories */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none">
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
           Are You Looking for
         </h2>
-        <div className="w-full grid grid-cols-3 gap-4">
+        <div className="w-full grid grid-cols-3 gap-4 xl:gap-8">
           {catData.map((cat, index) => (
             <Link
               key={index}
               to={cat.route}
-              className="w-full h-full flex flex-col gap-2 items-center"
+              className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
             >
               <img
                 src={cat.image}
@@ -116,7 +122,7 @@ const Home = () => {
                 loading="lazy"
                 className="w-full aspect-square rounded-md object-cover"
               />
-              <span className="text-sm font-semibold text-center">
+              <span className="text-sm xl:text-2xl font-semibold text-center">
                 {cat.title}
               </span>
             </Link>
@@ -125,8 +131,8 @@ const Home = () => {
       </div>
 
       {/* Bestsellers */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none">
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
           Most People Loved It
         </h2>
 
@@ -141,6 +147,7 @@ const Home = () => {
               slidesPerView: 3.2,
             },
             1024: {
+              spaceBetween: 32,
               slidesPerView: 4,
             },
           }}
@@ -149,23 +156,23 @@ const Home = () => {
         >
           {mainData.map((data, index) => (
             <SwiperSlide key={index}>
-              <Card data={data} badge="Bestseller" />
+              <Card data={data} />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
       {/* Occasion */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none">
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
           Looking for Occasion
         </h2>
-        <div className="w-full grid grid-cols-3 gap-4">
+        <div className="w-full grid grid-cols-3 xl:grid-cols-6 gap-4 xl:gap-8">
           {occData.map((cat, index) => (
             <Link
               key={index}
               to={cat.route}
-              className="w-full h-full flex flex-col gap-2 items-center"
+              className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
             >
               <img
                 src={cat.image}
@@ -173,7 +180,7 @@ const Home = () => {
                 loading="lazy"
                 className="w-full aspect-square rounded-md object-cover"
               />
-              <span className="text-sm font-semibold text-center">
+              <span className="text-sm xl:text-lg font-semibold text-center">
                 {cat.title}
               </span>
             </Link>
@@ -182,8 +189,10 @@ const Home = () => {
       </div>
 
       {/* New Arrivals */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold leading-none">New Arrivals</h2>
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
+          New Arrivals
+        </h2>
 
         <Swiper
           spaceBetween={16}
@@ -196,6 +205,7 @@ const Home = () => {
               slidesPerView: 3.2,
             },
             1024: {
+              spaceBetween: 32,
               slidesPerView: 4,
             },
           }}
@@ -214,37 +224,37 @@ const Home = () => {
       </div>
 
       {/* Choose Us */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center leading-none">
+      <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
           Why Choose Us?
         </h2>
-        <p className="text-center">
+        <p className="xl:w-1/2 xl:text-lg text-center">
           No guesswork, we offer real photo of your bouquet before it is
           delivered, so you know exactly what you are gifting.
         </p>
         {/* Features */}
-        <div className="w-full grid grid-cols-2 gap-4">
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
-            <i className="ri-calendar-event-fill text-2xl text-stone-600"></i>
-            <h4 className="font-semibold text-center">
+        <div className="w-full xl:w-[80%] grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8">
+          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
+            <i className="ri-calendar-event-fill text-2xl xl:text-4xl text-stone-600"></i>
+            <h4 className="xl:text-lg font-semibold text-center">
               Never Miss Important Dates
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
-            <i className="ri-e-bike-2-fill text-2xl text-stone-600"></i>
-            <h4 className="font-semibold text-center">
+          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
+            <i className="ri-e-bike-2-fill text-2xl xl:text-4xl text-stone-600"></i>
+            <h4 className="xl:text-lg font-semibold text-center">
               Quick Dispatch & 4-Hours Delivery
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
-            <i className="ri-quill-pen-ai-fill text-2xl text-stone-600"></i>
-            <h4 className="font-semibold text-center">
+          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
+            <i className="ri-quill-pen-ai-fill text-2xl xl:text-4xl text-stone-600"></i>
+            <h4 className="xl:text-lg font-semibold text-center">
               Personalised Message Card
             </h4>
           </div>
-          <div className="p-4 rounded-md flex flex-col items-center gap-2 bg-stone-100">
-            <i className="ri-hand-heart-fill text-2xl text-stone-600"></i>
-            <h4 className="font-semibold text-center">
+          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
+            <i className="ri-hand-heart-fill text-2xl xl:text-4xl text-stone-600"></i>
+            <h4 className="xl:text-lg font-semibold text-center">
               Free Exclusive Random Gifts
             </h4>
           </div>
@@ -252,20 +262,21 @@ const Home = () => {
       </div>
 
       {/* Ad Banners */}
-      <div className="w-full flex flex-col gap-4">
+      <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
+        <img src="/AdBanner.png" alt="" className="w-full aspect-video" />
         <img src="/AdBanner.png" alt="" className="w-full aspect-video" />
       </div>
 
       {/* Customer Reviews */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center leading-none">
+      <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
           Our Customer Reviews
         </h2>
-        <p className="text-center">
+        <p className="xl:w-1/2 xl:text-lg text-center">
           Every bouquet tells a story, and thanks to DAISY, every moment feels
           timeless and beautiful.
         </p>
-        <div className="mt-4 relative review-fade">
+        <div className="w-full mt-4 relative review-fade">
           <Swiper
             modules={[Autoplay]}
             slidesPerView={1.15}
@@ -286,6 +297,7 @@ const Home = () => {
                 slidesPerView: 2.2,
               },
               1024: {
+                spaceBetween: 32,
                 slidesPerView: 3,
               },
             }}
@@ -293,10 +305,10 @@ const Home = () => {
           >
             {reviewData.map((review) => (
               <SwiperSlide key={review.id}>
-                <div className="w-full h-full p-4 rounded-md border flex flex-col gap-4">
+                <div className="w-full h-full p-4 xl:p-8 rounded-md border flex flex-col gap-4">
                   {/* Top */}
                   <div className="w-full flex items-center gap-4">
-                    <div className="w-14 h-14 aspect-square rounded-full overflow-hidden">
+                    <div className="w-14 h-14 xl:w-12 xl:h-12 aspect-square rounded-full overflow-hidden">
                       <img
                         src={review.image}
                         alt={review.name}
@@ -309,7 +321,7 @@ const Home = () => {
                         {review.name}
                       </h4>
 
-                      <div className="flex items-center gap-1 text-amber-500 text-sm">
+                      <div className="text-sm flex items-center gap-0.5 text-amber-500">
                         {Array.from({ length: review.rating }).map(
                           (_, index) => (
                             <i key={index} className="ri-star-fill"></i>
@@ -320,7 +332,7 @@ const Home = () => {
                   </div>
 
                   {/* Review */}
-                  <p className="text-sm">{review.review}</p>
+                  <p className="text-sm xl:text-base">{review.review}</p>
                 </div>
               </SwiperSlide>
             ))}
@@ -329,17 +341,17 @@ const Home = () => {
       </div>
 
       {/* Social Content */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center leading-none">
+      <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
           Instagram Posts
         </h2>
-        <p className="text-center">
+        <p className="xl:w-1/2 xl:text-lg text-center">
           A little glimpse into our floral world — handcrafted bouquets and
           beautiful gifting moments captured with love.
         </p>
 
-        <div className="w-full mt-4 flex flex-col items-center gap-4">
-          <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="w-full mt-4 flex flex-col items-center gap-4 xl:gap-8">
+          <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4 xl:gap-8">
             {socialData.map((item) => (
               <div
                 key={item.id}
@@ -357,7 +369,7 @@ const Home = () => {
           <a
             href="https://www.instagram.com/thanksdaisyofficial/"
             target="_blank"
-            className="mt-4 p-4 px-8 font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
+            className="mt-4 p-4 px-8 xl:text-lg font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-600 text-stone-600"
           >
             <span>
               Follow <i className="ri-threads-line"></i>thanksdaisyofficial
@@ -367,15 +379,15 @@ const Home = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold text-center leading-none">
+      <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
           Most FAQs
         </h2>
-        <p className="text-center">
+        <p className="xl:w-1/2 xl:text-lg text-center">
           Some common questions our lovely customers usually asks
         </p>
 
-        <div className="w-full flex flex-col gap-4">
+        <div className="w-full xl:w-[80%] flex flex-col gap-4 xl:gap-8">
           {faqData.map((faq, index) => (
             <div
               key={faq.id}
@@ -384,9 +396,9 @@ const Home = () => {
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full p-4 flex items-center justify-between gap-4"
+                className="w-full p-4 xl:px-8 flex items-center justify-between gap-4"
               >
-                <h4 className="text-left">{faq.question}</h4>
+                <h4 className="xl:text-lg text-left">{faq.question}</h4>
 
                 <span
                   className={`transition-transform duration-200 ${
@@ -406,7 +418,7 @@ const Home = () => {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="p-4 pt-0 text-sm text-stone-600">
+                  <p className="p-4 xl:px-8 pt-0 text-sm xl:text-base text-stone-400">
                     {faq.answer}
                   </p>
                 </div>
@@ -417,18 +429,18 @@ const Home = () => {
       </div>
 
       {/* Newsletter */}
-      <div className="w-full p-8 rounded-md flex flex-col items-center gap-4 text-stone-600 bg-stone-100">
+      <div className="w-full xl:w-[60%] p-8 rounded-md flex flex-col items-center gap-4 xl:gap-8 text-stone-600 bg-stone-100">
         {/* Heading */}
         <div className="flex flex-col gap-2 max-w-xl">
-          <span className="text-sm text-center uppercase tracking-widest font-['Nohemi']">
+          <span className="text-sm xl:text-base text-center uppercase tracking-widest font-['Nohemi']">
             Exclusive Offer
           </span>
 
-          <h2 className="text-2xl text-center font-semibold font-[Modernist]">
+          <h2 className="text-2xl xl:text-2xl text-center font-semibold font-[Modernist]">
             Get ₹249 Off or a Surprise Gift on Next Order
           </h2>
 
-          <p className="mt-2 text-sm text-center text-stone-400">
+          <p className="mt-2 text-sm xl:text-base text-center text-stone-400">
             Join ThanksDAISY on WhatsApp for exclusive offers, early access, and
             beautiful floral surprises crafted just for you.
           </p>
@@ -462,7 +474,7 @@ const Home = () => {
         )}
 
         {/* Trust Note */}
-        <p className="text-xs text-stone-600">
+        <p className="text-xs xl:text-sm text-stone-600">
           No spam. Only beautiful offers and floral updates.
         </p>
       </div>
