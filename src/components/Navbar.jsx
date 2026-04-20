@@ -53,9 +53,9 @@ const Navbar = () => {
         </div>
 
         {/* Search */}
-        <div className="text-lg">
+        <Link to="/search" className="text-lg">
           <i className="ri-search-line"></i>
-        </div>
+        </Link>
 
         {/* Wishlist */}
         <Link to="/wishlist" className="text-lg">
@@ -71,9 +71,9 @@ const Navbar = () => {
       {/* Navigation Menu */}
       <div className="flex xl:hidden items-center gap-4">
         {/* Search */}
-        <div className="text-xl">
+        <Link to="/search" className="text-xl">
           <i className="ri-search-line"></i>
-        </div>
+        </Link>
 
         {/* Wishlist */}
         <Link to="/wishlist" className="text-xl">

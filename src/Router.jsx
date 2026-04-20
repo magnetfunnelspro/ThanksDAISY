@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
+import Occasion from "./pages/Occasion";
 import Subscription from "./pages/Subscription";
 import Corporate from "./pages/Corporate";
 import NotFound from "./pages/NotFound";
@@ -39,6 +40,7 @@ const AppRouter = () => {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/corporate-gifting" element={<Corporate />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/occasion/:type" element={<Occasion />} />
 
         {/* User Pages */}
         <Route path="/search" element={<Search />} />
