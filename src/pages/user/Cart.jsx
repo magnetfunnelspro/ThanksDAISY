@@ -16,7 +16,7 @@ const Cart = () => {
   const [couponMsg, setCouponMsg] = useState("");
 
   // Shipping Charges
-  const shippingCost = totalPrice > 500 ? 0 : 50;
+  const shippingCost = totalPrice > 500 ? 0 : 0;
 
   // --- Apply Button Handler ---
   // This ONLY sets the active coupon when clicked. It hands the math off to the useEffect.
