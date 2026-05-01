@@ -233,7 +233,7 @@ const Home = () => {
           so you know exactly what you're gifting.
         </p>
         {/* Features */}
-        <div className="w-full grid grid-cols-2 xl:grid-cols-6 gap-4 xl:gap-8">
+        <div className="w-full xl:w-[80%] grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8">
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-calendar-event-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
