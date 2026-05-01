@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 // Swiper
 import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 
 // Data
@@ -103,8 +102,6 @@ const Product = () => {
               },
             }}
             loop={true}
-            autoplay={{ delay: 3000 }}
-            modules={[Autoplay]}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             className="w-full aspect-square rounded-md overflow-hidden"
           >
