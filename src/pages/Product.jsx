@@ -129,7 +129,6 @@ const Product = () => {
                 }`}
               >
                 <img
-                  loading="lazy"
                   src={img}
                   alt="thumb"
                   className="w-full aspect-square object-cover"
