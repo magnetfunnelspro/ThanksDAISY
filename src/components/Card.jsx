@@ -1,0 +1,78 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+
+const Card = ({ data }) => {
+  const discountPercentage = Math.round(
+    ((data.originalPrice - data.price) / data.originalPrice) * 100,
+  );
+
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  useEffect(() => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const exists = wishlist.find((item) => item.id === data.id);
+    setIsWishlisted(!!exists);
+  }, [data.id]);
+
+  const handleWishlist = (e) => {
+    e.stopPropagation();
+
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const exists = wishlist.find((item) => item.id === data.id);
+
+    let updatedWishlist = [];
+
+    if (exists) {
+      updatedWishlist = wishlist.filter((item) => item.id !== data.id);
+      setIsWishlisted(false);
+    } else {
+      updatedWishlist = [...wishlist, data];
+      setIsWishlisted(true);
+    }
+
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  };
+
+  return (
+    <div className="w-full flex flex-col gap-2">
+      {/* Image */}
+      <Link to={`/product/${data.id}`} className="w-full">
+        <div className="w-full aspect-square rounded-md overflow-hidden relative">
+          <img
+            loading="lazy"
+            src={data.images[0]}
+            alt={data.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </Link>
+
+      {/* Content */}
+      <div className="flex flex-col">
+        {/* Title Clickable */}
+        <Link to={`/product/${data.id}`}>
+          <h4 className="xl:text-lg font-semibold line-clamp-1 hover:underline">
+            {data.name}
+          </h4>
+        </Link>
+
+        <div className="flex items-center gap-1.5 xl:gap-2">
+          <span className="text-sm xl:text-base font-semibold">
+            ₹{data.price}
+          </span>
+
+          <span className="text-xs xl:text-sm line-through text-stone-600">
+            ₹{data.originalPrice}
+          </span>
+
+          <span className="text-xs xl:text-sm font-semibold text-green-600">
+            ({discountPercentage}% off)
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
