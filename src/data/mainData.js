@@ -5,6 +5,11 @@ const mainData = [
     occasion: [""],
     name: "Red Spread",
     route: "red-spread",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -22,6 +27,11 @@ const mainData = [
     occasion: [""],
     name: "Purple Tower",
     route: "purple-tower",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -39,6 +49,11 @@ const mainData = [
     occasion: [""],
     name: "Summer Fields",
     route: "summer-fields",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -56,6 +71,11 @@ const mainData = [
     occasion: [""],
     name: "White Star",
     route: "white-star",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -73,6 +93,11 @@ const mainData = [
     occasion: [""],
     name: "Pink Globe",
     route: "pink-globe",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -90,6 +115,11 @@ const mainData = [
     occasion: [""],
     name: "Night Garden",
     route: "night-garden",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -107,6 +137,11 @@ const mainData = [
     occasion: [""],
     name: "Morning Garden",
     route: "morning-garden",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -124,6 +159,11 @@ const mainData = [
     occasion: [""],
     name: "Green Star",
     route: "green-star",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -141,6 +181,11 @@ const mainData = [
     occasion: [""],
     name: "Peach Amber",
     route: "peach-amber",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -158,6 +203,11 @@ const mainData = [
     occasion: [""],
     name: "Petal Post",
     route: "petal-post",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -175,6 +225,11 @@ const mainData = [
     occasion: [""],
     name: "Pressed Purple",
     route: "pressed-purple",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -192,6 +247,11 @@ const mainData = [
     occasion: [""],
     name: "Pink Butterfly Parcel",
     route: "pink-butterfly-parcel",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -209,6 +269,11 @@ const mainData = [
     occasion: [""],
     name: "Anchor & Orchid",
     route: "anchor-orchid",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -226,6 +291,11 @@ const mainData = [
     occasion: [""],
     name: "Earth & Aura",
     route: "earth-aura",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -243,6 +313,11 @@ const mainData = [
     occasion: [""],
     name: "Minty Harvest",
     route: "minty-harvest",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -260,6 +335,11 @@ const mainData = [
     occasion: [""],
     name: "Cotton Candy",
     route: "cotton-candy",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -277,6 +357,11 @@ const mainData = [
     occasion: [""],
     name: "Antique Sky",
     route: "antique-sky",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -294,6 +379,11 @@ const mainData = [
     occasion: [""],
     name: "Golden Lace",
     route: "golden-lace",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -311,6 +401,11 @@ const mainData = [
     occasion: [""],
     name: "Soft Grace",
     route: "soft-grace",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -328,6 +423,11 @@ const mainData = [
     occasion: [""],
     name: "Solar Smiles",
     route: "solar-smiles",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
     description:
       "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
     images: [
@@ -338,6 +438,226 @@ const mainData = [
     ],
     price: 1199,
     originalPrice: 1799,
+  },
+  {
+    id: "td-021",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Red Edit",
+    route: "red-edit",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-021/1.png",
+      "/images/td-021/2.png",
+      "/images/td-021/3.png",
+      "/images/td-021/4.png",
+    ],
+    price: 699,
+    originalPrice: 1299,
+  },
+  {
+    id: "td-022",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Royal Spire",
+    route: "royal-spire",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-022/1.png",
+      "/images/td-022/2.png",
+      "/images/td-022/3.png",
+      "/images/td-022/4.png",
+    ],
+    price: 5999,
+    originalPrice: 7999,
+  },
+  {
+    id: "td-023",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Rose Harmony",
+    route: "rose-harmony",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-023/1.png",
+      "/images/td-023/2.png",
+      "/images/td-023/3.png",
+      "/images/td-023/4.png",
+    ],
+    price: 3599,
+    originalPrice: 4599,
+  },
+  {
+    id: "td-024",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Pink-Lily-Vase",
+    route: "pink-lily-vase",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-024/1.png",
+      "/images/td-024/2.png",
+      "/images/td-024/3.png",
+      "/images/td-024/4.png",
+    ],
+    price: 1899,
+    originalPrice: 2699,
+  },
+  {
+    id: "td-025",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Sunshine Mix",
+    route: "sunshine-mix",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-025/1.png",
+      "/images/td-025/2.png",
+      "/images/td-025/3.png",
+      "/images/td-025/4.png",
+    ],
+    price: 899,
+    originalPrice: 1799,
+  },
+  {
+    id: "td-026",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Bloom Wrap",
+    route: "bloom-wrap",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-026/1.png",
+      "/images/td-026/2.png",
+      "/images/td-026/3.png",
+      "/images/td-026/4.png",
+    ],
+    price: 4799,
+    originalPrice: 5199,
+  },
+  {
+    id: "td-027",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Fresh Garden",
+    route: "fresh-garden",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-027/1.png",
+      "/images/td-027/2.png",
+      "/images/td-027/3.png",
+      "/images/td-027/4.png",
+    ],
+    price: 2399,
+    originalPrice: 3399,
+  },
+  {
+    id: "td-028",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Blue Blush",
+    route: "blue-blush",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-028/1.png",
+      "/images/td-028/2.png",
+      "/images/td-028/3.png",
+      "/images/td-028/4.png",
+    ],
+    price: 3799,
+    originalPrice: 4399,
+  },
+  {
+    id: "td-029",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Rose Romance",
+    route: "rose-romance",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-029/1.png",
+      "/images/td-029/2.png",
+      "/images/td-029/3.png",
+      "/images/td-029/4.png",
+    ],
+    price: 899,
+    originalPrice: 1699,
+  },
+  {
+    id: "td-030",
+    cat: "bouquets",
+    occasion: [""],
+    name: "Petal Harmony",
+    route: "petal-harmony",
+    dimension: {
+      width: "12 inch",
+      height: "14 inch",
+    },
+    flowers: [""],
+    description:
+      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+    images: [
+      "/images/td-030/1.png",
+      "/images/td-030/2.png",
+      "/images/td-030/3.png",
+      "/images/td-030/4.png",
+    ],
+    price: 1199,
+    originalPrice: 2199,
   },
 ];
 
