@@ -46,9 +46,9 @@ const Cart = () => {
     if (code === "DAISY15") {
       disc = Math.round(totalPrice * 0.15);
       message = "Horah! You got 15% discount.";
-    } else if (code === "SURAJ100") {
-      disc = totalPrice;
-      message = "Yahoo! Free bouquets & gifts from us.";
+    } else if (code === "MEET250") {
+      disc = 250;
+      message = "Yahoo! You got ₹250 discount.";
     } else if (code === "FREESHIP") {
       disc = shippingCost;
       message = "Congrats! You got free delivery.";
@@ -64,7 +64,7 @@ const Cart = () => {
     if (
       disc > 0 ||
       code === "DAISY15" ||
-      code === "SURAJ100" ||
+      code === "MEET250" ||
       code === "FREESHIP"
     ) {
       localStorage.setItem(

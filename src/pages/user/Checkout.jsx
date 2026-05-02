@@ -1,4 +1,6 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Context
@@ -416,11 +418,18 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                 className="p-4 border rounded-md outline-none"
               />
               <span
-                className={`text-xs px-2 ${isDeliverable ? "text-green-600" : "text-red-600"}`}
+                className={`text-xs px-2 ${
+                  form.pincode.length === 6
+                    ? isDeliverable
+                      ? "text-green-600"
+                      : "text-red-600"
+                    : ""
+                }`}
               >
-                {isDeliverable
-                  ? "Yahoo! Available to ship."
-                  : "Sorry, we are only available in Delhi NCR. "}
+                {form.pincode.length === 6 &&
+                  (isDeliverable
+                    ? "Yahoo! Available to ship."
+                    : "Sorry, we are only available in Delhi NCR.")}
               </span>
             </div>
             <input

@@ -37,7 +37,7 @@ const Card = ({ data }) => {
   return (
     <div className="w-full flex flex-col gap-2">
       {/* Image */}
-      <Link to={`/product/${data.id}`} className="w-full">
+      <Link to={`/product/${data.route}`} className="w-full">
         <div className="w-full aspect-square rounded-md overflow-hidden relative">
           <img
             loading="lazy"

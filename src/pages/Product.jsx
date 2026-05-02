@@ -15,11 +15,11 @@ import mainData from "../data/mainData";
 import { useCart } from "../context/CartContext";
 
 const Product = () => {
-  const { id } = useParams();
+  const { route } = useParams();
   const navigate = useNavigate();
 
   const product = mainData.find(
-    (item) => item.id.toLowerCase() === id?.toLowerCase(),
+    (item) => item.route.toLowerCase() === route?.toLowerCase(),
   );
 
   // Prevent crash

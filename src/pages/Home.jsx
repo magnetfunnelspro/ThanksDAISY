@@ -92,15 +92,36 @@ const Home = () => {
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <Link to="/product/petal-post">
+            <img
+              loading="lazy"
+              src="/AdBanner1.png"
+              alt=""
+              className="w-full aspect-video rounded-md"
+            />
+          </Link>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <Link to="/product/minty-harvest">
+            <img
+              loading="lazy"
+              src="/AdBanner2.png"
+              alt=""
+              className="w-full aspect-video rounded-md"
+            />
+          </Link>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full aspect-video rounded-md bg-slate-200"></div>
+          <Link to="/product/soft-grace">
+            <img
+              loading="lazy"
+              src="/AdBanner3.png"
+              alt=""
+              className="w-full aspect-video rounded-md"
+            />
+          </Link>
         </SwiperSlide>
       </Swiper>
 
@@ -263,8 +284,20 @@ const Home = () => {
 
       {/* Ad Banners */}
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
-        <img src="/AdBanner.png" alt="" className="w-full aspect-video" />
-        <img src="/AdBanner.png" alt="" className="w-full aspect-video" />
+        <Link to="/product/petal-post">
+          <img
+            src="/AdBanner1.png"
+            alt=""
+            className="w-full aspect-video rounded-md"
+          />
+        </Link>
+        <Link to="/product/soft-grace">
+          <img
+            src="/AdBanner3.png"
+            alt=""
+            className="w-full aspect-video rounded-md"
+          />
+        </Link>
       </div>
 
       {/* Customer Reviews */}
@@ -308,14 +341,6 @@ const Home = () => {
                 <div className="w-full h-full p-4 xl:p-8 rounded-md border flex flex-col gap-4">
                   {/* Top */}
                   <div className="w-full flex items-center gap-4">
-                    <div className="w-14 h-14 xl:w-12 xl:h-12 aspect-square rounded-full overflow-hidden">
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
                     <div className="flex flex-col gap-0.5">
                       <h4 className="font-semibold leading-none">
                         {review.name}

@@ -44,7 +44,7 @@ const AppRouter = () => {
 
         {/* User Pages */}
         <Route path="/search" element={<Search />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/:route" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/wishlist" element={<Wishlist />} />
