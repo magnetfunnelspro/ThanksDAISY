@@ -271,34 +271,32 @@ const mainData = [
     originalPrice: 2799,
   },
   {
-    id: "td-008",
+    id: "td-010",
     cat: "bouquets",
     occasion: [""],
-    name: "Green Star",
-    route: "green-star",
+    name: "Petal Post",
+    route: "petal-post",
     dimension: {
-      width: "17 inch",
-      height: "18 inch",
+      width: "15 inch",
+      height: "13 inch",
     },
     flowers: [
-      { name: "Amaranthus", quantity: 2 },
+      { name: "Lily", quantity: 2 },
       { name: "Rose", quantity: 5 },
-      { name: "Statice", quantity: 4 },
-      { name: "Eustoma", quantity: 3 },
+      { name: "Daisy", quantity: 3 },
       { name: "Limonium", quantity: 2 },
-      { name: "Dried Fillers", quantity: 3 },
     ],
-    totalFlowers: 19,
+    totalFlowers: 12,
     description:
-      "A refreshing green-themed bouquet featuring roses, amaranthus, and soft blooms, accented with dried elements and delicate fillers, creating a natural, modern, and earthy floral arrangement for stylish gifting.",
+      "A charming bouquet featuring lilies, roses, and daisies, gently accented with limonium, creating a soft, fresh, and elegant floral arrangement perfect for thoughtful gifting and everyday special moments.",
     images: [
-      "/images/td-008/1.png",
-      "/images/td-008/2.png",
-      "/images/td-008/3.png",
-      "/images/td-008/4.png",
+      "/images/td-010/1.png",
+      "/images/td-010/2.png",
+      "/images/td-010/3.png",
+      "/images/td-010/4.png",
     ],
-    price: 1599,
-    originalPrice: 4399,
+    price: 1499,
+    originalPrice: 2199,
   },
   {
     id: "td-011",
@@ -441,12 +439,20 @@ const mainData = [
     name: "Cotton Candy",
     route: "cotton-candy",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "18 inch",
+      height: "17 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Hydrangea", quantity: 1 },
+      { name: "Alstroemeria", quantity: 10 },
+      { name: "Daisy", quantity: 5 },
+      { name: "Rose", quantity: 10 },
+      { name: "Eustoma", quantity: 3 },
+      { name: "Foxtail", quantity: 5 },
+      { name: "Eucalyptus", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A colorful bouquet blending roses, daisies, and hydrangea with soft foliage accents, creating a cheerful, elegant arrangement perfect for gifting and joyful celebrations.",
     images: [
       "/images/td-016/1.png",
       "/images/td-016/2.png",
@@ -463,12 +469,19 @@ const mainData = [
     name: "Antique Sky",
     route: "antique-sky",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "18 inch",
+      height: "20 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Hydrangea", quantity: 1 },
+      { name: "Daisy", quantity: 10 },
+      { name: "Rose", quantity: 15 },
+      { name: "Eucalyptus", quantity: 5 },
+      { name: "Eustoma", quantity: 3 },
+      { name: "Limonium", quantity: 2 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A graceful blend of roses, daisies, and hydrangea with soft eucalyptus and limonium accents, creating a soothing pastel bouquet perfect for elegant gifting and timeless celebrations.",
     images: [
       "/images/td-017/1.png",
       "/images/td-017/2.png",
@@ -485,12 +498,15 @@ const mainData = [
     name: "Golden Lace",
     route: "golden-lace",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "17 inch",
+      height: "17 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Sunflower", quantity: 5 },
+      { name: "Gypsophila", quantity: 6 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A bright sunflower bouquet paired with delicate gypsophila, creating a warm, cheerful arrangement that radiates positivity and makes a perfect gift for happy occasions.",
     images: [
       "/images/td-018/1.png",
       "/images/td-018/2.png",
@@ -510,9 +526,13 @@ const mainData = [
       width: "12 inch",
       height: "14 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Lily", quantity: 5 },
+      { name: "Rose", quantity: 10 },
+      { name: "Limonium", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "An elegant blend of lilies and roses with soft limonium accents, creating a graceful and soothing bouquet perfect for heartfelt gifting and intimate celebrations.",
     images: [
       "/images/td-019/1.png",
       "/images/td-019/2.png",
@@ -529,12 +549,17 @@ const mainData = [
     name: "Solar Smiles",
     route: "solar-smiles",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "13 inch",
+      height: "18 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Daisy", quantity: 5 },
+      { name: "Limonium", quantity: 3 },
+      { name: "Sunflower", quantity: 5 },
+      { name: "Foxtail", quantity: 4 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A radiant mix of sunflowers and daisies with soft limonium and textured foxtail accents, creating a bright, joyful bouquet perfect for uplifting gifts and cheerful moments.",
     images: [
       "/images/td-020/1.png",
       "/images/td-020/2.png",
@@ -551,12 +576,15 @@ const mainData = [
     name: "Red Edit",
     route: "red-edit",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "10 inch",
+      height: "16 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Rose", quantity: 20 },
+      { name: "Gypsophila", quantity: 6 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A classic arrangement of rich red roses paired with delicate gypsophila, creating a romantic and timeless bouquet perfect for expressing love and special heartfelt moments.",
     images: [
       "/images/td-021/1.png",
       "/images/td-021/2.png",
@@ -573,12 +601,18 @@ const mainData = [
     name: "Royal Spire",
     route: "royal-spire",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "32 inch",
+      height: "20 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Delphinium", quantity: 3 },
+      { name: "Daisy", quantity: 10 },
+      { name: "Eustoma", quantity: 10 },
+      { name: "Eucalyptus", quantity: 10 },
+      { name: "Limonium", quantity: 5 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A grand arrangement featuring delphinium, daisies, and eustoma with lush eucalyptus and limonium, creating a majestic bouquet perfect for premium gifting and elegant celebrations.",
     images: [
       "/images/td-022/1.png",
       "/images/td-022/2.png",
@@ -595,12 +629,15 @@ const mainData = [
     name: "Rose Harmony",
     route: "rose-harmony",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "10 inch",
+      height: "12 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Mixed Roses", quantity: 40 },
+      { name: "Limonium", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A lush bouquet of vibrant mixed roses complemented by soft limonium accents, creating a rich and elegant arrangement perfect for romantic gestures and special celebrations.",
     images: [
       "/images/td-023/1.png",
       "/images/td-023/2.png",
@@ -614,15 +651,15 @@ const mainData = [
     id: "td-024",
     cat: "bouquets",
     occasion: [""],
-    name: "Pink-Lily-Vase",
+    name: "Pink Lily Vase",
     route: "pink-lily-vase",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "15 inch",
+      height: "18 inch",
     },
-    flowers: [""],
+    flowers: [{ name: "Lily", quantity: 5 }],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A graceful vase arrangement of fresh pink lilies, offering a soft, elegant look with a delicate fragrance, perfect for thoughtful gifting and serene, sophisticated spaces.",
     images: [
       "/images/td-024/1.png",
       "/images/td-024/2.png",
@@ -639,12 +676,17 @@ const mainData = [
     name: "Sunshine Mix",
     route: "sunshine-mix",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "19 inch",
+      height: "22 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Sunflower", quantity: 4 },
+      { name: "Aster", quantity: 5 },
+      { name: "Limonium", quantity: 2 },
+      { name: "Statice", quantity: 4 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A bright blend of sunflowers and asters with soft limonium and statice accents, creating a cheerful bouquet perfect for uplifting moods and celebrating joyful moments.",
     images: [
       "/images/td-025/1.png",
       "/images/td-025/2.png",
@@ -661,12 +703,16 @@ const mainData = [
     name: "Bloom Wrap",
     route: "bloom-wrap",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "20 inch",
+      height: "19 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Mixed Hydrangea", quantity: 3 },
+      { name: "Eucalyptus", quantity: 5 },
+      { name: "Limonium", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A lush wrap of mixed hydrangeas complemented by fresh eucalyptus and soft limonium, creating a full, elegant bouquet perfect for premium gifting and sophisticated occasions.",
     images: [
       "/images/td-026/1.png",
       "/images/td-026/2.png",
@@ -683,12 +729,22 @@ const mainData = [
     name: "Fresh Garden",
     route: "fresh-garden",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "22 inch",
+      height: "25 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Delphinium", quantity: 2 },
+      { name: "Brassica", quantity: 2 },
+      { name: "Daisy", quantity: 10 },
+      { name: "Rose", quantity: 10 },
+      { name: "Eustoma", quantity: 6 },
+      { name: "Allium (Onion Flower)", quantity: 2 },
+      { name: "Limonium", quantity: 3 },
+      { name: "Eucalyptus", quantity: 3 },
+      { name: "Amaranthus", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A lush garden-style bouquet with delphinium, roses, and daisies, accented by brassica, amaranthus, and eucalyptus for a fresh, vibrant look perfect for elegant celebrations.",
     images: [
       "/images/td-027/1.png",
       "/images/td-027/2.png",
@@ -705,12 +761,16 @@ const mainData = [
     name: "Blue Blush",
     route: "blue-blush",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "16 inch",
+      height: "18 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Mixed Hydrangea", quantity: 4 },
+      { name: "Eucalyptus", quantity: 5 },
+      { name: "Limonium", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A soothing blend of blue-toned hydrangeas with fresh eucalyptus and soft limonium, creating a calm, elegant bouquet perfect for premium gifting and graceful occasions.",
     images: [
       "/images/td-028/1.png",
       "/images/td-028/2.png",
@@ -728,11 +788,15 @@ const mainData = [
     route: "rose-romance",
     dimension: {
       width: "12 inch",
-      height: "14 inch",
+      height: "15 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Rose", quantity: 20 },
+      { name: "Daisy", quantity: 5 },
+      { name: "Limonium", quantity: 3 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A romantic bouquet of rich roses paired with cheerful daisies and soft limonium, creating a balanced, elegant arrangement perfect for heartfelt gifting and special moments.",
     images: [
       "/images/td-029/1.png",
       "/images/td-029/2.png",
@@ -749,12 +813,15 @@ const mainData = [
     name: "Petal Harmony",
     route: "petal-harmony",
     dimension: {
-      width: "12 inch",
-      height: "14 inch",
+      width: "11 inch",
+      height: "13 inch",
     },
-    flowers: [""],
+    flowers: [
+      { name: "Mixed Eustoma", quantity: 12 },
+      { name: "Dried Elements", quantity: 2 },
+    ],
     description:
-      "A vibrant bouquet of mixed rainbow flowers, perfect for celebrations, gifting, and adding cheerful elegance to any special moment.",
+      "A delicate mix of soft eustoma blooms paired with subtle dried elements, creating a minimal, elegant bouquet perfect for modern gifting and graceful everyday moments.",
     images: [
       "/images/td-030/1.png",
       "/images/td-030/2.png",
