@@ -2,7 +2,8 @@ const mainData = [
   {
     id: "td-001",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "passionate", "bold"],
+    occasion: ["anniversary", "valentine's day", "romantic surprise"],
     name: "Red Spread",
     route: "red-spread",
     dimension: {
@@ -33,7 +34,8 @@ const mainData = [
   {
     id: "td-002",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["luxurious", "graceful", "elegant"],
+    occasion: ["wedding", "engagement", "grand celebration"],
     name: "Purple Tower",
     route: "purple-tower",
     dimension: {
@@ -66,7 +68,8 @@ const mainData = [
   {
     id: "td-003",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["cheerful", "joyful", "bright"],
+    occasion: ["birthday", "congratulations", "get well soon"],
     name: "Summer Fields",
     route: "summer-fields",
     dimension: {
@@ -99,7 +102,8 @@ const mainData = [
   {
     id: "td-004",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["calm", "peaceful", "elegant"],
+    occasion: ["sympathy", "thank you", "formal gifting"],
     name: "White Star",
     route: "white-star",
     dimension: {
@@ -126,7 +130,8 @@ const mainData = [
   {
     id: "td-005",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "sweet", "soft"],
+    occasion: ["anniversary", "date", "love & affection"],
     name: "Pink Globe",
     route: "pink-globe",
     dimension: {
@@ -155,7 +160,8 @@ const mainData = [
   {
     id: "td-006",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["calm", "moody", "elegant"],
+    occasion: ["evening gifting", "thank you", "intimate moments"],
     name: "Night Garden",
     route: "night-garden",
     dimension: {
@@ -184,7 +190,8 @@ const mainData = [
   {
     id: "td-007",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["fresh", "vibrant", "joyful"],
+    occasion: ["birthday", "celebration", "congratulations"],
     name: "Morning Garden",
     route: "morning-garden",
     dimension: {
@@ -217,7 +224,8 @@ const mainData = [
   {
     id: "td-008",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["natural", "earthy", "modern"],
+    occasion: ["housewarming", "corporate gifting", "casual gifting"],
     name: "Green Star",
     route: "green-star",
     dimension: {
@@ -247,7 +255,8 @@ const mainData = [
   {
     id: "td-009",
     cat: "bouquets",
-    occasion: [""],
+    eemotion: ["luxurious", "exotic", "warm"],
+    occasion: ["anniversary", "special gifting", "premium surprise"],
     name: "Peach Amber",
     route: "peach-amber",
     dimension: {
@@ -273,7 +282,8 @@ const mainData = [
   {
     id: "td-010",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["soft", "pleasant", "cheerful"],
+    occasion: ["thank you", "birthday", "just because"],
     name: "Petal Post",
     route: "petal-post",
     dimension: {
@@ -301,7 +311,8 @@ const mainData = [
   {
     id: "td-011",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["modern", "elegant", "whimsical"],
+    occasion: ["birthday", "creative gifting", "casual celebration"],
     name: "Pressed Purple",
     route: "pressed-purple",
     dimension: {
@@ -331,7 +342,8 @@ const mainData = [
   {
     id: "td-012",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "soft", "graceful"],
+    occasion: ["anniversary", "love & affection", "date"],
     name: "Pink Butterfly Parcel",
     route: "pink-butterfly-parcel",
     dimension: {
@@ -354,7 +366,8 @@ const mainData = [
   {
     id: "td-013",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["bold", "exotic", "artistic"],
+    occasion: ["special gifting", "luxury gifting", "unique surprise"],
     name: "Anchor & Orchid",
     route: "anchor-orchid",
     dimension: {
@@ -380,7 +393,8 @@ const mainData = [
   {
     id: "td-014",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["earthy", "warm", "lively"],
+    occasion: ["housewarming", "festive gifting", "celebration"],
     name: "Earth & Aura",
     route: "earth-aura",
     dimension: {
@@ -407,7 +421,8 @@ const mainData = [
   {
     id: "td-015",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["calm", "fresh", "minimal"],
+    occasion: ["thank you", "casual gifting", "corporate gifting"],
     name: "Minty Harvest",
     route: "minty-harvest",
     dimension: {
@@ -435,7 +450,8 @@ const mainData = [
   {
     id: "td-016",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["cheerful", "colorful", "joyful"],
+    occasion: ["birthday", "celebration", "congratulations"],
     name: "Cotton Candy",
     route: "cotton-candy",
     dimension: {
@@ -465,7 +481,8 @@ const mainData = [
   {
     id: "td-017",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["soft", "soothing", "elegant"],
+    occasion: ["anniversary", "thank you", "formal gifting"],
     name: "Antique Sky",
     route: "antique-sky",
     dimension: {
@@ -494,7 +511,8 @@ const mainData = [
   {
     id: "td-018",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["happy", "bright", "positive"],
+    occasion: ["birthday", "get well soon", "cheer up"],
     name: "Golden Lace",
     route: "golden-lace",
     dimension: {
@@ -519,7 +537,8 @@ const mainData = [
   {
     id: "td-019",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["graceful", "romantic", "soothing"],
+    occasion: ["anniversary", "love & affection", "intimate moments"],
     name: "Soft Grace",
     route: "soft-grace",
     dimension: {
@@ -545,7 +564,8 @@ const mainData = [
   {
     id: "td-020",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["joyful", "energetic", "uplifting"],
+    occasion: ["birthday", "congratulations", "cheer up"],
     name: "Solar Smiles",
     route: "solar-smiles",
     dimension: {
@@ -572,7 +592,8 @@ const mainData = [
   {
     id: "td-021",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "passionate", "classic"],
+    occasion: ["valentine's day", "anniversary", "love & affection"],
     name: "Red Edit",
     route: "red-edit",
     dimension: {
@@ -597,7 +618,8 @@ const mainData = [
   {
     id: "td-022",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["grand", "luxurious", "elegant"],
+    occasion: ["wedding", "engagement", "premium celebration"],
     name: "Royal Spire",
     route: "royal-spire",
     dimension: {
@@ -625,7 +647,8 @@ const mainData = [
   {
     id: "td-023",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "vibrant", "rich"],
+    occasion: ["anniversary", "birthday", "romantic surprise"],
     name: "Rose Harmony",
     route: "rose-harmony",
     dimension: {
@@ -650,7 +673,8 @@ const mainData = [
   {
     id: "td-024",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["soft", "graceful", "serene"],
+    occasion: ["thank you", "sympathy", "formal gifting"],
     name: "Pink Lily Vase",
     route: "pink-lily-vase",
     dimension: {
@@ -672,7 +696,8 @@ const mainData = [
   {
     id: "td-025",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["cheerful", "bright", "uplifting"],
+    occasion: ["birthday", "get well soon", "cheer up"],
     name: "Sunshine Mix",
     route: "sunshine-mix",
     dimension: {
@@ -699,7 +724,8 @@ const mainData = [
   {
     id: "td-026",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["elegant", "premium", "soothing"],
+    occasion: ["corporate gifting", "anniversary", "special occasions"],
     name: "Bloom Wrap",
     route: "bloom-wrap",
     dimension: {
@@ -725,7 +751,8 @@ const mainData = [
   {
     id: "td-027",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["fresh", "vibrant", "natural"],
+    occasion: ["celebration", "housewarming", "birthday"],
     name: "Fresh Garden",
     route: "fresh-garden",
     dimension: {
@@ -757,7 +784,8 @@ const mainData = [
   {
     id: "td-028",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["calm", "soothing", "elegant"],
+    occasion: ["thank you", "sympathy", "formal gifting"],
     name: "Blue Blush",
     route: "blue-blush",
     dimension: {
@@ -783,7 +811,8 @@ const mainData = [
   {
     id: "td-029",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["romantic", "sweet", "balanced"],
+    occasion: ["anniversary", "date", "love & affection"],
     name: "Rose Romance",
     route: "rose-romance",
     dimension: {
@@ -809,7 +838,8 @@ const mainData = [
   {
     id: "td-030",
     cat: "bouquets",
-    occasion: [""],
+    emotion: ["minimal", "soft", "modern"],
+    occasion: ["casual gifting", "thank you", "everyday moments"],
     name: "Petal Harmony",
     route: "petal-harmony",
     dimension: {

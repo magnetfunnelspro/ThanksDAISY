@@ -215,6 +215,24 @@ const Product = () => {
             <span className="font-semibold">Total number:</span>
             {product.totalFlowers} flowers
           </div>
+
+          {/* Occasion */}
+          {product.occasion?.length > 0 && product.occasion[0] !== "" && (
+            <div className="mt-4">
+              <h4 className="font-semibold text-lg">Occasions</h4>
+
+              <div className="mt-2 flex flex-wrap gap-2">
+                {product.occasion.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-2 text-sm rounded-full bg-stone-100 border capitalize"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
