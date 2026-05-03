@@ -23,10 +23,10 @@ const mainData = [
     description:
       "A luxurious red-themed bouquet featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
     images: [
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784349/1_bd3cie.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784350/2_llaapc.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784350/3_r2kulo.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784351/4_xysnwt.png",
+      "/images/td-001/1.png",
+      "/images/td-001/2.png",
+      "/images/td-001/3.png",
+      "/images/td-001/4.png",
     ],
     price: 3599,
     originalPrice: 5999,
@@ -57,10 +57,10 @@ const mainData = [
     description:
       "An elegant tall bouquet blending white roses, eustoma, asters, and premium purple blooms, accented with hydrangea and foliage to create a luxurious, graceful, and eye-catching vertical floral arrangement.",
     images: [
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784671/1_rcurxk.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784672/2_snxean.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784672/3_pv077j.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784674/4_ehn1jq.png",
+      "/images/td-002/1.png",
+      "/images/td-002/2.png",
+      "/images/td-002/3.png",
+      "/images/td-002/4.png",
     ],
     price: 5999,
     originalPrice: 7999,
@@ -91,10 +91,10 @@ const mainData = [
     description:
       "A cheerful summer bouquet featuring sunflowers, roses, daisies, and hydrangea, enhanced with amaranthus and fresh foliage, creating a bright, lively, and naturally elegant arrangement for joyful occasions.",
     images: [
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784794/1_xvejjc.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784795/2_fmxbyu.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784796/3_kv1b39.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784797/4_a3p0f6.png",
+      "/images/td-003/1.png",
+      "/images/td-003/2.png",
+      "/images/td-003/3.png",
+      "/images/td-003/4.png",
     ],
     price: 4399,
     originalPrice: 5999,
@@ -119,10 +119,10 @@ const mainData = [
     description:
       "A delicate white-toned bouquet featuring fresh asters, daisies, and limonium, thoughtfully arranged to create a soft, elegant, and graceful floral design perfect for subtle and sophisticated gifting.",
     images: [
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784804/1_t6t5gn.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784806/2_hkwbby.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784807/3_j6vtmm.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784809/4_udoy1v.png",
+      "/images/td-004/1.png",
+      "/images/td-004/2.png",
+      "/images/td-004/3.png",
+      "/images/td-004/4.png",
     ],
     price: 2399,
     originalPrice: 3999,
@@ -149,10 +149,10 @@ const mainData = [
     description:
       "A charming pink bouquet featuring roses, hydrangea, and eustoma, beautifully accented with statice and limonium, creating a soft, romantic, and elegant floral arrangement ideal for heartfelt gifting moments.",
     images: [
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777785312/1_trawlx.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777785313/2_eijrvn.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777785313/3_rvispo.png",
-      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777785314/4_xdqkrz.png",
+      "/images/td-005/1.png",
+      "/images/td-005/2.png",
+      "/images/td-005/3.png",
+      "/images/td-005/4.png",
     ],
     price: 2599,
     originalPrice: 4499,
