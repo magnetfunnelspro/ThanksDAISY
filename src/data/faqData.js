@@ -19,9 +19,9 @@ const faqData = [
   },
   {
     id: "faq-004",
-    question: "Do you offer any surprise or free gifts?",
+    question: "Do you offer replacements in case of damaged products?",
     answer:
-      "Yes, we love surprises. Every order may include a random complimentary gift to make your experience even more special.",
+      "Yes, we offer a hassle-free replacement if your order arrives damaged. Just share clear photos or videos of the product with us immediately, and we'll arrange a fresh replacement.",
   },
   {
     id: "faq-005",

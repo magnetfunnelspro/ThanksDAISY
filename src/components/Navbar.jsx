@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Context
+import { useCart } from "../context/CartContext";
+
+// Data
+import occData from "../data/occData";
+import emoData from "../data/emoData";
+
 const Navbar = () => {
+  const { cart } = useCart();
+
+  const [showOcc, setShowOcc] = useState(false);
+  const [showEmo, setShowEmo] = useState(false);
   const [toggleNav, setToggleNav] = useState(false);
 
   return (
@@ -14,40 +25,68 @@ const Navbar = () => {
       {/* Navigation Link */}
       <div className="hidden xl:flex items-center gap-8">
         {/* Links */}
-        <div className="flex gap-8">
-          <Link
-            onClick={() => setToggleNav(false)}
-            to="/"
-            className="leading-none"
-          >
+        <div className="flex gap-8 items-center">
+          <Link to="/" className="leading-none">
             Home
           </Link>
-          <Link
-            onClick={() => setToggleNav(false)}
-            to="/shop"
-            className="leading-none"
-          >
-            Shop
+
+          <Link to="/shop" className="leading-none">
+            All Products
           </Link>
-          <Link
-            onClick={() => setToggleNav(false)}
-            to="/subscription"
-            className="leading-none"
-          >
-            Subscribe
-          </Link>
-          <Link
-            onClick={() => setToggleNav(false)}
-            to="/corporate-gifting"
-            className="leading-none"
-          >
-            Corporate
-          </Link>
-          <Link
-            onClick={() => setToggleNav(false)}
-            to="/contact"
-            className="leading-none"
-          >
+
+          {/* Occasion */}
+          <div className="relative group">
+            <span className="cursor-pointer leading-none">
+              Shop by Occasion
+            </span>
+
+            {/* Dropdown */}
+            <div className="mt-4 p-8 absolute left-1/2 -translate-x-1/2 top-8 w-[420px] bg-white rounded-md border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="grid grid-cols-3 gap-4">
+                {occData.map((item, i) => (
+                  <Link
+                    key={i}
+                    to={item.route}
+                    className="flex flex-col items-center gap-2 group/item"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-20 h-20 object-cover rounded-full"
+                    />
+                    <span className="text-xs text-center">{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Emotion */}
+          <div className="relative group">
+            <span className="cursor-pointer leading-none">Shop by Emotion</span>
+
+            {/* Dropdown */}
+            <div className="mt-4 p-8 absolute left-1/2 -translate-x-1/2 top-8 w-[420px] bg-white rounded-md border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="grid grid-cols-3 gap-4">
+                {emoData.map((item, i) => (
+                  <Link
+                    key={i}
+                    to={item.route}
+                    className="flex flex-col items-center gap-2 group/item"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-20 h-20 object-cover rounded-full"
+                    />
+                    <span className="text-xs text-center">{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <Link to="/contact" className="leading-none">
             Contact Us
           </Link>
         </div>
@@ -63,8 +102,14 @@ const Navbar = () => {
         </Link>
 
         {/* Shopping Cart */}
-        <Link to="/cart" className="text-lg">
+        <Link to="/cart" className="relative text-lg">
           <i className="ri-shopping-bag-line"></i>
+
+          {cart.length > 0 && (
+            <span className="absolute -top-0 -right-1 text-[8px] leading-none pt-[2.5px] p-[2px] px-[4px] rounded-full text-white bg-stone-800">
+              {cart.length}
+            </span>
+          )}
         </Link>
       </div>
 
@@ -81,8 +126,14 @@ const Navbar = () => {
         </Link>
 
         {/* Shopping Cart */}
-        <Link to="/cart" className="text-xl">
+        <Link to="/cart" className="relative text-lg">
           <i className="ri-shopping-bag-line"></i>
+
+          {cart.length > 0 && (
+            <span className="absolute -top-0 -right-1 text-[8px] leading-none pt-[2.5px] p-[2px] px-[4px] rounded-full text-white bg-stone-800">
+              {cart.length}
+            </span>
+          )}
         </Link>
 
         {/* Menu Bar */}
@@ -104,7 +155,7 @@ const Navbar = () => {
               }`}
             >
               {/* Header */}
-              <div className="flex gap-20 items-center">
+              <div className="flex gap-36 items-center">
                 <i
                   onClick={() => setToggleNav(false)}
                   className="ri-close-large-line cursor-pointer text-xl"
@@ -117,35 +168,83 @@ const Navbar = () => {
                 <Link
                   onClick={() => setToggleNav(false)}
                   to="/"
-                  className="text-lg leading-none"
+                  className="text-base leading-none"
                 >
                   Home
                 </Link>
+
                 <Link
                   onClick={() => setToggleNav(false)}
                   to="/shop"
-                  className="text-lg leading-none"
+                  className="text-base leading-none"
                 >
-                  Shop
+                  All Products
                 </Link>
-                <Link
-                  onClick={() => setToggleNav(false)}
-                  to="/subscription"
-                  className="text-lg leading-none"
-                >
-                  Subscribe
-                </Link>
-                <Link
-                  onClick={() => setToggleNav(false)}
-                  to="/corporate-gifting"
-                  className="text-lg leading-none"
-                >
-                  Corporate
-                </Link>
+
+                {/* Occasion */}
+                <div className="flex flex-col items-end">
+                  <span
+                    onClick={() => setShowOcc(!showOcc)}
+                    className="text-base cursor-pointer flex items-center gap-2"
+                  >
+                    Shop by Occasion
+                    <i
+                      className={`ri-arrow-down-s-line transition-transform duration-300 ${
+                        showOcc ? "rotate-180" : "rotate-0"
+                      }`}
+                    ></i>
+                  </span>
+
+                  {showOcc && (
+                    <div className="mt-2 flex flex-col gap-2">
+                      {occData.map((item, i) => (
+                        <Link
+                          key={i}
+                          to={item.route}
+                          onClick={() => setToggleNav(false)}
+                          className="text-sm text-end text-stone-600"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Emotion */}
+                <div className="flex flex-col items-end">
+                  <span
+                    onClick={() => setShowEmo(!showEmo)}
+                    className="text-base cursor-pointer flex items-center gap-2"
+                  >
+                    Shop by Emotion
+                    <i
+                      className={`ri-arrow-down-s-line transition-transform duration-300 ${
+                        showEmo ? "rotate-180" : "rotate-0"
+                      }`}
+                    ></i>
+                  </span>
+
+                  {showEmo && (
+                    <div className="mt-2 flex flex-col gap-2">
+                      {emoData.map((item, i) => (
+                        <Link
+                          key={i}
+                          to={item.route}
+                          onClick={() => setToggleNav(false)}
+                          className="text-sm text-end text-stone-600"
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
                 <Link
                   onClick={() => setToggleNav(false)}
                   to="/contact"
-                  className="text-lg leading-none"
+                  className="text-base leading-none"
                 >
                   Contact Us
                 </Link>

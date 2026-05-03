@@ -55,14 +55,21 @@ const Checkout = () => {
     "110010",
     "110011",
     "110012",
+    "110013",
+    "110014",
     "110016",
     "110017",
     "110018",
     "110019",
     "110020",
     "110021",
+    "110022",
+    "110023",
     "110024",
+    "110025",
     "110027",
+    "110028",
+    "110029",
     "110030",
     "110034",
     "110044",
@@ -631,13 +638,13 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
               isProcessing ? "bg-stone-600 cursor-not-allowed" : "bg-stone-800"
             }`}
           >
-            {isProcessing ? "Processing Order..." : "Online Payment"}
+            {isProcessing ? "Processing Order..." : "Pay Online"}
           </button>
           <button
             onClick={() => handlePlaceOrder("COD")} // Pass "COD"
             disabled={isProcessing}
             className={`w-full p-4 rounded-md font-semibold border-2 border-r-4 border-b-4 border-stone-800 text-stone-800 transition-all ${
-              isProcessing ? "bg-stone-600 cursor-not-allowed" : "bg-white"
+              isProcessing ? "cursor-not-allowed" : "bg-white"
             }`}
           >
             {isProcessing ? "Processing Order..." : "Cash on Delivery"}

@@ -22,7 +22,7 @@ const Search = () => {
       const matchesName = product.name.toLowerCase().includes(query);
       const matchesCat = product.cat.toLowerCase().includes(query);
       const matchesOccasion = product.occasion.some((occ) =>
-        occ.toLowerCase().includes(query)
+        occ.toLowerCase().includes(query),
       );
       return matchesName || matchesCat || matchesOccasion;
     });
@@ -31,8 +31,6 @@ const Search = () => {
       results.sort((a, b) => a.price - b.price);
     } else if (sortBy === "high") {
       results.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "new") {
-      results.reverse();
     }
 
     return results;
@@ -40,13 +38,12 @@ const Search = () => {
 
   return (
     <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-4 xl:gap-8 font-['Space_Grotesk'] text-stone-800">
-      
       {/* HEADER & SEARCH INPUT */}
       <div className="flex flex-col gap-4">
         <h2 className="text-xl xl:text-2xl font-semibold leading-none">
           Find Your Perfect Gift
         </h2>
-        
+
         <div className="flex items-center justify-between gap-4">
           <div className="w-full p-4 rounded-md border-2 border-r-4 border-b-4 border-stone-800 flex items-center gap-4">
             <i className="ri-search-line text-lg leading-none"></i>
@@ -65,9 +62,9 @@ const Search = () => {
             <button
               onClick={() => setShowSort(!showSort)}
               className="p-4 px-4 text-lg font-semibold leading-none rounded-md border-2 border-r-4 border-b-4 border-stone-800 text-stone-800"
-          >
-            <i class="ri-equalizer-2-line"></i>
-          </button>
+            >
+              <i class="ri-equalizer-2-line"></i>
+            </button>
 
             {showSort && (
               <div className="w-48 mt-2 absolute right-0 border rounded-md shadow-lg bg-white z-50">
@@ -75,7 +72,6 @@ const Search = () => {
                   { label: "Default", value: "default" },
                   { label: "Price: Low to High", value: "low" },
                   { label: "Price: High to Low", value: "high" },
-                  { label: "Newest", value: "new" },
                 ].map((opt) => (
                   <div
                     key={opt.value}

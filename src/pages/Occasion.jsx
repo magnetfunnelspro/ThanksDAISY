@@ -34,8 +34,6 @@ const Occasion = () => {
     products.sort((a, b) => a.price - b.price);
   } else if (sortBy === "high") {
     products.sort((a, b) => b.price - a.price);
-  } else if (sortBy === "new") {
-    products = [...products].reverse();
   }
 
   const pageTitle = type.charAt(0).toUpperCase() + type.slice(1);
@@ -81,7 +79,6 @@ const Occasion = () => {
                 { label: "Default", value: "default" },
                 { label: "Price: Low to High", value: "low" },
                 { label: "Price: High to Low", value: "high" },
-                { label: "Newest", value: "new" },
               ].map((opt) => (
                 <div
                   key={opt.value}

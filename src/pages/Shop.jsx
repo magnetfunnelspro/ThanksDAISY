@@ -30,14 +30,14 @@ const Shop = () => {
     products.sort((a, b) => a.price - b.price);
   } else if (sortBy === "high") {
     products.sort((a, b) => b.price - a.price);
-  } else if (sortBy === "new") {
-    products = [...products].reverse();
   }
 
   return (
     <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-4 xl:gap-8 font-['Space_Grotesk'] text-stone-800">
       {/* HEADER */}
-      <h2 className="text-xl xl:text-2xl font-semibold leading-none">Shop All Products</h2>
+      <h2 className="text-xl xl:text-2xl font-semibold leading-none">
+        Shop All Products
+      </h2>
 
       {/* FILTER BAR */}
       <div className="pb-4 xl:pb-8 border-b flex items-center justify-between gap-4">
@@ -73,7 +73,6 @@ const Shop = () => {
                 { label: "Default", value: "default" },
                 { label: "Price: Low to High", value: "low" },
                 { label: "Price: High to Low", value: "high" },
-                { label: "Newest", value: "new" },
               ].map((opt) => (
                 <div
                   key={opt.value}

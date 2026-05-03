@@ -1,9 +1,16 @@
 const mainData = [
   {
     id: "td-001",
-    cat: "bouquets",
-    emotion: ["romantic", "passionate", "bold"],
-    occasion: ["anniversary", "valentine's day", "romantic surprise"],
+    cat: "vase arrangement",
+    emotion: ["best-wishes"],
+    occasion: [
+      "love",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "surprise",
+    ],
     name: "Red Spread",
     route: "red-spread",
     dimension: {
@@ -19,7 +26,6 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
       { name: "Eucalyptus", quantity: 3 },
     ],
-    totalFlowers: 49,
     description:
       "A luxurious red-themed bouquet featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
     images: [
@@ -33,9 +39,16 @@ const mainData = [
   },
   {
     id: "td-002",
-    cat: "bouquets",
-    emotion: ["luxurious", "graceful", "elegant"],
-    occasion: ["wedding", "engagement", "grand celebration"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "sympathy", "best-wishes"],
+    occasion: [
+      "birthday",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "surprise",
+    ],
     name: "Purple Tower",
     route: "purple-tower",
     dimension: {
@@ -53,7 +66,6 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
       { name: "Foxtail Fern", quantity: 5 },
     ],
-    totalFlowers: 58,
     description:
       "An elegant tall bouquet blending white roses, eustoma, asters, and premium purple blooms, accented with hydrangea and foliage to create a luxurious, graceful, and eye-catching vertical floral arrangement.",
     images: [
@@ -67,9 +79,9 @@ const mainData = [
   },
   {
     id: "td-003",
-    cat: "bouquets",
-    emotion: ["cheerful", "joyful", "bright"],
-    occasion: ["birthday", "congratulations", "get well soon"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "wedding", "event", "celebration", "surprise"],
     name: "Summer Fields",
     route: "summer-fields",
     dimension: {
@@ -87,7 +99,6 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
       { name: "Eucalyptus", quantity: 5 },
     ],
-    totalFlowers: 37,
     description:
       "A cheerful summer bouquet featuring sunflowers, roses, daisies, and hydrangea, enhanced with amaranthus and fresh foliage, creating a bright, lively, and naturally elegant arrangement for joyful occasions.",
     images: [
@@ -101,9 +112,9 @@ const mainData = [
   },
   {
     id: "td-004",
-    cat: "bouquets",
-    emotion: ["calm", "peaceful", "elegant"],
-    occasion: ["sympathy", "thank you", "formal gifting"],
+    cat: "vase arrangement",
+    emotion: ["apology", "sympathy", "miss-you", "get-well-soon"],
+    occasion: ["event"],
     name: "White Star",
     route: "white-star",
     dimension: {
@@ -115,7 +126,6 @@ const mainData = [
       { name: "Daisy", quantity: 6 },
       { name: "Limonium", quantity: 4 },
     ],
-    totalFlowers: 16,
     description:
       "A delicate white-toned bouquet featuring fresh asters, daisies, and limonium, thoughtfully arranged to create a soft, elegant, and graceful floral design perfect for subtle and sophisticated gifting.",
     images: [
@@ -129,9 +139,9 @@ const mainData = [
   },
   {
     id: "td-005",
-    cat: "bouquets",
-    emotion: ["romantic", "sweet", "soft"],
-    occasion: ["anniversary", "date", "love & affection"],
+    cat: "vase arrangement",
+    emotion: ["miss-you", "best-wishes"],
+    occasion: ["birthday", "anniversary", "event", "surprise"],
     name: "Pink Globe",
     route: "pink-globe",
     dimension: {
@@ -145,7 +155,6 @@ const mainData = [
       { name: "Statice", quantity: 4 },
       { name: "Limonium", quantity: 2 },
     ],
-    totalFlowers: 20,
     description:
       "A charming pink bouquet featuring roses, hydrangea, and eustoma, beautifully accented with statice and limonium, creating a soft, romantic, and elegant floral arrangement ideal for heartfelt gifting moments.",
     images: [
@@ -159,9 +168,9 @@ const mainData = [
   },
   {
     id: "td-006",
-    cat: "bouquets",
-    emotion: ["calm", "moody", "elegant"],
-    occasion: ["evening gifting", "thank you", "intimate moments"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "best-wishes"],
+    occasion: ["birthday", "anniversary"],
     name: "Night Garden",
     route: "night-garden",
     dimension: {
@@ -175,7 +184,6 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
       { name: "Foxtail Fern", quantity: 5 },
     ],
-    totalFlowers: 20,
     description:
       "A moody and elegant bouquet featuring daisies, eustoma, and rich fillers, accented with statice, limonium, and foxtail foliage, creating a sophisticated and calming floral arrangement for special moments.",
     images: [
@@ -189,9 +197,16 @@ const mainData = [
   },
   {
     id: "td-007",
-    cat: "bouquets",
-    emotion: ["fresh", "vibrant", "joyful"],
-    occasion: ["birthday", "celebration", "congratulations"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "best-wishes"],
+    occasion: [
+      "birthday",
+      "anninversary",
+      "wedding",
+      "event",
+      "celebration",
+      "surprise",
+    ],
     name: "Morning Garden",
     route: "morning-garden",
     dimension: {
@@ -209,7 +224,6 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
       { name: "Eucalyptus", quantity: 5 },
     ],
-    totalFlowers: 43,
     description:
       "A fresh and vibrant bouquet featuring roses, alstroemeria, tulips, and hydrangea, beautifully complemented with daisies, anthurium, and lush foliage, creating a lively and elegant arrangement for cheerful occasions.",
     images: [
@@ -223,9 +237,9 @@ const mainData = [
   },
   {
     id: "td-008",
-    cat: "bouquets",
-    emotion: ["natural", "earthy", "modern"],
-    occasion: ["housewarming", "corporate gifting", "casual gifting"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "get-well-soon"],
+    occasion: ["birthday", "anniversary", "event", "first-date", "surprise"],
     name: "Green Star",
     route: "green-star",
     dimension: {
@@ -240,7 +254,6 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
       { name: "Dried Fillers", quantity: 3 },
     ],
-    totalFlowers: 19,
     description:
       "A refreshing green-themed bouquet featuring roses, amaranthus, and soft blooms, accented with dried elements and delicate fillers, creating a natural, modern, and earthy floral arrangement for stylish gifting.",
     images: [
@@ -254,9 +267,16 @@ const mainData = [
   },
   {
     id: "td-009",
-    cat: "bouquets",
-    eemotion: ["luxurious", "exotic", "warm"],
-    occasion: ["anniversary", "special gifting", "premium surprise"],
+    cat: "vase arrangement",
+    eemotion: ["gratitude", "apology", "best-wishes"],
+    occasion: [
+      "birthday",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "surprise",
+    ],
     name: "Peach Amber",
     route: "peach-amber",
     dimension: {
@@ -267,7 +287,6 @@ const mainData = [
       { name: "Tiger Orchid", quantity: 10 },
       { name: "Limonium", quantity: 2 },
     ],
-    totalFlowers: 12,
     description:
       "A striking bouquet featuring vibrant tiger orchids paired with delicate limonium, creating a warm peach-toned arrangement that feels elegant, exotic, and perfect for stylish, minimal, and sophisticated gifting occasions.",
     images: [
@@ -281,9 +300,9 @@ const mainData = [
   },
   {
     id: "td-010",
-    cat: "bouquets",
-    emotion: ["soft", "pleasant", "cheerful"],
-    occasion: ["thank you", "birthday", "just because"],
+    cat: "flower box",
+    emotion: ["miss-you", "best-wishes"],
+    occasion: ["birthday", "love", "anniversary", "first-date", "surprise"],
     name: "Petal Post",
     route: "petal-post",
     dimension: {
@@ -296,7 +315,6 @@ const mainData = [
       { name: "Daisy", quantity: 3 },
       { name: "Limonium", quantity: 2 },
     ],
-    totalFlowers: 12,
     description:
       "A charming bouquet featuring lilies, roses, and daisies, gently accented with limonium, creating a soft, fresh, and elegant floral arrangement perfect for thoughtful gifting and everyday special moments.",
     images: [
@@ -310,9 +328,9 @@ const mainData = [
   },
   {
     id: "td-011",
-    cat: "bouquets",
-    emotion: ["modern", "elegant", "whimsical"],
-    occasion: ["birthday", "creative gifting", "casual celebration"],
+    cat: "flower box",
+    emotion: ["gratitude", "apology", "sympathy", "miss-you"],
+    occasion: ["birthday", "first-date", "surprise"],
     name: "Pressed Purple",
     route: "pressed-purple",
     dimension: {
@@ -327,7 +345,6 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
       { name: "Foxtail Fern", quantity: 2 },
     ],
-    totalFlowers: 17,
     description:
       "A stylish purple-themed bouquet featuring roses, eustoma, daisies, and allium, accented with limonium and soft foliage, creating a modern, elegant, and slightly whimsical floral arrangement for unique gifting moments.",
     images: [
@@ -341,9 +358,9 @@ const mainData = [
   },
   {
     id: "td-012",
-    cat: "bouquets",
-    emotion: ["romantic", "soft", "graceful"],
-    occasion: ["anniversary", "love & affection", "date"],
+    cat: "flower box",
+    emotion: ["apology", "sympathy", "miss-you"],
+    occasion: ["love", "anniversary", "first-date"],
     name: "Pink Butterfly Parcel",
     route: "pink-butterfly-parcel",
     dimension: {
@@ -351,7 +368,6 @@ const mainData = [
       height: "13 inch",
     },
     flowers: [{ name: "Tulip", quantity: 10 }],
-    totalFlowers: 10,
     description:
       "A graceful bouquet of fresh pink tulips, thoughtfully arranged to create a soft, elegant, and charming floral design, perfect for expressing love, appreciation, and warm heartfelt emotions.",
     images: [
@@ -365,9 +381,9 @@ const mainData = [
   },
   {
     id: "td-013",
-    cat: "bouquets",
-    emotion: ["bold", "exotic", "artistic"],
-    occasion: ["special gifting", "luxury gifting", "unique surprise"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "best-wishes"],
+    occasion: ["birthday", "love", "anniversary", "event"],
     name: "Anchor & Orchid",
     route: "anchor-orchid",
     dimension: {
@@ -378,7 +394,6 @@ const mainData = [
       { name: "Spider Orchid", quantity: 10 },
       { name: "Limonium", quantity: 2 },
     ],
-    totalFlowers: 12,
     description:
       "A bold and elegant bouquet featuring exotic spider orchids paired with delicate limonium, creating a unique, modern, and artistic floral arrangement perfect for stylish gifting and standout occasions.",
     images: [
@@ -392,9 +407,9 @@ const mainData = [
   },
   {
     id: "td-014",
-    cat: "bouquets",
-    emotion: ["earthy", "warm", "lively"],
-    occasion: ["housewarming", "festive gifting", "celebration"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "apology", "get-well-soon", "best-wishes"],
+    occasion: ["birthday", "anniversary", "wedding", "event", "celebration"],
     name: "Earth & Aura",
     route: "earth-aura",
     dimension: {
@@ -406,7 +421,6 @@ const mainData = [
       { name: "Statice", quantity: 10 },
       { name: "Love Grass (Decorative Fillers)", quantity: 10 },
     ],
-    totalFlowers: 50,
     description:
       "A full, earthy bouquet featuring vibrant mixed daisies, complemented with statice and airy filler grasses, creating a natural, textured, and lively floral arrangement with a warm and organic aesthetic.",
     images: [
@@ -421,8 +435,23 @@ const mainData = [
   {
     id: "td-015",
     cat: "bouquets",
-    emotion: ["calm", "fresh", "minimal"],
-    occasion: ["thank you", "casual gifting", "corporate gifting"],
+    emotion: [
+      "gratitude",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
+    occasion: [
+      "birthday",
+      "love",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "first-date",
+      "surprise",
+    ],
     name: "Minty Harvest",
     route: "minty-harvest",
     dimension: {
@@ -435,7 +464,6 @@ const mainData = [
       { name: "Hydrangea", quantity: 1 },
       { name: "Limonium", quantity: 3 },
     ],
-    totalFlowers: 19,
     description:
       "A refreshing bouquet featuring daisies and hydrangea, accented with statice and limonium, creating a soft, airy, and natural floral arrangement with a clean, calming, and elegant aesthetic.",
     images: [
@@ -450,8 +478,24 @@ const mainData = [
   {
     id: "td-016",
     cat: "bouquets",
-    emotion: ["cheerful", "colorful", "joyful"],
-    occasion: ["birthday", "celebration", "congratulations"],
+    emotion: [
+      "gratitude",
+      "apology",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
+    occasion: [
+      "birthday",
+      "love",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "first-date",
+      "surprise",
+    ],
     name: "Cotton Candy",
     route: "cotton-candy",
     dimension: {
@@ -481,8 +525,23 @@ const mainData = [
   {
     id: "td-017",
     cat: "bouquets",
-    emotion: ["soft", "soothing", "elegant"],
-    occasion: ["anniversary", "thank you", "formal gifting"],
+    emotion: [
+      "gratitude",
+      "apology",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
+    occasion: [
+      "birthday",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "first-date",
+      "surprise",
+    ],
     name: "Antique Sky",
     route: "antique-sky",
     dimension: {
@@ -511,8 +570,15 @@ const mainData = [
   {
     id: "td-018",
     cat: "bouquets",
-    emotion: ["happy", "bright", "positive"],
-    occasion: ["birthday", "get well soon", "cheer up"],
+    emotion: [
+      "gratitude",
+      "apology",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
+    occasion: ["birthday", "event", "celebration"],
     name: "Golden Lace",
     route: "golden-lace",
     dimension: {
@@ -537,8 +603,8 @@ const mainData = [
   {
     id: "td-019",
     cat: "bouquets",
-    emotion: ["graceful", "romantic", "soothing"],
-    occasion: ["anniversary", "love & affection", "intimate moments"],
+    emotion: ["gratitude", "apology", "sympathy", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "love", "anniversary", "event", "first-date"],
     name: "Soft Grace",
     route: "soft-grace",
     dimension: {
@@ -563,9 +629,9 @@ const mainData = [
   },
   {
     id: "td-020",
-    cat: "bouquets",
-    emotion: ["joyful", "energetic", "uplifting"],
-    occasion: ["birthday", "congratulations", "cheer up"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "apology", "sympathy", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "celebration"],
     name: "Solar Smiles",
     route: "solar-smiles",
     dimension: {
@@ -592,8 +658,8 @@ const mainData = [
   {
     id: "td-021",
     cat: "bouquets",
-    emotion: ["romantic", "passionate", "classic"],
-    occasion: ["valentine's day", "anniversary", "love & affection"],
+    emotion: ["miss-you"],
+    occasion: ["love", "anniversary", "first-date", "surprise"],
     name: "Red Edit",
     route: "red-edit",
     dimension: {
@@ -617,9 +683,9 @@ const mainData = [
   },
   {
     id: "td-022",
-    cat: "bouquets",
-    emotion: ["grand", "luxurious", "elegant"],
-    occasion: ["wedding", "engagement", "premium celebration"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "apology", "sympathy", "get-well-soon"],
+    occasion: ["birthday", "event", "surprise"],
     name: "Royal Spire",
     route: "royal-spire",
     dimension: {
@@ -641,14 +707,14 @@ const mainData = [
       "/images/td-022/3.png",
       "/images/td-022/4.png",
     ],
-    price: 5999,
+    price: 4999,
     originalPrice: 7999,
   },
   {
     id: "td-023",
-    cat: "bouquets",
-    emotion: ["romantic", "vibrant", "rich"],
-    occasion: ["anniversary", "birthday", "romantic surprise"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "apology", "sympathy", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "anniversary", "event"],
     name: "Rose Harmony",
     route: "rose-harmony",
     dimension: {
@@ -667,14 +733,14 @@ const mainData = [
       "/images/td-023/3.png",
       "/images/td-023/4.png",
     ],
-    price: 3599,
+    price: 2799,
     originalPrice: 4599,
   },
   {
     id: "td-024",
-    cat: "bouquets",
-    emotion: ["soft", "graceful", "serene"],
-    occasion: ["thank you", "sympathy", "formal gifting"],
+    cat: "vase arrangement",
+    emotion: ["grtitude", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "anniversary", "event", "surprise"],
     name: "Pink Lily Vase",
     route: "pink-lily-vase",
     dimension: {
@@ -696,8 +762,8 @@ const mainData = [
   {
     id: "td-025",
     cat: "bouquets",
-    emotion: ["cheerful", "bright", "uplifting"],
-    occasion: ["birthday", "get well soon", "cheer up"],
+    emotion: ["apology", "sympathy", "get-well-soon"],
+    occasion: ["first-date"],
     name: "Sunshine Mix",
     route: "sunshine-mix",
     dimension: {
@@ -724,8 +790,23 @@ const mainData = [
   {
     id: "td-026",
     cat: "bouquets",
-    emotion: ["elegant", "premium", "soothing"],
-    occasion: ["corporate gifting", "anniversary", "special occasions"],
+    emotion: [
+      "gratitude",
+      "apology",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
+    occasion: [
+      "birthday",
+      "anniversary",
+      "wedding",
+      "event",
+      "celebration",
+      "first-date",
+      "surprise",
+    ],
     name: "Bloom Wrap",
     route: "bloom-wrap",
     dimension: {
@@ -745,14 +826,14 @@ const mainData = [
       "/images/td-026/3.png",
       "/images/td-026/4.png",
     ],
-    price: 4799,
+    price: 3799,
     originalPrice: 5199,
   },
   {
     id: "td-027",
-    cat: "bouquets",
-    emotion: ["fresh", "vibrant", "natural"],
-    occasion: ["celebration", "housewarming", "birthday"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "sympathy", "get-well-soon"],
+    occasion: ["event"],
     name: "Fresh Garden",
     route: "fresh-garden",
     dimension: {
@@ -778,14 +859,14 @@ const mainData = [
       "/images/td-027/3.png",
       "/images/td-027/4.png",
     ],
-    price: 2399,
+    price: 4799,
     originalPrice: 3399,
   },
   {
     id: "td-028",
-    cat: "bouquets",
-    emotion: ["calm", "soothing", "elegant"],
-    occasion: ["thank you", "sympathy", "formal gifting"],
+    cat: "vase arrangement",
+    emotion: ["gratitude", "sympathy", "miss-you", "get-well-soon"],
+    occasion: ["birthday", "anniversary", "event", "surprise"],
     name: "Blue Blush",
     route: "blue-blush",
     dimension: {
@@ -811,8 +892,8 @@ const mainData = [
   {
     id: "td-029",
     cat: "bouquets",
-    emotion: ["romantic", "sweet", "balanced"],
-    occasion: ["anniversary", "date", "love & affection"],
+    emotion: ["miss-you"],
+    occasion: ["love", "anniversary", "first-date"],
     name: "Rose Romance",
     route: "rose-romance",
     dimension: {
@@ -837,9 +918,9 @@ const mainData = [
   },
   {
     id: "td-030",
-    cat: "bouquets",
-    emotion: ["minimal", "soft", "modern"],
-    occasion: ["casual gifting", "thank you", "everyday moments"],
+    cat: "vase arrangement",
+    emotion: ["apology", "get-well-soon"],
+    occasion: ["event"],
     name: "Petal Harmony",
     route: "petal-harmony",
     dimension: {
@@ -858,9 +939,21 @@ const mainData = [
       "/images/td-030/3.png",
       "/images/td-030/4.png",
     ],
-    price: 1199,
+    price: 1399,
     originalPrice: 2199,
   },
 ];
 
-export default mainData;
+const updatedData = mainData.map((item) => {
+  const totalFlowers = item.flowers?.reduce(
+    (sum, flower) => sum + (flower.quantity || 0),
+    0,
+  );
+
+  return {
+    ...item,
+    totalFlowers,
+  };
+});
+
+export default updatedData;

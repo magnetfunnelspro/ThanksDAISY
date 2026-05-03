@@ -212,7 +212,7 @@ const Cart = () => {
                   onClick={() => navigate("/checkout")}
                   className="w-full p-4 font-semibold bg-stone-800 text-white rounded-md"
                 >
-                  Proceed to Checkout
+                  Continue to Checkout
                 </button>
 
                 <button

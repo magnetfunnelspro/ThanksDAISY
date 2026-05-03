@@ -95,7 +95,6 @@ const Product = () => {
         <div className="w-full xl:w-1/2 flex flex-col xl:flex-row-reverse gap-4">
           {/* Main Slider */}
           <Swiper
-            lazy={true}
             spaceBetween={16}
             breakpoints={{
               1280: {
@@ -153,7 +152,7 @@ const Product = () => {
           {/* Dimensions */}
           <div className="mt-0 text-sm flex gap-2 text-stone-600">
             <span className="font-semibold">Dimensions:</span>
-            {product.dimension.width} x {product.dimension.height}
+            {product.dimension.width} (W) x {product.dimension.height} (H)
           </div>
 
           {/* Pricing */}
@@ -207,7 +206,7 @@ const Product = () => {
               {product.flowers.map((flower, index) => (
                 <div
                   key={index}
-                  className="p-2 text-sm rounded-full bg-stone-100 border"
+                  className="p-2 text-sm rounded-md bg-stone-50 border"
                 >
                   {flower.name}
                 </div>

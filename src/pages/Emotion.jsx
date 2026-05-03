@@ -1,70 +1,89 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 // Components
 import Card from "../components/Card";
 
 // Data
-import corporateData from "../data/corporateData";
+import mainData from "../data/mainData";
 
-const Corporate = () => {
-  const [selectedCat, setSelectedCat] = useState("all");
+const Emotion = () => {
+  const { type } = useParams();
+
+  const [selectedOccasion, setSelectedOccasion] = useState("all");
   const [sortBy, setSortBy] = useState("default");
   const [showSort, setShowSort] = useState(false);
 
-  // Dynamic categories
-  const categories = ["all", ...new Set(corporateData.map((p) => p.cat))];
+  // Normalize type
+  const normalizedType = type?.toLowerCase();
 
-  // =========================
-  // FILTER
-  // =========================
-  let products = [...corporateData];
+  // Filter by emotion
+  const format = (str) => str?.toLowerCase().replace(/\s+/g, "-");
 
-  if (selectedCat !== "all") {
-    products = products.filter((item) => item.cat === selectedCat);
+  let initialProducts = mainData.filter((product) =>
+    product.emotion?.some((emo) => format(emo) === normalizedType),
+  );
+
+  // Sub-filter (based on occasion)
+  const subOccasions = [
+    "all",
+    ...new Set(initialProducts.flatMap((p) => p.occasion || [])),
+  ];
+
+  let products = [...initialProducts];
+
+  // Filter by selected occasion
+  if (selectedOccasion !== "all") {
+    products = products.filter((item) =>
+      item.occasion?.includes(selectedOccasion),
+    );
   }
 
-  // =========================
-  // SORT
-  // =========================
+  // Sorting
   if (sortBy === "low") {
     products.sort((a, b) => a.price - b.price);
   } else if (sortBy === "high") {
     products.sort((a, b) => b.price - a.price);
-  } else if (sortBy === "new") {
-    products = [...products].reverse();
   }
+
+  const pageTitle = normalizedType
+    ?.split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
   return (
     <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-4 xl:gap-8 font-['Space_Grotesk'] text-stone-800">
       {/* HEADER */}
-      <h2 className="text-xl xl:text-2xl font-semibold leading-none">Shop Corporate Gifts</h2>
+      <h2 className="text-xl xl:text-2xl font-semibold leading-none">
+        {pageTitle} Collection
+      </h2>
 
       {/* FILTER BAR */}
       <div className="pb-4 xl:pb-8 border-b flex items-center justify-between gap-4">
-        {/* Categories */}
+        {/* Occasion Filter */}
         <div className="flex gap-2 overflow-x-auto scrollbar">
-          {categories.map((cat) => (
+          {subOccasions.map((occ) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCat(cat)}
-              className={`p-2 px-4 text-sm xl:text-base capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-stone-800 text-stone-800 transition duration-200 ${
-                selectedCat === cat
-                  ? "bg-stone-800 text-white border-stone-800"
-                  : "bg-white"
+              key={occ}
+              onClick={() => setSelectedOccasion(occ)}
+              className={`p-2 px-4 text-sm xl:text-base capitalize rounded-md whitespace-nowrap border-2 border-r-4 border-b-4 border-stone-800 transition duration-200 ${
+                selectedOccasion === occ
+                  ? "bg-stone-800 text-white"
+                  : "bg-white text-stone-800"
               }`}
             >
-              {cat}
+              {occ}
             </button>
           ))}
         </div>
 
-        {/* Sort Dropdown */}
+        {/* Sort */}
         <div className="relative">
           <button
             onClick={() => setShowSort(!showSort)}
             className="p-2 px-4 text-sm xl:text-base font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-800 text-stone-800"
           >
-            <i class="ri-equalizer-2-line"></i>
+            <i className="ri-equalizer-2-line"></i>
           </button>
 
           {showSort && (
@@ -73,7 +92,6 @@ const Corporate = () => {
                 { label: "Default", value: "default" },
                 { label: "Price: Low to High", value: "low" },
                 { label: "Price: High to Low", value: "high" },
-                { label: "Newest", value: "new" },
               ].map((opt) => (
                 <div
                   key={opt.value}
@@ -81,7 +99,7 @@ const Corporate = () => {
                     setSortBy(opt.value);
                     setShowSort(false);
                   }}
-                  className="p-4 border-b text-sm tracking-wide hover:bg-stone-100 cursor-pointer "
+                  className="p-4 border-b text-sm hover:bg-stone-100 cursor-pointer"
                 >
                   {opt.label}
                 </div>
@@ -91,12 +109,16 @@ const Corporate = () => {
         </div>
       </div>
 
-      {/* PRODUCT COUNT */}
-      <div className="text-sm text-stone-800">{products.length} products</div>
+      {/* COUNT */}
+      <div className="text-sm text-stone-800">
+        {products.length} {normalizedType} gifts found
+      </div>
 
       {/* GRID */}
       {products.length === 0 ? (
-        <div className="p-8 text-center text-stone-800">No products found.</div>
+        <div className="p-8 text-center text-stone-800">
+          No products found in this category.
+        </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8">
           {products.map((item) => (
@@ -108,4 +130,4 @@ const Corporate = () => {
   );
 };
 
-export default Corporate;
+export default Emotion;

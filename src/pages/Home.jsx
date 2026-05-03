@@ -17,12 +17,59 @@ import Card from "../components/Card";
 import mainData from "../data/mainData";
 import catData from "../data/catData";
 import occData from "../data/occData";
+import emoData from "../data/emoData";
 import faqData from "../data/faqData";
 import reviewData from "../data/reviewData";
 import socialData from "../data/socialData";
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+
+  // Bestsellers
+  const bestsellers = [
+    {
+      name: "Night Garden",
+      route: "night-garden",
+      images: ["/images/td-006/1.png"],
+      price: 1999,
+      originalPrice: 5199,
+    },
+    {
+      name: "Green Star",
+      route: "green-star",
+      images: ["/images/td-008/1.png"],
+      price: 1599,
+      originalPrice: 4399,
+    },
+    {
+      name: "Morning Garden",
+      route: "morning-garden",
+      images: ["/images/td-007/1.png"],
+      price: 4999,
+      originalPrice: 5499,
+    },
+    {
+      name: "Petal Post",
+      route: "petal-post",
+      images: ["/images/td-010/1.png"],
+      price: 1499,
+      originalPrice: 2199,
+    },
+    {
+      name: "Red Edit",
+      route: "red-edit",
+      images: ["/images/td-021/1.png"],
+      price: 699,
+      originalPrice: 1299,
+    },
+    {
+      name: "Golden Lace",
+      route: "golden-lace",
+      images: ["/images/td-018/1.png"],
+      price: 899,
+      originalPrice: 1399,
+    },
+  ];
 
   // FAQs
   const toggleFAQ = (index) => {
@@ -175,12 +222,16 @@ const Home = () => {
           modules={[Navigation]}
           className="w-full"
         >
-          {mainData.map((data, index) => (
+          {bestsellers.map((data, index) => (
             <SwiperSlide key={index}>
               <Card data={data} />
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <Link to="/shop" className="text-center underline">
+          View all
+        </Link>
       </div>
 
       {/* Occasion */}
@@ -209,8 +260,35 @@ const Home = () => {
         </div>
       </div>
 
-      {/* New Arrivals */}
+      {/* Emotion */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
+          Shop by Emotion
+        </h2>
+
+        <div className="w-full grid grid-cols-3 xl:grid-cols-6 gap-4 xl:gap-8">
+          {emoData.map((cat, index) => (
+            <Link
+              key={index}
+              to={`/emotion/${cat.slug}`}
+              className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
+            >
+              <img
+                src={cat.image}
+                alt={cat.title}
+                loading="lazy"
+                className="w-full aspect-square rounded-md object-cover"
+              />
+              <span className="text-sm xl:text-lg font-semibold text-center">
+                {cat.title}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* New Arrivals */}
+      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
           New Arrivals
         </h2>
@@ -242,7 +320,7 @@ const Home = () => {
               </SwiperSlide>
             ))}
         </Swiper>
-      </div>
+      </div> */}
 
       {/* Choose Us */}
       <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
@@ -255,28 +333,32 @@ const Home = () => {
         </p>
         {/* Features */}
         <div className="w-full xl:w-[80%] grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8">
-          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
-            <i className="ri-calendar-event-fill text-2xl xl:text-4xl text-stone-800"></i>
-            <h4 className="xl:text-lg font-semibold text-center">
-              Never Miss Important Dates
-            </h4>
-          </div>
+          {/* Express */}
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-e-bike-2-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Quick Dispatch & 4-Hours Delivery
+              Free 4-Hours Express Delivery
             </h4>
           </div>
+          {/* Voice notes */}
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-quill-pen-ai-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Personalised Message Card
+              Message Card & QR Voice Note
             </h4>
           </div>
+          {/* Replacement */}
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
-            <i className="ri-hand-heart-fill text-2xl xl:text-4xl text-stone-800"></i>
+            <i className="ri-loop-left-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Free Exclusive Random Gifts
+              Replacement Guarantee
+            </h4>
+          </div>
+          {/* Care Kit */}
+          <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
+            <i className="ri-tools-fill text-2xl xl:text-4xl text-stone-800"></i>
+            <h4 className="xl:text-lg font-semibold text-center">
+              Flower Care Card & Food
             </h4>
           </div>
         </div>
@@ -303,11 +385,10 @@ const Home = () => {
       {/* Customer Reviews */}
       <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
-          Our Customer Reviews
+          What Our Customers Say?
         </h2>
         <p className="xl:w-1/2 xl:text-lg text-center">
-          Every bouquet tells a story, and thanks to DAISY, every moment feels
-          timeless and beautiful.
+          Every arrangement tells a story of thoughtful gifting and beautiful moments.
         </p>
         <div className="w-full mt-4 relative review-fade">
           <Swiper
@@ -462,7 +543,7 @@ const Home = () => {
           </span>
 
           <h2 className="text-2xl xl:text-2xl text-center font-semibold font-[Modernist]">
-            Get ₹249 Off or a Surprise Gift on Next Order
+            Get ₹249 Discount on Your Next Order
           </h2>
 
           <p className="mt-2 text-sm xl:text-base text-center text-stone-600">
