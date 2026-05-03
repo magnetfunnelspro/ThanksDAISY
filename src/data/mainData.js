@@ -23,10 +23,10 @@ const mainData = [
     description:
       "A luxurious red-themed bouquet featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
     images: [
-      "/images/td-001/1.png",
-      "/images/td-001/2.png",
-      "/images/td-001/3.png",
-      "/images/td-001/4.png",
+      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784349/1_bd3cie.png",
+      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784350/2_llaapc.png",
+      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784350/3_r2kulo.png",
+      "https://res.cloudinary.com/dwfedlnya/image/upload/v1777784351/4_xysnwt.png",
     ],
     price: 3599,
     originalPrice: 5999,

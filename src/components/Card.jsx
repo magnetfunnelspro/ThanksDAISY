@@ -43,7 +43,8 @@ const Card = ({ data }) => {
             loading="lazy"
             src={data.images[0]}
             alt={data.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full rounded-md object-cover blur-sm"
+            onLoad={(e) => e.target.classList.remove("blur-sm")}
           />
         </div>
       </Link>

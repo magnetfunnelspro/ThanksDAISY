@@ -95,6 +95,7 @@ const Product = () => {
         <div className="w-full xl:w-1/2 flex flex-col xl:flex-row-reverse gap-4">
           {/* Main Slider */}
           <Swiper
+            lazy={true}
             spaceBetween={16}
             breakpoints={{
               1280: {
@@ -111,7 +112,8 @@ const Product = () => {
                   loading="lazy"
                   src={img}
                   alt="product"
-                  className="w-full h-full rounded-md object-cover"
+                  className="w-full h-full rounded-md object-cover blur-sm"
+                  onLoad={(e) => e.target.classList.remove("blur-sm")}
                 />
               </SwiperSlide>
             ))}
@@ -131,7 +133,8 @@ const Product = () => {
                 <img
                   src={img}
                   alt="thumb"
-                  className="w-full aspect-square object-cover"
+                  className="w-full h-full rounded-md object-cover blur-sm"
+                  onLoad={(e) => e.target.classList.remove("blur-sm")}
                 />
               </div>
             ))}
@@ -142,6 +145,7 @@ const Product = () => {
         <div className="w-full xl:w-1/2 flex flex-col gap-2">
           <h2 className="text-xl xl:text-2xl font-semibold">{product.name}</h2>
 
+          {/* Description */}
           <p className="text-sm xl:text-lg text-stone-800">
             {product.description}
           </p>
@@ -211,6 +215,7 @@ const Product = () => {
             </div>
           </div>
 
+          {/* Total Flowers */}
           <div className="mt-2 text-sm flex gap-2">
             <span className="font-semibold">Total number:</span>
             {product.totalFlowers} flowers
