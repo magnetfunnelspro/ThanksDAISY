@@ -146,6 +146,12 @@ const Product = () => {
             {product.description}
           </p>
 
+          {/* Dimensions */}
+          <div className="mt-0 text-sm flex gap-2 text-stone-600">
+            <span className="font-semibold">Dimensions:</span>
+            {product.dimension.width} x {product.dimension.height}
+          </div>
+
           {/* Pricing */}
           <div className="flex items-center gap-2">
             <span className="text-xl xl:text-2xl font-semibold">
@@ -187,6 +193,27 @@ const Product = () => {
                   }`}
               ></i>
             </button>
+          </div>
+
+          {/* Flowers */}
+          <div className="mt-4">
+            <h4 className="font-semibold text-lg">Flowers Included</h4>
+
+            <div className="mt-2 flex flex-wrap gap-2">
+              {product.flowers.map((flower, index) => (
+                <div
+                  key={index}
+                  className="p-2 text-sm rounded-full bg-stone-100 border"
+                >
+                  {flower.name}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-2 text-sm flex gap-2">
+            <span className="font-semibold">Total number:</span>
+            {product.totalFlowers} flowers
           </div>
         </div>
       </div>
