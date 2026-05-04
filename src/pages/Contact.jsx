@@ -9,8 +9,8 @@ const Contact = () => {
 
   const [success, setSuccess] = useState(false);
 
-  const PHONE_NUMBER = "917903005374";
-  const WHATSAPP_NUMBER = "917903005374";
+  const PHONE_NUMBER = "918287340065";
+  const WHATSAPP_NUMBER = "918287340065";
   const EMAIL = "support@thanksdaisy.com";
 
   const handleChange = (e) => {
