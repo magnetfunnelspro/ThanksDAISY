@@ -19,7 +19,7 @@ const Contact = () => {
 
   // =========================
   // WHATSAPP DIRECT CHAT
-  // =========================
+  // ========================= 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
       `Hello, I want to inquire about the bouquets.`,
