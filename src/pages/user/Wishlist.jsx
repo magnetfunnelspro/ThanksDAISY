@@ -32,7 +32,7 @@ const Wishlist = () => {
       {/* EMPTY STATE */}
       {wishlist.length === 0 ? (
         <div className="p-8 flex flex-col items-center gap-4">
-          <i className="ri-heart-add-2-line text-4xl text-pink-600"></i>
+          <i className="ri-heart-add-2-line text-4xl text-stone-800"></i>
 
           <p className="text-lg text-center text-stone-800">
             Your wishlist is empty. Start adding your favorite flowers.
