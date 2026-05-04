@@ -868,7 +868,7 @@ const mainData = [
       "/images/td-027/4.png",
     ],
     price: 4799,
-    originalPrice: 3399,
+    originalPrice: 5399,
   },
   {
     id: "td-028",
