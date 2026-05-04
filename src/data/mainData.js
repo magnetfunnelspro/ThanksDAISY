@@ -34,10 +34,10 @@ const mainData = [
     description:
       "A refreshing bouquet featuring daisies and hydrangea, accented with statice and limonium, creating a soft, airy, and natural floral arrangement with a clean, calming, and elegant aesthetic.",
     images: [
-      "/images/td-001/1.png",
-      "/images/td-001/2.png",
-      "/images/td-001/3.png",
-      "/images/td-001/4.png",
+      "/images/td-001/1.webp",
+      "/images/td-001/2.webp",
+      "/images/td-001/3.webp",
+      "/images/td-001/4.webp",
     ],
     price: 1999,
     originalPrice: 3799,
@@ -74,10 +74,10 @@ const mainData = [
     description:
       "An elegant tall vase arrangment blending white roses, eustoma, asters, and premium purple blooms, accented with hydrangea and foliage to create a luxurious, graceful, and eye-catching vertical floral arrangement.",
     images: [
-      "/images/td-002/1.png",
-      "/images/td-002/2.png",
-      "/images/td-002/3.png",
-      "/images/td-002/4.png",
+      "/images/td-002/1.webp",
+      "/images/td-002/2.webp",
+      "/images/td-002/3.webp",
+      "/images/td-002/4.webp",
     ],
     price: 5999,
     originalPrice: 7999,
@@ -107,10 +107,10 @@ const mainData = [
     description:
       "A cheerful summer vase arrangment featuring sunflowers, roses, daisies, and hydrangea, enhanced with amaranthus and fresh foliage, creating a bright, lively, and naturally elegant arrangement for joyful occasions.",
     images: [
-      "/images/td-003/1.png",
-      "/images/td-003/2.png",
-      "/images/td-003/3.png",
-      "/images/td-003/4.png",
+      "/images/td-003/1.webp",
+      "/images/td-003/2.webp",
+      "/images/td-003/3.webp",
+      "/images/td-003/4.webp",
     ],
     price: 4399,
     originalPrice: 5999,
@@ -134,10 +134,10 @@ const mainData = [
     description:
       "A delicate white-toned vase arrangment featuring fresh asters, daisies, and limonium, thoughtfully arranged to create a soft, elegant, and graceful floral design perfect for subtle and sophisticated gifting.",
     images: [
-      "/images/td-004/1.png",
-      "/images/td-004/2.png",
-      "/images/td-004/3.png",
-      "/images/td-004/4.png",
+      "/images/td-004/1.webp",
+      "/images/td-004/2.webp",
+      "/images/td-004/3.webp",
+      "/images/td-004/4.webp",
     ],
     price: 2399,
     originalPrice: 3999,
@@ -163,10 +163,10 @@ const mainData = [
     description:
       "A charming pink vase arrangment featuring roses, hydrangea, and eustoma, beautifully accented with statice and limonium, creating a soft, romantic, and elegant floral arrangement ideal for heartfelt gifting moments.",
     images: [
-      "/images/td-005/1.png",
-      "/images/td-005/2.png",
-      "/images/td-005/3.png",
-      "/images/td-005/4.png",
+      "/images/td-005/1.webp",
+      "/images/td-005/2.webp",
+      "/images/td-005/3.webp",
+      "/images/td-005/4.webp",
     ],
     price: 2599,
     originalPrice: 4499,
@@ -192,10 +192,10 @@ const mainData = [
     description:
       "A moody and elegant vase arrangment featuring daisies, eustoma, and rich fillers, accented with statice, limonium, and foxtail foliage, creating a sophisticated and calming floral arrangement for special moments.",
     images: [
-      "/images/td-006/1.png",
-      "/images/td-006/2.png",
-      "/images/td-006/3.png",
-      "/images/td-006/4.png",
+      "/images/td-006/1.webp",
+      "/images/td-006/2.webp",
+      "/images/td-006/3.webp",
+      "/images/td-006/4.webp",
     ],
     price: 1999,
     originalPrice: 5199,
@@ -232,10 +232,10 @@ const mainData = [
     description:
       "A fresh and vibrant vase arrangment featuring roses, alstroemeria, tulips, and hydrangea, beautifully complemented with daisies, anthurium, and lush foliage, creating a lively and elegant arrangement for cheerful occasions.",
     images: [
-      "/images/td-007/1.png",
-      "/images/td-007/2.png",
-      "/images/td-007/3.png",
-      "/images/td-007/4.png",
+      "/images/td-007/1.webp",
+      "/images/td-007/2.webp",
+      "/images/td-007/3.webp",
+      "/images/td-007/4.webp",
     ],
     price: 4999,
     originalPrice: 5499,
