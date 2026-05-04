@@ -130,7 +130,7 @@ const Navbar = () => {
           <i className="ri-shopping-bag-line"></i>
 
           {cart.length > 0 && (
-            <span className="absolute -top-0 -right-1 text-[8px] leading-none pt-[2.5px] p-[2px] px-[4px] rounded-full text-white bg-stone-800">
+            <span className="absolute -top-0 -right-1 text-[8px] leading-none p-[2.5px] px-[4.5px] rounded-full text-white bg-stone-800">
               {cart.length}
             </span>
           )}

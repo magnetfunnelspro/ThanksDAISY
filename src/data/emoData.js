@@ -1,36 +1,36 @@
 const emoData = [
   {
-    slug: "gratitude",
+    route: "/emotion/gratitude",
     title: "Gratitude",
     image:
       "/images/td-006/1.png",
   },
   {
-    slug: "apology",
+    route: "/emotion/apology",
     title: "Apology",
     image:
       "/images/td-016/1.png",
   },
   {
-    slug: "sympathy",
+    route: "/emotion/sympathy",
     title: "Sympathy",
     image:
       "/images/td-015/1.png",
   },
   {
-    slug: "miss-you",
+    route: "/emotion/miss-you",
     title: "Miss You",
     image:
       "/images/td-010/1.png",
   },
   {
-    slug: "get-well-soon",
+    route: "/emotion/get-well-soon",
     title: "Get Well Soon",
     image:
       "/images/td-017/1.png",
   },
   {
-    slug: "best-wishes",
+    route: "/emotion/best-wishes",
     title: "Best Wishes",
     image:
       "/images/td-026/1.png",

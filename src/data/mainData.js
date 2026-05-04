@@ -1,41 +1,46 @@
 const mainData = [
   {
     id: "td-001",
-    cat: "vase arrangement",
-    emotion: ["best-wishes"],
+    cat: "bouquets",
+    emotion: [
+      "gratitude",
+      "sympathy",
+      "miss-you",
+      "get-well-soon",
+      "best-wishes",
+    ],
     occasion: [
+      "birthday",
       "love",
       "anniversary",
       "wedding",
       "event",
       "celebration",
+      "first-date",
       "surprise",
     ],
-    name: "Red Spread",
-    route: "red-spread",
+    name: "Minty Harvest",
+    route: "minty-harvest",
     dimension: {
-      width: "21 inch",
-      height: "20 inch",
+      width: "23 inch",
+      height: "18 inch",
     },
     flowers: [
-      { name: "Red Rose", quantity: 20 },
-      { name: "Daisy", quantity: 5 },
-      { name: "Spider Chrysanthemum", quantity: 10 },
-      { name: "Eustoma", quantity: 3 },
+      { name: "Daisy", quantity: 10 },
       { name: "Statice", quantity: 5 },
+      { name: "Hydrangea", quantity: 1 },
       { name: "Limonium", quantity: 3 },
-      { name: "Eucalyptus", quantity: 3 },
     ],
     description:
-      "A luxurious red-themed bouquet featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
+      "A refreshing bouquet featuring daisies and hydrangea, accented with statice and limonium, creating a soft, airy, and natural floral arrangement with a clean, calming, and elegant aesthetic.",
     images: [
       "/images/td-001/1.png",
       "/images/td-001/2.png",
       "/images/td-001/3.png",
       "/images/td-001/4.png",
     ],
-    price: 3599,
-    originalPrice: 5999,
+    price: 1999,
+    originalPrice: 3799,
   },
   {
     id: "td-002",
@@ -67,7 +72,7 @@ const mainData = [
       { name: "Foxtail Fern", quantity: 5 },
     ],
     description:
-      "An elegant tall bouquet blending white roses, eustoma, asters, and premium purple blooms, accented with hydrangea and foliage to create a luxurious, graceful, and eye-catching vertical floral arrangement.",
+      "An elegant tall vase arrangment blending white roses, eustoma, asters, and premium purple blooms, accented with hydrangea and foliage to create a luxurious, graceful, and eye-catching vertical floral arrangement.",
     images: [
       "/images/td-002/1.png",
       "/images/td-002/2.png",
@@ -100,7 +105,7 @@ const mainData = [
       { name: "Eucalyptus", quantity: 5 },
     ],
     description:
-      "A cheerful summer bouquet featuring sunflowers, roses, daisies, and hydrangea, enhanced with amaranthus and fresh foliage, creating a bright, lively, and naturally elegant arrangement for joyful occasions.",
+      "A cheerful summer vase arrangment featuring sunflowers, roses, daisies, and hydrangea, enhanced with amaranthus and fresh foliage, creating a bright, lively, and naturally elegant arrangement for joyful occasions.",
     images: [
       "/images/td-003/1.png",
       "/images/td-003/2.png",
@@ -127,7 +132,7 @@ const mainData = [
       { name: "Limonium", quantity: 4 },
     ],
     description:
-      "A delicate white-toned bouquet featuring fresh asters, daisies, and limonium, thoughtfully arranged to create a soft, elegant, and graceful floral design perfect for subtle and sophisticated gifting.",
+      "A delicate white-toned vase arrangment featuring fresh asters, daisies, and limonium, thoughtfully arranged to create a soft, elegant, and graceful floral design perfect for subtle and sophisticated gifting.",
     images: [
       "/images/td-004/1.png",
       "/images/td-004/2.png",
@@ -156,7 +161,7 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
     ],
     description:
-      "A charming pink bouquet featuring roses, hydrangea, and eustoma, beautifully accented with statice and limonium, creating a soft, romantic, and elegant floral arrangement ideal for heartfelt gifting moments.",
+      "A charming pink vase arrangment featuring roses, hydrangea, and eustoma, beautifully accented with statice and limonium, creating a soft, romantic, and elegant floral arrangement ideal for heartfelt gifting moments.",
     images: [
       "/images/td-005/1.png",
       "/images/td-005/2.png",
@@ -185,7 +190,7 @@ const mainData = [
       { name: "Foxtail Fern", quantity: 5 },
     ],
     description:
-      "A moody and elegant bouquet featuring daisies, eustoma, and rich fillers, accented with statice, limonium, and foxtail foliage, creating a sophisticated and calming floral arrangement for special moments.",
+      "A moody and elegant vase arrangment featuring daisies, eustoma, and rich fillers, accented with statice, limonium, and foxtail foliage, creating a sophisticated and calming floral arrangement for special moments.",
     images: [
       "/images/td-006/1.png",
       "/images/td-006/2.png",
@@ -225,7 +230,7 @@ const mainData = [
       { name: "Eucalyptus", quantity: 5 },
     ],
     description:
-      "A fresh and vibrant bouquet featuring roses, alstroemeria, tulips, and hydrangea, beautifully complemented with daisies, anthurium, and lush foliage, creating a lively and elegant arrangement for cheerful occasions.",
+      "A fresh and vibrant vase arrangment featuring roses, alstroemeria, tulips, and hydrangea, beautifully complemented with daisies, anthurium, and lush foliage, creating a lively and elegant arrangement for cheerful occasions.",
     images: [
       "/images/td-007/1.png",
       "/images/td-007/2.png",
@@ -255,7 +260,7 @@ const mainData = [
       { name: "Dried Fillers", quantity: 3 },
     ],
     description:
-      "A refreshing green-themed bouquet featuring roses, amaranthus, and soft blooms, accented with dried elements and delicate fillers, creating a natural, modern, and earthy floral arrangement for stylish gifting.",
+      "A refreshing green-themed vase arrangment featuring roses, amaranthus, and soft blooms, accented with dried elements and delicate fillers, creating a natural, modern, and earthy floral arrangement for stylish gifting.",
     images: [
       "/images/td-008/1.png",
       "/images/td-008/2.png",
@@ -288,7 +293,7 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
     ],
     description:
-      "A striking bouquet featuring vibrant tiger orchids paired with delicate limonium, creating a warm peach-toned arrangement that feels elegant, exotic, and perfect for stylish, minimal, and sophisticated gifting occasions.",
+      "A striking vase arrangment featuring vibrant tiger orchids paired with delicate limonium, creating a warm peach-toned arrangement that feels elegant, exotic, and perfect for stylish, minimal, and sophisticated gifting occasions.",
     images: [
       "/images/td-009/1.png",
       "/images/td-009/2.png",
@@ -316,7 +321,7 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
     ],
     description:
-      "A charming bouquet featuring lilies, roses, and daisies, gently accented with limonium, creating a soft, fresh, and elegant floral arrangement perfect for thoughtful gifting and everyday special moments.",
+      "A charming flower box featuring lilies, roses, and daisies, gently accented with limonium, creating a soft, fresh, and elegant floral arrangement perfect for thoughtful gifting and everyday special moments.",
     images: [
       "/images/td-010/1.png",
       "/images/td-010/2.png",
@@ -346,7 +351,7 @@ const mainData = [
       { name: "Foxtail Fern", quantity: 2 },
     ],
     description:
-      "A stylish purple-themed bouquet featuring roses, eustoma, daisies, and allium, accented with limonium and soft foliage, creating a modern, elegant, and slightly whimsical floral arrangement for unique gifting moments.",
+      "A stylish purple-themed flower box featuring roses, eustoma, daisies, and allium, accented with limonium and soft foliage, creating a modern, elegant, and slightly whimsical floral arrangement for unique gifting moments.",
     images: [
       "/images/td-011/1.png",
       "/images/td-011/2.png",
@@ -369,7 +374,7 @@ const mainData = [
     },
     flowers: [{ name: "Tulip", quantity: 10 }],
     description:
-      "A graceful bouquet of fresh pink tulips, thoughtfully arranged to create a soft, elegant, and charming floral design, perfect for expressing love, appreciation, and warm heartfelt emotions.",
+      "A graceful flower box of fresh pink tulips, thoughtfully arranged to create a soft, elegant, and charming floral design, perfect for expressing love, appreciation, and warm heartfelt emotions.",
     images: [
       "/images/td-012/1.png",
       "/images/td-012/2.png",
@@ -395,7 +400,7 @@ const mainData = [
       { name: "Limonium", quantity: 2 },
     ],
     description:
-      "A bold and elegant bouquet featuring exotic spider orchids paired with delicate limonium, creating a unique, modern, and artistic floral arrangement perfect for stylish gifting and standout occasions.",
+      "A bold and elegant vase arrangment featuring exotic spider orchids paired with delicate limonium, creating a unique, modern, and artistic floral arrangement perfect for stylish gifting and standout occasions.",
     images: [
       "/images/td-013/1.png",
       "/images/td-013/2.png",
@@ -422,7 +427,7 @@ const mainData = [
       { name: "Love Grass (Decorative Fillers)", quantity: 10 },
     ],
     description:
-      "A full, earthy bouquet featuring vibrant mixed daisies, complemented with statice and airy filler grasses, creating a natural, textured, and lively floral arrangement with a warm and organic aesthetic.",
+      "A full, earthy vase arrangment featuring vibrant mixed daisies, complemented with statice and airy filler grasses, creating a natural, textured, and lively floral arrangement with a warm and organic aesthetic.",
     images: [
       "/images/td-014/1.png",
       "/images/td-014/2.png",
@@ -434,7 +439,7 @@ const mainData = [
   },
   {
     id: "td-015",
-    cat: "bouquets",
+    cat: "vase arrangement",
     emotion: [
       "gratitude",
       "sympathy",
@@ -452,28 +457,31 @@ const mainData = [
       "first-date",
       "surprise",
     ],
-    name: "Minty Harvest",
-    route: "minty-harvest",
+    name: "Red Spread",
+    route: "red-spread",
     dimension: {
-      width: "23 inch",
-      height: "18 inch",
+      width: "21 inch",
+      height: "20 inch",
     },
     flowers: [
-      { name: "Daisy", quantity: 10 },
+      { name: "Red Rose", quantity: 20 },
+      { name: "Daisy", quantity: 5 },
+      { name: "Spider Chrysanthemum", quantity: 10 },
+      { name: "Eustoma", quantity: 3 },
       { name: "Statice", quantity: 5 },
-      { name: "Hydrangea", quantity: 1 },
       { name: "Limonium", quantity: 3 },
+      { name: "Eucalyptus", quantity: 3 },
     ],
     description:
-      "A refreshing bouquet featuring daisies and hydrangea, accented with statice and limonium, creating a soft, airy, and natural floral arrangement with a clean, calming, and elegant aesthetic.",
+      "A luxurious red-themed vase arrangment featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
     images: [
       "/images/td-015/1.png",
       "/images/td-015/2.png",
       "/images/td-015/3.png",
       "/images/td-015/4.png",
     ],
-    price: 1999,
-    originalPrice: 3799,
+    price: 3599,
+    originalPrice: 5999,
   },
   {
     id: "td-016",
@@ -645,7 +653,7 @@ const mainData = [
       { name: "Foxtail", quantity: 4 },
     ],
     description:
-      "A radiant mix of sunflowers and daisies with soft limonium and textured foxtail accents, creating a bright, joyful bouquet perfect for uplifting gifts and cheerful moments.",
+      "A radiant mix of sunflowers and daisies with soft limonium and textured foxtail accents, creating a bright, joyful vase arrangment perfect for uplifting gifts and cheerful moments.",
     images: [
       "/images/td-020/1.png",
       "/images/td-020/2.png",
@@ -671,7 +679,7 @@ const mainData = [
       { name: "Gypsophila", quantity: 6 },
     ],
     description:
-      "A classic arrangement of rich red roses paired with delicate gypsophila, creating a romantic and timeless bouquet perfect for expressing love and special heartfelt moments.",
+      "A classic arrangement of rich red roses paired with delicate gypsophila, creating a romantic and timeless vase arrangment perfect for expressing love and special heartfelt moments.",
     images: [
       "/images/td-021/1.png",
       "/images/td-021/2.png",
@@ -700,7 +708,7 @@ const mainData = [
       { name: "Limonium", quantity: 5 },
     ],
     description:
-      "A grand arrangement featuring delphinium, daisies, and eustoma with lush eucalyptus and limonium, creating a majestic bouquet perfect for premium gifting and elegant celebrations.",
+      "A grand arrangement featuring delphinium, daisies, and eustoma with lush eucalyptus and limonium, creating a majestic vase arrangment perfect for premium gifting and elegant celebrations.",
     images: [
       "/images/td-022/1.png",
       "/images/td-022/2.png",
@@ -726,7 +734,7 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
     ],
     description:
-      "A lush bouquet of vibrant mixed roses complemented by soft limonium accents, creating a rich and elegant arrangement perfect for romantic gestures and special celebrations.",
+      "A lush vase arrangment of vibrant mixed roses complemented by soft limonium accents, creating a rich and elegant arrangement perfect for romantic gestures and special celebrations.",
     images: [
       "/images/td-023/1.png",
       "/images/td-023/2.png",
@@ -777,7 +785,7 @@ const mainData = [
       { name: "Statice", quantity: 4 },
     ],
     description:
-      "A bright blend of sunflowers and asters with soft limonium and statice accents, creating a cheerful bouquet perfect for uplifting moods and celebrating joyful moments.",
+      "A bright blend of sunflowers and asters with soft limonium and statice accents, creating a cheerful vase arrangment perfect for uplifting moods and celebrating joyful moments.",
     images: [
       "/images/td-025/1.png",
       "/images/td-025/2.png",
@@ -852,7 +860,7 @@ const mainData = [
       { name: "Amaranthus", quantity: 3 },
     ],
     description:
-      "A lush garden-style bouquet with delphinium, roses, and daisies, accented by brassica, amaranthus, and eucalyptus for a fresh, vibrant look perfect for elegant celebrations.",
+      "A lush garden-style vase arrangement with delphinium, roses, and daisies, accented by brassica, amaranthus, and eucalyptus for a fresh, vibrant look perfect for elegant celebrations.",
     images: [
       "/images/td-027/1.png",
       "/images/td-027/2.png",
@@ -879,7 +887,7 @@ const mainData = [
       { name: "Limonium", quantity: 3 },
     ],
     description:
-      "A soothing blend of blue-toned hydrangeas with fresh eucalyptus and soft limonium, creating a calm, elegant bouquet perfect for premium gifting and graceful occasions.",
+      "A soothing blend of blue-toned hydrangeas with fresh eucalyptus and soft limonium, creating a calm, elegant vase arrangement perfect for premium gifting and graceful occasions.",
     images: [
       "/images/td-028/1.png",
       "/images/td-028/2.png",
@@ -932,7 +940,7 @@ const mainData = [
       { name: "Dried Elements", quantity: 2 },
     ],
     description:
-      "A delicate mix of soft eustoma blooms paired with subtle dried elements, creating a minimal, elegant bouquet perfect for modern gifting and graceful everyday moments.",
+      "A delicate mix of soft eustoma blooms paired with subtle dried elements, creating a minimal, elegant vase arrangement perfect for modern gifting and graceful everyday moments.",
     images: [
       "/images/td-030/1.png",
       "/images/td-030/2.png",
