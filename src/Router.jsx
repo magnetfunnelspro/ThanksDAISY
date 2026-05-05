@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -31,6 +32,8 @@ import Returns from "./pages/legal/Returns";
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <Analytics />
+      
       <Loader />
 
       <a
