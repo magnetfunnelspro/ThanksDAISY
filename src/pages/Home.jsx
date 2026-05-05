@@ -337,7 +337,7 @@ const Home = () => {
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-e-bike-2-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Free 4-Hours Express Delivery
+              Free 3-4 Hours Express Delivery
             </h4>
           </div>
           {/* Voice notes */}
