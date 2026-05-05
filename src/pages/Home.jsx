@@ -270,7 +270,7 @@ const Home = () => {
           {emoData.map((cat, index) => (
             <Link
               key={index}
-              to={`/${cat.route}`}
+              to={cat.route}
               className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
             >
               <img
