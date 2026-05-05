@@ -1,7 +1,6 @@
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/next"
 
 // Components
 import Navbar from "./components/Navbar";
