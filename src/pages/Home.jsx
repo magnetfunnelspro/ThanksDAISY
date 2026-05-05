@@ -270,7 +270,7 @@ const Home = () => {
           {emoData.map((cat, index) => (
             <Link
               key={index}
-              to={`/emotion/${cat.route}`}
+              to={`/${cat.route}`}
               className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
             >
               <img
@@ -368,14 +368,14 @@ const Home = () => {
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
         <Link to="/product/petal-post">
           <img
-            src="/AdBanner1.webp"
+            src="/AdBanner1.png"
             alt=""
             className="w-full aspect-video rounded-md"
           />
         </Link>
         <Link to="/product/soft-grace">
           <img
-            src="/AdBanner3.webp"
+            src="/AdBanner3.png"
             alt=""
             className="w-full aspect-video rounded-md"
           />
