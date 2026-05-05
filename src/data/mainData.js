@@ -262,10 +262,10 @@ const mainData = [
     description:
       "A refreshing green-themed vase arrangment featuring roses, amaranthus, and soft blooms, accented with dried elements and delicate fillers, creating a natural, modern, and earthy floral arrangement for stylish gifting.",
     images: [
-      "/images/td-008/1.png",
-      "/images/td-008/2.png",
-      "/images/td-008/3.png",
-      "/images/td-008/4.png",
+      "/images/td-008/1.webp",
+      "/images/td-008/2.webp",
+      "/images/td-008/3.webp",
+      "/images/td-008/4.webp",
     ],
     price: 1599,
     originalPrice: 4399,
@@ -295,10 +295,10 @@ const mainData = [
     description:
       "A striking vase arrangment featuring vibrant tiger orchids paired with delicate limonium, creating a warm peach-toned arrangement that feels elegant, exotic, and perfect for stylish, minimal, and sophisticated gifting occasions.",
     images: [
-      "/images/td-009/1.png",
-      "/images/td-009/2.png",
-      "/images/td-009/3.png",
-      "/images/td-009/4.png",
+      "/images/td-009/1.webp",
+      "/images/td-009/2.webp",
+      "/images/td-009/3.webp",
+      "/images/td-009/4.webp",
     ],
     price: 1599,
     originalPrice: 2799,
@@ -323,10 +323,10 @@ const mainData = [
     description:
       "A charming flower box featuring lilies, roses, and daisies, gently accented with limonium, creating a soft, fresh, and elegant floral arrangement perfect for thoughtful gifting and everyday special moments.",
     images: [
-      "/images/td-010/1.png",
-      "/images/td-010/2.png",
-      "/images/td-010/3.png",
-      "/images/td-010/4.png",
+      "/images/td-010/1.webp",
+      "/images/td-010/2.webp",
+      "/images/td-010/3.webp",
+      "/images/td-010/4.webp",
     ],
     price: 1499,
     originalPrice: 2199,
@@ -353,10 +353,10 @@ const mainData = [
     description:
       "A stylish purple-themed flower box featuring roses, eustoma, daisies, and allium, accented with limonium and soft foliage, creating a modern, elegant, and slightly whimsical floral arrangement for unique gifting moments.",
     images: [
-      "/images/td-011/1.png",
-      "/images/td-011/2.png",
-      "/images/td-011/3.png",
-      "/images/td-011/4.png",
+      "/images/td-011/1.webp",
+      "/images/td-011/2.webp",
+      "/images/td-011/3.webp",
+      "/images/td-011/4.webp",
     ],
     price: 899,
     originalPrice: 2199,
@@ -376,10 +376,10 @@ const mainData = [
     description:
       "A graceful flower box of fresh pink tulips, thoughtfully arranged to create a soft, elegant, and charming floral design, perfect for expressing love, appreciation, and warm heartfelt emotions.",
     images: [
-      "/images/td-012/1.png",
-      "/images/td-012/2.png",
-      "/images/td-012/3.png",
-      "/images/td-012/4.png",
+      "/images/td-012/1.webp",
+      "/images/td-012/2.webp",
+      "/images/td-012/3.webp",
+      "/images/td-012/4.webp",
     ],
     price: 2799,
     originalPrice: 2999,
@@ -402,10 +402,10 @@ const mainData = [
     description:
       "A bold and elegant vase arrangment featuring exotic spider orchids paired with delicate limonium, creating a unique, modern, and artistic floral arrangement perfect for stylish gifting and standout occasions.",
     images: [
-      "/images/td-013/1.png",
-      "/images/td-013/2.png",
-      "/images/td-013/3.png",
-      "/images/td-013/4.png",
+      "/images/td-013/1.webp",
+      "/images/td-013/2.webp",
+      "/images/td-013/3.webp",
+      "/images/td-013/4.webp",
     ],
     price: 1599,
     originalPrice: 3399,
@@ -429,10 +429,10 @@ const mainData = [
     description:
       "A full, earthy vase arrangment featuring vibrant mixed daisies, complemented with statice and airy filler grasses, creating a natural, textured, and lively floral arrangement with a warm and organic aesthetic.",
     images: [
-      "/images/td-014/1.png",
-      "/images/td-014/2.png",
-      "/images/td-014/3.png",
-      "/images/td-014/4.png",
+      "/images/td-014/1.webp",
+      "/images/td-014/2.webp",
+      "/images/td-014/3.webp",
+      "/images/td-014/4.webp",
     ],
     price: 3999,
     originalPrice: 4799,
@@ -475,10 +475,10 @@ const mainData = [
     description:
       "A luxurious red-themed vase arrangment featuring roses, daisies, spider chrysanthemums, and elegant fillers, beautifully arranged to create a bold, romantic, and eye-catching floral statement for special occasions.",
     images: [
-      "/images/td-015/1.png",
-      "/images/td-015/2.png",
-      "/images/td-015/3.png",
-      "/images/td-015/4.png",
+      "/images/td-015/1.webp",
+      "/images/td-015/2.webp",
+      "/images/td-015/3.webp",
+      "/images/td-015/4.webp",
     ],
     price: 3599,
     originalPrice: 5999,
@@ -522,10 +522,10 @@ const mainData = [
     description:
       "A colorful bouquet blending roses, daisies, and hydrangea with soft foliage accents, creating a cheerful, elegant arrangement perfect for gifting and joyful celebrations.",
     images: [
-      "/images/td-016/1.png",
-      "/images/td-016/2.png",
-      "/images/td-016/3.png",
-      "/images/td-016/4.png",
+      "/images/td-016/1.webp",
+      "/images/td-016/2.webp",
+      "/images/td-016/3.webp",
+      "/images/td-016/4.webp",
     ],
     price: 2999,
     originalPrice: 3799,
@@ -567,10 +567,10 @@ const mainData = [
     description:
       "A graceful blend of roses, daisies, and hydrangea with soft eucalyptus and limonium accents, creating a soothing pastel bouquet perfect for elegant gifting and timeless celebrations.",
     images: [
-      "/images/td-017/1.png",
-      "/images/td-017/2.png",
-      "/images/td-017/3.png",
-      "/images/td-017/4.png",
+      "/images/td-017/1.webp",
+      "/images/td-017/2.webp",
+      "/images/td-017/3.webp",
+      "/images/td-017/4.webp",
     ],
     price: 1999,
     originalPrice: 2799,
@@ -600,10 +600,10 @@ const mainData = [
     description:
       "A bright sunflower bouquet paired with delicate gypsophila, creating a warm, cheerful arrangement that radiates positivity and makes a perfect gift for happy occasions.",
     images: [
-      "/images/td-018/1.png",
-      "/images/td-018/2.png",
-      "/images/td-018/3.png",
-      "/images/td-018/4.png",
+      "/images/td-018/1.webp",
+      "/images/td-018/2.webp",
+      "/images/td-018/3.webp",
+      "/images/td-018/4.webp",
     ],
     price: 899,
     originalPrice: 1399,
@@ -627,10 +627,10 @@ const mainData = [
     description:
       "An elegant blend of lilies and roses with soft limonium accents, creating a graceful and soothing bouquet perfect for heartfelt gifting and intimate celebrations.",
     images: [
-      "/images/td-019/1.png",
-      "/images/td-019/2.png",
-      "/images/td-019/3.png",
-      "/images/td-019/4.png",
+      "/images/td-019/1.webp",
+      "/images/td-019/2.webp",
+      "/images/td-019/3.webp",
+      "/images/td-019/4.webp",
     ],
     price: 2499,
     originalPrice: 3799,
@@ -655,10 +655,10 @@ const mainData = [
     description:
       "A radiant mix of sunflowers and daisies with soft limonium and textured foxtail accents, creating a bright, joyful vase arrangment perfect for uplifting gifts and cheerful moments.",
     images: [
-      "/images/td-020/1.png",
-      "/images/td-020/2.png",
-      "/images/td-020/3.png",
-      "/images/td-020/4.png",
+      "/images/td-020/1.webp",
+      "/images/td-020/2.webp",
+      "/images/td-020/3.webp",
+      "/images/td-020/4.webp",
     ],
     price: 1199,
     originalPrice: 1799,
@@ -681,10 +681,10 @@ const mainData = [
     description:
       "A classic arrangement of rich red roses paired with delicate gypsophila, creating a romantic and timeless vase arrangment perfect for expressing love and special heartfelt moments.",
     images: [
-      "/images/td-021/1.png",
-      "/images/td-021/2.png",
-      "/images/td-021/3.png",
-      "/images/td-021/4.png",
+      "/images/td-021/1.webp",
+      "/images/td-021/2.webp",
+      "/images/td-021/3.webp",
+      "/images/td-021/4.webp",
     ],
     price: 699,
     originalPrice: 1299,
@@ -710,10 +710,10 @@ const mainData = [
     description:
       "A grand arrangement featuring delphinium, daisies, and eustoma with lush eucalyptus and limonium, creating a majestic vase arrangment perfect for premium gifting and elegant celebrations.",
     images: [
-      "/images/td-022/1.png",
-      "/images/td-022/2.png",
-      "/images/td-022/3.png",
-      "/images/td-022/4.png",
+      "/images/td-022/1.webp",
+      "/images/td-022/2.webp",
+      "/images/td-022/3.webp",
+      "/images/td-022/4.webp",
     ],
     price: 4999,
     originalPrice: 7999,
@@ -736,10 +736,10 @@ const mainData = [
     description:
       "A lush vase arrangment of vibrant mixed roses complemented by soft limonium accents, creating a rich and elegant arrangement perfect for romantic gestures and special celebrations.",
     images: [
-      "/images/td-023/1.png",
-      "/images/td-023/2.png",
-      "/images/td-023/3.png",
-      "/images/td-023/4.png",
+      "/images/td-023/1.webp",
+      "/images/td-023/2.webp",
+      "/images/td-023/3.webp",
+      "/images/td-023/4.webp",
     ],
     price: 2799,
     originalPrice: 4599,
@@ -759,10 +759,10 @@ const mainData = [
     description:
       "A graceful vase arrangement of fresh pink lilies, offering a soft, elegant look with a delicate fragrance, perfect for thoughtful gifting and serene, sophisticated spaces.",
     images: [
-      "/images/td-024/1.png",
-      "/images/td-024/2.png",
-      "/images/td-024/3.png",
-      "/images/td-024/4.png",
+      "/images/td-024/1.webp",
+      "/images/td-024/2.webp",
+      "/images/td-024/3.webp",
+      "/images/td-024/4.webp",
     ],
     price: 1899,
     originalPrice: 2699,
@@ -787,10 +787,10 @@ const mainData = [
     description:
       "A bright blend of sunflowers and asters with soft limonium and statice accents, creating a cheerful vase arrangment perfect for uplifting moods and celebrating joyful moments.",
     images: [
-      "/images/td-025/1.png",
-      "/images/td-025/2.png",
-      "/images/td-025/3.png",
-      "/images/td-025/4.png",
+      "/images/td-025/1.webp",
+      "/images/td-025/2.webp",
+      "/images/td-025/3.webp",
+      "/images/td-025/4.webp",
     ],
     price: 899,
     originalPrice: 1799,
@@ -829,10 +829,10 @@ const mainData = [
     description:
       "A lush wrap of mixed hydrangeas complemented by fresh eucalyptus and soft limonium, creating a full, elegant bouquet perfect for premium gifting and sophisticated occasions.",
     images: [
-      "/images/td-026/1.png",
-      "/images/td-026/2.png",
-      "/images/td-026/3.png",
-      "/images/td-026/4.png",
+      "/images/td-026/1.webp",
+      "/images/td-026/2.webp",
+      "/images/td-026/3.webp",
+      "/images/td-026/4.webp",
     ],
     price: 3799,
     originalPrice: 5199,
@@ -862,10 +862,10 @@ const mainData = [
     description:
       "A lush garden-style vase arrangement with delphinium, roses, and daisies, accented by brassica, amaranthus, and eucalyptus for a fresh, vibrant look perfect for elegant celebrations.",
     images: [
-      "/images/td-027/1.png",
-      "/images/td-027/2.png",
-      "/images/td-027/3.png",
-      "/images/td-027/4.png",
+      "/images/td-027/1.webp",
+      "/images/td-027/2.webp",
+      "/images/td-027/3.webp",
+      "/images/td-027/4.webp",
     ],
     price: 4799,
     originalPrice: 5399,
@@ -889,10 +889,10 @@ const mainData = [
     description:
       "A soothing blend of blue-toned hydrangeas with fresh eucalyptus and soft limonium, creating a calm, elegant vase arrangement perfect for premium gifting and graceful occasions.",
     images: [
-      "/images/td-028/1.png",
-      "/images/td-028/2.png",
-      "/images/td-028/3.png",
-      "/images/td-028/4.png",
+      "/images/td-028/1.webp",
+      "/images/td-028/2.webp",
+      "/images/td-028/3.webp",
+      "/images/td-028/4.webp",
     ],
     price: 3799,
     originalPrice: 4399,
@@ -916,10 +916,10 @@ const mainData = [
     description:
       "A romantic bouquet of rich roses paired with cheerful daisies and soft limonium, creating a balanced, elegant arrangement perfect for heartfelt gifting and special moments.",
     images: [
-      "/images/td-029/1.png",
-      "/images/td-029/2.png",
-      "/images/td-029/3.png",
-      "/images/td-029/4.png",
+      "/images/td-029/1.webp",
+      "/images/td-029/2.webp",
+      "/images/td-029/3.webp",
+      "/images/td-029/4.webp",
     ],
     price: 899,
     originalPrice: 1699,
@@ -942,10 +942,10 @@ const mainData = [
     description:
       "A delicate mix of soft eustoma blooms paired with subtle dried elements, creating a minimal, elegant vase arrangement perfect for modern gifting and graceful everyday moments.",
     images: [
-      "/images/td-030/1.png",
-      "/images/td-030/2.png",
-      "/images/td-030/3.png",
-      "/images/td-030/4.png",
+      "/images/td-030/1.webp",
+      "/images/td-030/2.webp",
+      "/images/td-030/3.webp",
+      "/images/td-030/4.webp",
     ],
     price: 1399,
     originalPrice: 2199,
