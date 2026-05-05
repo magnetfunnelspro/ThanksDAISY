@@ -229,7 +229,7 @@ const Product = () => {
                 {product.occasion.map((item, index) => (
                   <div
                     key={index}
-                    className="p-2 text-sm rounded-full bg-stone-100 border capitalize"
+                    className="p-2 text-sm rounded-md bg-stone-100 border capitalize"
                   >
                     {item}
                   </div>
