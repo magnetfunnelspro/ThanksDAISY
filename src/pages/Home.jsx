@@ -30,42 +30,42 @@ const Home = () => {
     {
       name: "Night Garden",
       route: "night-garden",
-      images: ["/images/td-006/1.png"],
+      images: ["/images/td-006/1.webp"],
       price: 1999,
       originalPrice: 5199,
     },
     {
       name: "Green Star",
       route: "green-star",
-      images: ["/images/td-008/1.png"],
+      images: ["/images/td-008/1.webp"],
       price: 1599,
       originalPrice: 4399,
     },
     {
       name: "Morning Garden",
       route: "morning-garden",
-      images: ["/images/td-007/1.png"],
+      images: ["/images/td-007/1.webp"],
       price: 4999,
       originalPrice: 5499,
     },
     {
       name: "Petal Post",
       route: "petal-post",
-      images: ["/images/td-010/1.png"],
+      images: ["/images/td-010/1.webp"],
       price: 1499,
       originalPrice: 2199,
     },
     {
       name: "Red Edit",
       route: "red-edit",
-      images: ["/images/td-021/1.png"],
+      images: ["/images/td-021/1.webp"],
       price: 699,
       originalPrice: 1299,
     },
     {
       name: "Golden Lace",
       route: "golden-lace",
-      images: ["/images/td-018/1.png"],
+      images: ["/images/td-018/1.webp"],
       price: 899,
       originalPrice: 1399,
     },
@@ -270,7 +270,7 @@ const Home = () => {
           {emoData.map((cat, index) => (
             <Link
               key={index}
-              to={`/emotion/${cat.slug}`}
+              to={`/emotion/${cat.route}`}
               className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
             >
               <img
@@ -368,14 +368,14 @@ const Home = () => {
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
         <Link to="/product/petal-post">
           <img
-            src="/AdBanner1.png"
+            src="/AdBanner1.webp"
             alt=""
             className="w-full aspect-video rounded-md"
           />
         </Link>
         <Link to="/product/soft-grace">
           <img
-            src="/AdBanner3.png"
+            src="/AdBanner3.webp"
             alt=""
             className="w-full aspect-video rounded-md"
           />
