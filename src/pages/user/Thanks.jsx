@@ -75,7 +75,7 @@ const Thanks = () => {
       </div>
 
       {/* Steps */}
-      <div className="w-full mt-4 flex flex-col gap-4">
+      <div className="w-full xl:w-1/2 mt-4 flex flex-col gap-4">
         {steps.map((step, index) => (
           <div
             key={index}
