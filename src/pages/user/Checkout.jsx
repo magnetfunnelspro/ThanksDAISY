@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 // Context
 import { useCart } from "../../context/CartContext";
 
+// Meta Pixel
+import { trackPixel } from "../../utils/metaPixel";
+
 const Checkout = () => {
   const navigate = useNavigate();
   const { cart, totalPrice, clearCart } = useCart();
@@ -42,42 +45,191 @@ const Checkout = () => {
 
   // Delhi NCR Pincodes
   const validPincodes = [
-  // Delhi (UT)
-  "110001", "110002", "110003", "110004", "110005", "110006", "110007", "110008",
-  "110009", "110010", "110011", "110012", "110013", "110014", "110015", "110016",
-  "110017", "110018", "110019", "110020", "110021", "110022", "110023", "110024",
-  "110025", "110026", "110027", "110028", "110029", "110030", "110031", "110032",
-  "110033", "110034", "110035", "110036", "110037", "110038", "110039", "110040",
-  "110041", "110042", "110043", "110044", "110045", "110046", "110047", "110048",
-  "110049", "110051", "110052", "110053", "110054", "110055", "110056", "110057",
-  "110058", "110059", "110060", "110061", "110062", "110063", "110064", "110065",
-  "110066", "110067", "110068", "110069", "110070", "110071", "110072", "110073",
-  "110074", "110075", "110076", "110077", "110078", "110079", "110080", "110081",
-  "110082", "110083", "110084", "110085", "110086", "110087", "110088", "110089",
-  "110090", "110091", "110092", "110093", "110094", "110095", "110096", "110097",
+    // Delhi (UT)
+    "110001",
+    "110002",
+    "110003",
+    "110004",
+    "110005",
+    "110006",
+    "110007",
+    "110008",
+    "110009",
+    "110010",
+    "110011",
+    "110012",
+    "110013",
+    "110014",
+    "110015",
+    "110016",
+    "110017",
+    "110018",
+    "110019",
+    "110020",
+    "110021",
+    "110022",
+    "110023",
+    "110024",
+    "110025",
+    "110026",
+    "110027",
+    "110028",
+    "110029",
+    "110030",
+    "110031",
+    "110032",
+    "110033",
+    "110034",
+    "110035",
+    "110036",
+    "110037",
+    "110038",
+    "110039",
+    "110040",
+    "110041",
+    "110042",
+    "110043",
+    "110044",
+    "110045",
+    "110046",
+    "110047",
+    "110048",
+    "110049",
+    "110051",
+    "110052",
+    "110053",
+    "110054",
+    "110055",
+    "110056",
+    "110057",
+    "110058",
+    "110059",
+    "110060",
+    "110061",
+    "110062",
+    "110063",
+    "110064",
+    "110065",
+    "110066",
+    "110067",
+    "110068",
+    "110069",
+    "110070",
+    "110071",
+    "110072",
+    "110073",
+    "110074",
+    "110075",
+    "110076",
+    "110077",
+    "110078",
+    "110079",
+    "110080",
+    "110081",
+    "110082",
+    "110083",
+    "110084",
+    "110085",
+    "110086",
+    "110087",
+    "110088",
+    "110089",
+    "110090",
+    "110091",
+    "110092",
+    "110093",
+    "110094",
+    "110095",
+    "110096",
+    "110097",
 
-  // Ghaziabad
-  "201001", "201002", "201003", "201004", "201005", "201006", "201007", "201008",
-  "201009", "201010", "201011", "201012", "201013", "201014", "201015", "201016",
-  "201017", "201018", "201019", "201101", "201102", "201201", "201204", "201206",
+    // Ghaziabad
+    "201001",
+    "201002",
+    "201003",
+    "201004",
+    "201005",
+    "201006",
+    "201007",
+    "201008",
+    "201009",
+    "201010",
+    "201011",
+    "201012",
+    "201013",
+    "201014",
+    "201015",
+    "201016",
+    "201017",
+    "201018",
+    "201019",
+    "201101",
+    "201102",
+    "201201",
+    "201204",
+    "201206",
 
-  // Noida
-  "201301", "201302", "201303", "201304", "201305", "201306", "201307", "201308",
-  "201309",
+    // Noida
+    "201301",
+    "201302",
+    "201303",
+    "201304",
+    "201305",
+    "201306",
+    "201307",
+    "201308",
+    "201309",
 
-  // Greater Noida
-  "201310", "201311", "201312", "201313", "201314", "201315", "201316", "201317",
-  "201318", "203207",
+    // Greater Noida
+    "201310",
+    "201311",
+    "201312",
+    "201313",
+    "201314",
+    "201315",
+    "201316",
+    "201317",
+    "201318",
+    "203207",
 
-  // Gurgaon / Gurugram
-  "122001", "122002", "122003", "122004", "122005", "122006", "122007", "122008",
-  "122009", "122010", "122011", "122012", "122015", "122016", "122017", "122018",
-  "122051", "122101", "122102", "122103", "122105", "122106", "122107", "122108",
-  "122109", "122413",
+    // Gurgaon / Gurugram
+    "122001",
+    "122002",
+    "122003",
+    "122004",
+    "122005",
+    "122006",
+    "122007",
+    "122008",
+    "122009",
+    "122010",
+    "122011",
+    "122012",
+    "122015",
+    "122016",
+    "122017",
+    "122018",
+    "122051",
+    "122101",
+    "122102",
+    "122103",
+    "122105",
+    "122106",
+    "122107",
+    "122108",
+    "122109",
+    "122413",
 
-  // Faridabad
-  "121001", "121002", "121003", "121004", "121005", "121006", "121007", "121008",
-];
+    // Faridabad
+    "121001",
+    "121002",
+    "121003",
+    "121004",
+    "121005",
+    "121006",
+    "121007",
+    "121008",
+  ];
 
   const isDeliverable = validPincodes.includes(form.pincode);
 
@@ -266,15 +418,36 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
   };
 
   // Separate the final sync logic
-  const processFinalOrder = async (order) => {
+  const processFinalOrder = async (order, paymentResponse = null) => {
     setIsProcessing(true);
+
     try {
       localStorage.setItem("order", JSON.stringify(order));
+
       await sendToTelegram(order);
+
       if (typeof clearCart === "function") clearCart();
+
       localStorage.removeItem("coupon");
+
+      trackPixel("Purchase", {
+        transaction_id: paymentResponse?.razorpay_payment_id || order.id,
+        value: finalTotal,
+        currency: "INR",
+        contents: cart.map((item) => ({
+          id: item.id,
+          quantity: item.qty,
+          item_price: item.price,
+        })),
+        content_ids: cart.map((item) => item.id),
+        num_items: cart.length,
+      });
+
       navigate("/thanks", {
-        state: { name: form.senderName, orderId: order.id },
+        state: {
+          name: form.senderName,
+          orderId: order.id,
+        },
       });
     } catch (err) {
       console.error("Order process error:", err);
@@ -291,7 +464,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
       currency: "INR",
       name: "Thanks Daisy",
       description: `Order ${orderData.id}`,
-      image: "/Logo.png",
+      image: "/BrandLogo.png",
       handler: function (response) {
         // Payment Successful
         const paidOrder = {
@@ -299,7 +472,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           paymentId: response.razorpay_payment_id,
           status: "Paid",
         };
-        processFinalOrder(paidOrder);
+        processFinalOrder(paidOrder, response);
       },
       prefill: {
         name: form.senderName,
@@ -309,6 +482,11 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
         color: "#57534e",
       },
     };
+
+    trackPixel("AddPaymentInfo", {
+      value: finalTotal,
+      currency: "INR",
+    });
 
     const rzp = new window.Razorpay(options);
     rzp.open();
@@ -608,7 +786,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
         {/* ACTION */}
         <div className="flex flex-col xl:flex-row gap-2">
           <button
-            onClick={() => handlePlaceOrder("Online")} // Pass "Online"
+            onClick={() => handlePlaceOrder("ONLINE")} // Pass "Online"
             disabled={isProcessing}
             className={`w-full p-4 rounded-md font-semibold text-white transition-all ${
               isProcessing ? "bg-stone-600 cursor-not-allowed" : "bg-stone-800"

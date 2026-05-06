@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 // Context
 import { useCart } from "../../context/CartContext";
 
+// Meta Pixel
+import { trackPixel } from "../../utils/metaPixel";
+
 const Cart = () => {
   const { cart, removeFromCart, updateQty, totalPrice } = useCart();
   const navigate = useNavigate();
@@ -209,7 +212,21 @@ const Cart = () => {
               {/* Buttons */}
               <div className="flex flex-col md:flex-row gap-2 xl:gap-4 mt-2">
                 <button
-                  onClick={() => navigate("/checkout")}
+                  onClick={() => {
+                    trackPixel("InitiateCheckout", {
+                      content_ids: cart.map((item) => item.id),
+                      contents: cart.map((item) => ({
+                        id: item.id,
+                        quantity: item.qty,
+                        item_price: item.price,
+                      })),
+                      num_items: cart.length,
+                      value: finalTotal,
+                      currency: "INR",
+                    });
+
+                    navigate("/checkout");
+                  }}
                   className="w-full p-4 font-semibold bg-stone-800 text-white rounded-md"
                 >
                   Continue to Checkout

@@ -14,6 +14,9 @@ import mainData from "../data/mainData";
 // Context
 import { useCart } from "../context/CartContext";
 
+// Meta Pixel
+import { trackPixel } from "../utils/metaPixel";
+
 const Product = () => {
   const { route } = useParams();
   const navigate = useNavigate();
@@ -43,6 +46,17 @@ const Product = () => {
       </div>
     );
 
+  // Meta Pixel
+  useEffect(() => {
+    trackPixel("ViewContent", {
+      content_ids: [product.id],
+      content_name: product.name,
+      content_type: "product",
+      value: product.price,
+      currency: "INR",
+    });
+  }, [product]);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [showCartDrawer, setShowCartDrawer] = useState(false);
 
@@ -58,6 +72,15 @@ const Product = () => {
     }
 
     addToCart(product);
+
+    trackPixel("AddToCart", {
+      content_ids: [product.id],
+      content_name: product.name,
+      content_type: "product",
+      value: product.price,
+      currency: "INR",
+    });
+
     setShowCartDrawer(true);
   };
 
@@ -83,6 +106,13 @@ const Product = () => {
       updatedWishlist = [...wishlist, product];
       setIsWishlisted(true);
     }
+
+    trackPixel("AddToWishlist", {
+      content_ids: [product.id],
+      content_name: product.name,
+      value: product.price,
+      currency: "INR",
+    });
 
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
