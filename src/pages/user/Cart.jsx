@@ -21,7 +21,6 @@ const Cart = () => {
   // Shipping Charges
   const shippingCost = totalPrice > 500 ? 0 : 0;
 
-  // --- Apply Button Handler ---
   // This ONLY sets the active coupon when clicked. It hands the math off to the useEffect.
   const handleAppliedCoupon = () => {
     if (!couponInput.trim()) {
@@ -32,9 +31,7 @@ const Cart = () => {
     setActiveCoupon(couponInput.trim().toUpperCase());
   };
 
-  // --- Dynamic Recalculation ---
   // This watches the cart total and the *applied* coupon.
-  // It recalculates when quantities change or a new coupon is successfully applied.
   useEffect(() => {
     if (!activeCoupon) {
       setDiscount(0);
@@ -52,9 +49,9 @@ const Cart = () => {
     } else if (code === "MEET250") {
       disc = 250;
       message = "Yahoo! You got ₹250 discount.";
-    } else if (code === "FREESHIP") {
-      disc = shippingCost;
-      message = "Congrats! You got free delivery.";
+    } else if (code === "LOVEUMOM") {
+      disc = 150;
+      message = "Yahoo! You got ₹150 discount.";
     } else {
       disc = 0;
       message = "Oops! Invalid coupon code.";

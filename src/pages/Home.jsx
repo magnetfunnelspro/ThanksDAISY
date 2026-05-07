@@ -26,6 +26,63 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   // Bestsellers
+  const specialEvent = [
+    // Red Edit
+    {
+      name: "Red Edit",
+      route: "red-edit",
+      images: ["/images/td-021/1.webp"],
+      price: 699,
+      originalPrice: 1299,
+    },
+
+    // Pink Lily Vase
+    {
+      name: "Pink Lily Vase",
+      route: "pink-lily-vase",
+      images: ["/images/td-024/1.webp"],
+      price: 1899,
+      originalPrice: 2699,
+    },
+
+    // Golden Lace
+    {
+      name: "Golden Lace",
+      route: "golden-lace",
+      images: ["/images/td-018/1.webp"],
+      price: 899,
+      originalPrice: 1399,
+    },
+
+    // Petal Post
+    {
+      name: "Petal Post",
+      route: "petal-post",
+      images: ["/images/td-010/1.webp"],
+      price: 1499,
+      originalPrice: 2199,
+    },
+
+    // Presses Purple
+    {
+      name: "Pressed Purple",
+      route: "pressed-purple",
+      images: ["/images/td-011/1.webp"],
+      price: 899,
+      originalPrice: 2199,
+    },
+
+    // Minty Harvest
+    {
+      name: "Minty Harvest",
+      route: "minty-harvest",
+      images: ["/images/td-001/1.webp"],
+      price: 1999,
+      originalPrice: 3799,
+    },
+  ];
+
+  // Bestsellers
   const bestsellers = [
     {
       name: "Night Garden",
@@ -197,6 +254,43 @@ const Home = () => {
           ))}
         </div>
       </div> */}
+
+      {/* Special Event */}
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
+        <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
+          <span>Mother's Day Special</span>
+          <i class="ri-poker-hearts-fill text-red-600"></i>
+        </h2>
+
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={2}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.5,
+            },
+            768: {
+              slidesPerView: 3.2,
+            },
+            1024: {
+              spaceBetween: 32,
+              slidesPerView: 4,
+            },
+          }}
+          modules={[Navigation]}
+          className="w-full"
+        >
+          {specialEvent.map((data, index) => (
+            <SwiperSlide key={index}>
+              <Card data={data} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <Link to="/shop" className="text-center underline">
+          View all
+        </Link>
+      </div>
 
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">
@@ -388,7 +482,8 @@ const Home = () => {
           What Our Customers Say?
         </h2>
         <p className="xl:w-1/2 xl:text-lg text-center">
-          Every arrangement tells a story of thoughtful gifting and beautiful moments.
+          Every arrangement tells a story of thoughtful gifting and beautiful
+          moments.
         </p>
         <div className="w-full mt-4 relative review-fade">
           <Swiper
