@@ -24,6 +24,7 @@ const Checkout = () => {
     state: "",
     pincode: "",
     relation: "",
+    referral: "",
     message: "",
     date: "",
     timeSlot: "",
@@ -31,6 +32,7 @@ const Checkout = () => {
 
   const [showRelation, setShowRelation] = useState(false);
   const [showTime, setShowTime] = useState(false);
+  const [showReferral, setShowReferral] = useState(false);
 
   // GET COUPON FROM CART
   const { finalTotal, discount, couponCode } = useMemo(() => {
@@ -292,13 +294,6 @@ const Checkout = () => {
     setIsRecording(false);
     // Stop all tracks to turn off the recording light/icon in browser
     mediaRecorder.stream.getTracks().forEach((track) => track.stop());
-
-    const clearVoice = () => {
-      if (audioBlob) {
-        URL.revokeObjectURL(audioBlob); // Clean up memory
-        setAudioBlob(null);
-      }
-    };
   };
 
   const [recordingTime, setRecordingTime] = useState(0);
@@ -333,6 +328,7 @@ const Checkout = () => {
 👤 Name - ${order.address.senderName}
 👤 Receiver - ${order.address.receiverName || "N/A"}
 💑 Relation - ${order.address.relation || "N/A"}
+📢 Referral - ${order.address.referral || "N/A"}
 📞 Contact - ${order.address.phone}
 
 📍 Address - ${order.address.street}, ${order.address.city}, ${order.address.state} - ${order.address.pincode}
@@ -344,6 +340,8 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 💸 Discount - ₹${order.discount}
 
 💰 Total - ₹${order.total}
+💳 Payment Mode - ${order.paymentMethod}
+
 🕒 Timeslot - ${order.address.timeSlot}
 📅 Date - ${order.address.date}
 💌 Message - ${order.address.message || "N/A"}
@@ -649,15 +647,22 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           )}
 
           {/* Delivery Date */}
-          <input
-            required
-            type="date"
-            name="date"
-            min={new Date().toISOString().split("T")[0]}
-            value={form.date}
-            onChange={handleChange}
-            className="w-full p-4 border rounded-md outline-none"
-          />
+          <div className="flex flex-col gap-2">
+            <label className="px-2 text-sm font-medium">Delivery Date</label>
+
+            <input
+              required
+              type="date"
+              name="date"
+              min={new Date().toISOString().split("T")[0]}
+              value={form.date}
+              onChange={handleChange}
+              className="w-full p-4 border rounded-md outline-none bg-white text-stone-800 appearance-none"
+              style={{
+                WebkitAppearance: "none",
+              }}
+            />
+          </div>
 
           {/* Time */}
           <div className="relative">
@@ -685,6 +690,41 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                     className="p-4 border-b hover:bg-pink-50 cursor-pointer"
                   >
                     {t}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Referral Source */}
+          <div className="relative">
+            <div
+              onClick={() => setShowReferral(!showReferral)}
+              className="p-4 border rounded-md flex justify-between cursor-pointer"
+            >
+              {form.referral || "How did you hear about us?"}
+              <i className="ri-arrow-down-s-line"></i>
+            </div>
+
+            {showReferral && (
+              <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
+                {[
+                  "Advertisement",
+                  "Instagram",
+                  "Creator/Influencer",
+                  "Google",
+                  "Friend or Relative",
+                  "Other",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    onClick={() => {
+                      setForm({ ...form, referral: item });
+                      setShowReferral(false);
+                    }}
+                    className="p-4 border-b hover:bg-pink-50 cursor-pointer"
+                  >
+                    {item}
                   </div>
                 ))}
               </div>
