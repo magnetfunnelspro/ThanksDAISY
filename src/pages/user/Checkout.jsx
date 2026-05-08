@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Date Picker
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 // Context
 import { useCart } from "../../context/CartContext";
 
@@ -29,6 +33,23 @@ const Checkout = () => {
     date: "",
     timeSlot: "",
   });
+
+  // Date Picker
+  const [selectedDate, setSelectedDate] = useState(null);
+  useEffect(() => {
+    if (selectedDate) {
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+      const day = String(selectedDate.getDate()).padStart(2, "0");
+
+      const formattedDate = `${year}-${month}-${day}`;
+
+      setForm((prev) => ({
+        ...prev,
+        date: formattedDate,
+      }));
+    }
+  }, [selectedDate]);
 
   const [showRelation, setShowRelation] = useState(false);
   const [showTime, setShowTime] = useState(false);
@@ -647,23 +668,22 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           )}
 
           {/* Delivery Date */}
-          <div className="flex flex-col gap-2">
-            <label className="px-2 text-sm font-medium">
-              Delivery Date
-            </label>
-
-            <input
-              required
-              type="date"
-              name="date"
-              min={new Date().toISOString().split("T")[0]}
-              value={form.date}
-              onChange={handleChange}
-              className="w-full p-4 border rounded-md outline-none bg-white text-stone-800 appearance-none"
-              style={{
-                WebkitAppearance: "none",
-              }}
+          <div className="relative w-full flex-1">
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              minDate={new Date()}
+              dateFormat="dd MMMM, yyyy"
+              placeholderText="Select Delivery Date"
+              wrapperClassName="w-full"
+              className="w-full p-4 pr-12 border rounded-md outline-none placeholder:text-stone-800 bg-white text-stone-800"
+              calendarClassName="rounded-xl border shadow-xl"
+              popperPlacement="bottom-start"
+              showPopperArrow={false}
+              fixedHeight
             />
+
+            <i className="ri-calendar-line absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-lg"></i>
           </div>
 
           {/* Time */}
