@@ -43,9 +43,9 @@ const Cart = () => {
     let message = "";
     const code = activeCoupon;
 
-    if (code === "DAISY15") {
-      disc = Math.round(totalPrice * 0.15);
-      message = "Horah! You got 15% discount.";
+    if (code === "MOM10") {
+      disc = Math.round(totalPrice * 0.10);
+      message = "Horah! You got 10% discount.";
     } else if (code === "MEET250") {
       disc = 250;
       message = "Yahoo! You got ₹250 discount.";
@@ -63,7 +63,7 @@ const Cart = () => {
     // Save valid coupons to localStorage for the Checkout page
     if (
       disc > 0 ||
-      code === "DAISY15" ||
+      code === "MOM10" ||
       code === "MEET250" ||
       code === "FREESHIP"
     ) {
