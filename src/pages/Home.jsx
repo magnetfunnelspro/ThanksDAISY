@@ -258,8 +258,7 @@ const Home = () => {
       {/* Special Event */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
-          <span>Mother's Day Special</span>
-          <i class="ri-poker-hearts-fill text-red-600"></i>
+          Mother's Day Special
         </h2>
 
         <Swiper
