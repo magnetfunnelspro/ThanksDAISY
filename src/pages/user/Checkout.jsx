@@ -648,11 +648,14 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
           {/* Delivery Date */}
           <div className="flex flex-col gap-2">
+            <label className="px-2 text-sm font-medium">
+              Delivery Date
+            </label>
+
             <input
               required
               type="date"
               name="date"
-              placeholder="mm/dd/yyyy"
               min={new Date().toISOString().split("T")[0]}
               value={form.date}
               onChange={handleChange}
