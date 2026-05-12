@@ -12,6 +12,7 @@ import { useCart } from "../../context/CartContext";
 
 // Meta Pixel
 import { trackPixel } from "../../utils/metaPixel";
+import { trackCustomPixel } from "../../utils/metaPixel";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -279,6 +280,13 @@ const Checkout = () => {
     } finally {
       setIsFetchingZip(false);
     }
+
+    const available = validPincodes.includes(pin);
+
+    trackCustomPixel("DeliveryCheck", {
+      pincode: pin,
+      available,
+    });
   };
 
   const handleChange = (e) => {
@@ -417,6 +425,12 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
       return;
     }
 
+    trackPixel("AddShippingInfo", {
+      city: form.city,
+      state: form.state,
+      pincode: form.pincode,
+    });
+
     const orderId = "ORD" + Date.now();
     const orderData = {
       id: orderId,
@@ -449,18 +463,22 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
       localStorage.removeItem("coupon");
 
-      trackPixel("Purchase", {
-        transaction_id: paymentResponse?.razorpay_payment_id || order.id,
-        value: finalTotal,
-        currency: "INR",
-        contents: cart.map((item) => ({
-          id: item.id,
-          quantity: item.qty,
-          item_price: item.price,
-        })),
-        content_ids: cart.map((item) => item.id),
-        num_items: cart.length,
-      });
+      trackPixel(
+        "Purchase",
+        {
+          transaction_id: paymentResponse?.razorpay_payment_id || order.id,
+          value: finalTotal,
+          currency: "INR",
+          contents: cart.map((item) => ({
+            id: item.id,
+            quantity: item.qty,
+            item_price: item.price,
+          })),
+          content_ids: cart.map((item) => item.id),
+          num_items: cart.length,
+        },
+        order.id,
+      );
 
       navigate("/thanks", {
         state: {
@@ -509,6 +527,15 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
     const rzp = new window.Razorpay(options);
     rzp.open();
+
+    rzp.on("payment.failed", function (response) {
+      trackCustomPixel("PaymentFailed", {
+        code: response.error.code,
+        reason: response.error.description,
+        source: response.error.source,
+        step: response.error.step,
+      });
+    });
   };
 
   return (

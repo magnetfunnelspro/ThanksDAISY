@@ -16,6 +16,7 @@ import { useCart } from "../context/CartContext";
 
 // Meta Pixel
 import { trackPixel } from "../utils/metaPixel";
+import { trackCustomPixel } from "../utils/metaPixel";
 
 const Product = () => {
   const { route } = useParams();
@@ -73,7 +74,7 @@ const Product = () => {
 
     addToCart(product);
 
-    trackPixel("AddToCart", {
+    trackCustomPixel("AddToCart", {
       content_ids: [product.id],
       content_name: product.name,
       content_type: "product",

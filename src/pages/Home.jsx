@@ -22,6 +22,9 @@ import faqData from "../data/faqData";
 import reviewData from "../data/reviewData";
 import socialData from "../data/socialData";
 
+// Meta Pixel
+import { trackPixel } from "../utils/metaPixel";
+
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -173,6 +176,10 @@ const Home = () => {
       console.error("Telegram Error:", error);
       alert("Something went wrong. Try again.");
     }
+
+    trackPixel("Lead", {
+      content_name: "WhatsApp Newsletter",
+    });
   };
 
   return (
@@ -256,7 +263,7 @@ const Home = () => {
       </div> */}
 
       {/* Special Event */}
-      <div className="w-full flex flex-col gap-4 xl:gap-8">
+      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
           Mother's Day Special
         </h2>
@@ -289,7 +296,7 @@ const Home = () => {
         <Link to="/shop" className="text-center underline">
           View all
         </Link>
-      </div>
+      </div> */}
 
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">

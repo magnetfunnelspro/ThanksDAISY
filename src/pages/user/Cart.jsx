@@ -7,6 +7,7 @@ import { useCart } from "../../context/CartContext";
 
 // Meta Pixel
 import { trackPixel } from "../../utils/metaPixel";
+import { trackCustomPixel } from "../../utils/metaPixel";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQty, totalPrice } = useCart();
@@ -44,7 +45,7 @@ const Cart = () => {
     const code = activeCoupon;
 
     if (code === "MOM10") {
-      disc = Math.round(totalPrice * 0.10);
+      disc = Math.round(totalPrice * 0.1);
       message = "Horah! You got 10% discount.";
     } else if (code === "MEET250") {
       disc = 250;
@@ -74,6 +75,10 @@ const Cart = () => {
           discount: disc,
         }),
       );
+      trackCustomPixel("CouponApplied", {
+        coupon: code,
+        discount: disc,
+      });
     } else {
       // Remove from storage if an invalid code was applied
       localStorage.removeItem("coupon");
@@ -81,6 +86,21 @@ const Cart = () => {
   }, [totalPrice, shippingCost, activeCoupon]);
 
   const finalTotal = totalPrice + shippingCost - discount;
+
+  // View Cart
+  useEffect(() => {
+    if (!cart.length) return;
+
+    trackPixel("ViewCart", {
+      contents: cart.map((item) => ({
+        id: item.id,
+        quantity: item.qty,
+        item_price: item.price,
+      })),
+      value: finalTotal,
+      currency: "INR",
+    });
+  }, []);
 
   return (
     <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-8 font-['Space_Grotesk'] text-stone-800">

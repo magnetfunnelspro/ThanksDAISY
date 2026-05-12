@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PixelTracker from "./components/PixelTracker";
 
 // Pages
 import Loader from "./pages/Loader";
@@ -33,7 +34,9 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Analytics />
-      
+
+      <PixelTracker />
+
       <Loader />
 
       <a
