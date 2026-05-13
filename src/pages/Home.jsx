@@ -236,32 +236,6 @@ const Home = () => {
         </SwiperSlide>
       </Swiper>
 
-      {/* Categories */}
-      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
-        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
-          Are You Looking for
-        </h2>
-        <div className="w-full grid grid-cols-3 gap-4 xl:gap-8">
-          {catData.map((cat, index) => (
-            <Link
-              key={index}
-              to={cat.route}
-              className="w-full h-full flex flex-col items-center gap-2 xl:gap-4"
-            >
-              <img
-                src={cat.image}
-                alt=""
-                loading="lazy"
-                className="w-full aspect-square rounded-md object-cover"
-              />
-              <span className="text-sm xl:text-2xl font-semibold text-center">
-                {cat.title}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div> */}
-
       {/* Special Event */}
       {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
@@ -387,41 +361,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* New Arrivals */}
-      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
-        <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
-          New Arrivals
-        </h2>
-
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={2}
-          breakpoints={{
-            640: {
-              slidesPerView: 2.5,
-            },
-            768: {
-              slidesPerView: 3.2,
-            },
-            1024: {
-              spaceBetween: 32,
-              slidesPerView: 4,
-            },
-          }}
-          modules={[Navigation]}
-          className="w-full"
-        >
-          {[...mainData]
-            .slice(-5)
-            .reverse()
-            .map((data, index) => (
-              <SwiperSlide key={index}>
-                <Card data={data} badge="New" />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div> */}
-
       {/* Choose Us */}
       <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
@@ -435,9 +374,9 @@ const Home = () => {
         <div className="w-full xl:w-[80%] grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8">
           {/* Express */}
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
-            <i className="ri-e-bike-2-fill text-2xl xl:text-4xl text-stone-800"></i>
+            <i className="ri-calendar-view text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Free 3-4 Hours Express Delivery
+              Remember All Important Dates
             </h4>
           </div>
           {/* Voice notes */}
