@@ -56,7 +56,7 @@ const AppRouter = () => {
       </a>
 
       {/* Marquee */}
-      <div className="w-full p-2 px-0 overflow-hidden text-white bg-rose-400 font-['Nohemi']">
+      <div className="w-full p-2 px-0 overflow-hidden text-white bg-green-600 font-['Nohemi']">
         <motion.div
           className="flex w-max"
           animate={{
