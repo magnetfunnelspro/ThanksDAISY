@@ -237,7 +237,7 @@ const Home = () => {
       </Swiper>
 
       {/* Special Event */}
-      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
+      {/* <div className="w-full px-4 xl:px-16 flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
           Mother's Day Special
         </h2>

@@ -85,39 +85,6 @@ const Product = () => {
     setShowCartDrawer(true);
   };
 
-  // Wishlist Logic
-  const [isWishlisted, setIsWishlisted] = useState(false);
-
-  useEffect(() => {
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const exists = wishlist.find((item) => item.id === product.id);
-    setIsWishlisted(!!exists);
-  }, [product.id]);
-
-  const handleWishlist = () => {
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const exists = wishlist.find((item) => item.id === product.id);
-
-    let updatedWishlist;
-
-    if (exists) {
-      updatedWishlist = wishlist.filter((item) => item.id !== product.id);
-      setIsWishlisted(false);
-    } else {
-      updatedWishlist = [...wishlist, product];
-      setIsWishlisted(true);
-    }
-
-    trackPixel("AddToWishlist", {
-      content_ids: [product.id],
-      content_name: product.name,
-      value: product.price,
-      currency: "INR",
-    });
-
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-  };
-
   return (
     <div className="w-full p-8 px-4 xl:px-16 flex flex-col gap-12 font-['Space_Grotesk'] text-stone-800">
       {/* Main Product */}
@@ -209,23 +176,9 @@ const Product = () => {
           <div className="mt-4 flex gap-4 xl:gap-8">
             <button
               onClick={handleCart}
-              className="w-full p-4 rounded-md font-semibold leading-none text-white bg-stone-800"
+              className="w-full p-4 rounded-md font-semibold text-white bg-stone-800"
             >
               {isInCart ? "View in Cart" : "Add to Cart"}
-            </button>
-
-            <button
-              onClick={handleWishlist}
-              className="p-4 rounded-md text-xl leading-none border-2 border-b-4 border-r-4 border-stone-800 transition-all duration-200 active:scale-0"
-            >
-              <i
-                className={`transition-all duration-200
-                  ${
-                    isWishlisted
-                      ? "ri-poker-hearts-fill text-stone-800 scale-105"
-                      : "ri-poker-hearts-line text-stone-800"
-                  }`}
-              ></i>
             </button>
           </div>
 

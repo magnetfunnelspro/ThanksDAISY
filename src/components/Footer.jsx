@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full p-4 px-0 xl:p-8 xl:px-0 border-t flex flex-col gap-8 font-['Space_Grotesk'] text-stone-600 bg-white">
+    <div className="w-full p-4 px-4 xl:p-8 xl:px-16 border-t flex flex-col gap-8 font-['Space_Grotesk'] text-stone-600 bg-white">
       {/* Top Section */}
       <div className="w-full flex flex-col gap-8">
         {/* Brand */}

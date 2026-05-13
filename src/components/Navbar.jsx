@@ -16,7 +16,7 @@ const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
 
   return (
-    <div className="w-full p-4 px-0 border-b flex items-center justify-between font-['Space_Grotesk'] text-stone-800">
+    <div className="w-full p-4 px-4 xl:px-16 border-b flex items-center justify-between font-['Space_Grotesk'] text-stone-800">
       {/* Brand Logo */}
       <Link to="/">
         <img src="/Logo.png" alt="" className="w-36" />
@@ -96,17 +96,12 @@ const Navbar = () => {
           <i className="ri-search-line"></i>
         </Link>
 
-        {/* Wishlist */}
-        <Link to="/wishlist" className="text-lg">
-          <i className="ri-poker-hearts-line"></i>
-        </Link>
-
         {/* Shopping Cart */}
         <Link to="/cart" className="relative text-lg">
           <i className="ri-shopping-bag-line"></i>
 
           {cart.length > 0 && (
-            <span className="absolute -top-0 -right-1 text-[8px] leading-none pt-[2.5px] p-[2px] px-[4px] rounded-full text-white bg-stone-800">
+            <span className="absolute -top-0 -right-1 text-[8px] leading-none pt-[2.5px] p-[2px] px-[4px] rounded-full">
               {cart.length}
             </span>
           )}
@@ -118,11 +113,6 @@ const Navbar = () => {
         {/* Search */}
         <Link to="/search" className="text-xl">
           <i className="ri-search-line"></i>
-        </Link>
-
-        {/* Wishlist */}
-        <Link to="/wishlist" className="text-xl">
-          <i className="ri-poker-hearts-line"></i>
         </Link>
 
         {/* Shopping Cart */}
@@ -138,7 +128,7 @@ const Navbar = () => {
 
         {/* Menu Bar */}
         <div className="text-xl">
-          <i onClick={() => setToggleNav(true)} className="ri-menu-line"></i>
+          <i onClick={() => setToggleNav(true)} className="ri-menu-3-line"></i>
 
           {/* Overlay */}
           <div

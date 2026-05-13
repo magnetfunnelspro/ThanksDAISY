@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -31,14 +32,20 @@ import Terms from "./pages/legal/Terms";
 import Returns from "./pages/legal/Returns";
 
 const AppRouter = () => {
+  const marqueeText = [
+    "Cash on delivery available",
+    "Cash on delivery available",
+    "Cash on delivery available",
+    "Cash on delivery available",
+  ];
+
   return (
     <BrowserRouter>
       <Analytics />
-
       <PixelTracker />
-
       <Loader />
 
+      {/* Support */}
       <a
         href="https://wa.me/918287340065"
         target="_blank"
@@ -48,9 +55,46 @@ const AppRouter = () => {
         <i className="ri-whatsapp-line text-2xl"></i>
       </a>
 
-      <div className="px-4 xl:px-16">
-        <Navbar />
+      {/* Marquee */}
+      <div className="w-full p-2 px-0 overflow-hidden text-white bg-rose-400 font-['Nohemi']">
+        <motion.div
+          className="flex w-max"
+          animate={{
+            x: ["0%", "-50%"],
+          }}
+          transition={{
+            ease: "linear",
+            duration: 20,
+            repeat: Infinity,
+          }}
+        >
+          {/* First Set */}
+          <div className="flex shrink-0 items-center">
+            {marqueeText.map((text, index) => (
+              <div
+                key={index}
+                className="mx-8 text-sm uppercase tracking-wide whitespace-nowrap"
+              >
+                {text}
+              </div>
+            ))}
+          </div>
+
+          {/* Duplicate Set */}
+          <div className="flex shrink-0 items-center">
+            {marqueeText.map((text, index) => (
+              <div
+                key={`duplicate-${index}`}
+                className="mx-8 text-sm uppercase tracking-wide whitespace-nowrap"
+              >
+                {text}
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
+
+      <Navbar />
 
       <Routes>
         {/* Pages */}
@@ -77,9 +121,7 @@ const AppRouter = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      <div className="px-4 xl:px-16">
-        <Footer />
-      </div>
+      <Footer />
     </BrowserRouter>
   );
 };
