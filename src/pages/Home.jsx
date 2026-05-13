@@ -301,7 +301,7 @@ const Home = () => {
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none">
-          Our Most Loved Creations
+          Most Loved Creations
         </h2>
 
         <Swiper

@@ -216,7 +216,7 @@ const Product = () => {
 
             <button
               onClick={handleWishlist}
-              className="p-4 rounded-lg text-xl leading-none border-2 border-b-4 border-r-4 border-stone-800 transition-all duration-200 active:scale-0"
+              className="p-4 rounded-md text-xl leading-none border-2 border-b-4 border-r-4 border-stone-800 transition-all duration-200 active:scale-0"
             >
               <i
                 className={`transition-all duration-200
