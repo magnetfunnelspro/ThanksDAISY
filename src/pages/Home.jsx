@@ -206,7 +206,7 @@ const Home = () => {
           <Link to="/product/petal-post">
             <img
               loading="lazy"
-              src="/AdBanner1.png"
+              src="/AdBanner1.webp"
               alt=""
               className="w-full aspect-video rounded-md"
             />
@@ -217,7 +217,7 @@ const Home = () => {
           <Link to="/product/minty-harvest">
             <img
               loading="lazy"
-              src="/AdBanner2.png"
+              src="/AdBanner2.webp"
               alt=""
               className="w-full aspect-video rounded-md"
             />
@@ -228,7 +228,7 @@ const Home = () => {
           <Link to="/product/soft-grace">
             <img
               loading="lazy"
-              src="/AdBanner3.png"
+              src="/AdBanner3.webp"
               alt=""
               className="w-full aspect-video rounded-md"
             />
@@ -407,14 +407,14 @@ const Home = () => {
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
         <Link to="/product/petal-post">
           <img
-            src="/AdBanner1.png"
+            src="/Banner1.webp"
             alt=""
             className="w-full aspect-video rounded-md"
           />
         </Link>
         <Link to="/product/soft-grace">
           <img
-            src="/AdBanner3.png"
+            src="/Banner2.webp"
             alt=""
             className="w-full aspect-video rounded-md"
           />
@@ -487,7 +487,7 @@ const Home = () => {
       </div>
 
       {/* Social Content */}
-      <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
+      {/* <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
           Instagram Posts
         </h2>
@@ -522,7 +522,7 @@ const Home = () => {
             </span>
           </a>
         </div>
-      </div>
+      </div> */}
 
       {/* FAQ Section */}
       <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
