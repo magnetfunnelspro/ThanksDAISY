@@ -20,7 +20,7 @@ const Cart = () => {
   const [couponMsg, setCouponMsg] = useState("");
 
   // Shipping Charges
-  const shippingCost = totalPrice > 500 ? 0 : 0;
+  const shippingCost = totalPrice >= 1199 ? 0 : 250;
 
   // This ONLY sets the active coupon when clicked. It hands the math off to the useEffect.
   const handleAppliedCoupon = () => {
@@ -203,24 +203,43 @@ const Cart = () => {
             </div>
 
             {/* SUMMARY */}
-            <div className="border-t pt-4 flex flex-col gap-3">
+            <div className="border-t pt-4 flex flex-col gap-2">
+              {/* Subtotal */}
               <div className="flex justify-between">
                 <span className="font-semibold">Subtotal</span>
                 <span>₹{totalPrice}</span>
               </div>
 
-              <div className="flex justify-between">
-                <span className="font-semibold">Delivery Charges</span>
-                <span>{shippingCost === 0 ? "Free" : `₹${shippingCost}`}</span>
-              </div>
-
+              {/* Discount */}
               {discount > 0 && (
-                <div className="flex justify-between text-green-600">
+                <div className="flex justify-between">
                   <span className="font-semibold">Discount</span>
-                  <span>-₹{discount}</span>
+                  <span className="text-green-600">-₹{discount}</span>
                 </div>
               )}
 
+              {/* Shipping Charges */}
+              <div className="flex flex-col gap-0.5">
+                <div className="flex justify-between">
+                  <span className="font-semibold">Delivery Charges</span>
+                  <span>
+                    {shippingCost === 0 ? "Free" : `₹${shippingCost}`}
+                  </span>
+                </div>
+
+                {shippingCost > 0 ? (
+                  <p className="text-xs text-stone-600">
+                    Add items worth ₹{1199 - totalPrice} more to unlock free
+                    delivery.
+                  </p>
+                ) : (
+                  <p className="text-xs text-green-600">
+                    Yahoo! You unlocked free delivery.
+                  </p>
+                )}
+              </div>
+
+              {/* Total */}
               <div className="flex justify-between text-lg font-semibold border-t pt-2">
                 <span>Total</span>
                 <span>₹{finalTotal}</span>

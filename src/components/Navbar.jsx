@@ -128,7 +128,7 @@ const Navbar = () => {
 
         {/* Menu Bar */}
         <div className="text-xl">
-          <i onClick={() => setToggleNav(true)} className="ri-menu-3-line"></i>
+          <i onClick={() => setToggleNav(true)} className="ri-menu-line"></i>
 
           {/* Overlay */}
           <div

@@ -60,6 +60,7 @@ const Checkout = () => {
   const { finalTotal, discount, couponCode } = useMemo(() => {
     const couponData = JSON.parse(localStorage.getItem("coupon")) || {};
     const disc = Number(couponData.discount) || 0;
+
     return {
       discount: disc,
       couponCode: couponData.code || null,
@@ -405,6 +406,9 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
   };
 
   // Order Placement
+  const midnightCharge = form.timeSlot === "Midnight (12 AM*) +₹600" ? 600 : 0;
+  const grandTotal = finalTotal + midnightCharge;
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePlaceOrder = async (paymentMethod) => {
@@ -435,7 +439,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     const orderData = {
       id: orderId,
       items: cart,
-      total: finalTotal,
+      total: grandTotal,
       discount,
       coupon: couponCode,
       address: form,
@@ -467,7 +471,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
         "Purchase",
         {
           transaction_id: paymentResponse?.razorpay_payment_id || order.id,
-          value: finalTotal,
+          value: grandTotal,
           currency: "INR",
           contents: cart.map((item) => ({
             id: item.id,
@@ -521,7 +525,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     };
 
     trackPixel("AddPaymentInfo", {
-      value: finalTotal,
+      value: grandTotal,
       currency: "INR",
     });
 
@@ -636,8 +640,8 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
               >
                 {form.pincode.length === 6 &&
                   (isDeliverable
-                    ? "Yahoo! Available to ship."
-                    : "Sorry, we are only available in Delhi NCR.")}
+                    ? "Great! Next-day delivery available in your area."
+                    : "Sorry, we are currently available only in Delhi NCR.")}
               </span>
             </div>
             <input
@@ -695,22 +699,28 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           )}
 
           {/* Delivery Date */}
-          <div className="relative w-full flex-1">
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              minDate={new Date()}
-              dateFormat="dd MMMM, yyyy"
-              placeholderText="Select Delivery Date"
-              wrapperClassName="w-full"
-              className="w-full p-4 pr-12 border rounded-md outline-none placeholder:text-stone-800 bg-white text-stone-800"
-              calendarClassName="rounded-xl border shadow-xl"
-              popperPlacement="bottom-start"
-              showPopperArrow={false}
-              fixedHeight
-            />
+          <div className="w-full flex flex-col gap-2">
+            <p className="text-xs text-stone-600">
+              Orders are accepted for next-day delivery and scheduled slots
+              only*
+            </p>
+            <div className="relative w-full">
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
+                dateFormat="dd MMMM, yyyy"
+                placeholderText="Select Delivery Date"
+                wrapperClassName="w-full"
+                className="w-full p-4 pr-12 border rounded-md outline-none placeholder:text-stone-800 bg-white text-stone-800"
+                calendarClassName="rounded-xl border shadow-xl"
+                popperPlacement="bottom-start"
+                showPopperArrow={false}
+                fixedHeight
+              />
 
-            <i className="ri-calendar-line absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-lg"></i>
+              <i className="ri-calendar-line absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-lg"></i>
+            </div>
           </div>
 
           {/* Time */}
@@ -729,6 +739,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                   "Morning (8 AM - 12 PM)",
                   "Afternoon (12 PM - 4 PM)",
                   "Evening (4 PM - 8 PM)",
+                  "Midnight (12 AM*) +₹600",
                 ].map((t) => (
                   <div
                     key={t}
@@ -736,7 +747,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                       setForm({ ...form, timeSlot: t });
                       setShowTime(false);
                     }}
-                    className="p-4 border-b hover:bg-pink-50 cursor-pointer"
+                    className="p-4 border-b hover:bg-stone-50 cursor-pointer"
                   >
                     {t}
                   </div>
@@ -758,7 +769,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
             {showReferral && (
               <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
                 {[
-                  "Advertisement",
+                  "Facebook",
                   "Instagram",
                   "Creator/Influencer",
                   "Google",
@@ -849,26 +860,39 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           <h4 className="font-semibold text-xl">Order Summary</h4>
 
           <div className="flex flex-col gap-2">
-            {cart.map((item) => (
-              <div key={item.id} className="flex justify-between text-sm">
-                <span>
-                  {item.name} x {item.qty}
-                </span>
-                <span>₹{item.price * item.qty}</span>
+            {/* Products */}
+            <div className="flex flex-col gap-2">
+              {cart.map((item) => (
+                <div key={item.id} className="flex justify-between">
+                  <span className="font-semibold">
+                    {item.name} x {item.qty}
+                  </span>
+                  <span>₹{item.price * item.qty}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Discount */}
+            {discount > 0 && (
+              <div className="flex justify-between">
+                <span className="font-semibold">Discount</span>
+                <span className="text-green-600">-₹{discount}</span>
               </div>
-            ))}
+            )}
+
+            {/* Midnight Delivery */}
+            {midnightCharge > 0 && (
+              <div className="flex justify-between">
+                <span className="font-semibold">Midnight Delivery Charge</span>
+                <span>₹{midnightCharge}</span>
+              </div>
+            )}
           </div>
 
-          {discount > 0 && (
-            <div className="flex justify-between text-green-600">
-              <span>Discount</span>
-              <span>-₹{discount}</span>
-            </div>
-          )}
-
+          {/* Total */}
           <div className="flex justify-between font-semibold border-t pt-4">
             <span>Total</span>
-            <span>₹{finalTotal}</span>
+            <span>₹{grandTotal}</span>
           </div>
         </div>
 
