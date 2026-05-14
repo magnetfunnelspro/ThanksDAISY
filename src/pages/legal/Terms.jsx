@@ -3,14 +3,15 @@ import React from "react";
 const Terms = () => {
   return (
     <div className="w-full p-8 px-4 xl:px-16 border-t flex flex-col gap-8 font-['Space_Grotesk'] text-stone-600 bg-white">
-
       {/* Header */}
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl xl:text-4xl font-semibold text-stone-800">
           Terms & Conditions
         </h2>
         <p className="text-sm xl:text-base">
-          Welcome to <span className="font-semibold">Thanks Daisy</span>. By using our services, you agree to the following terms and conditions. Please read them carefully before placing an order.
+          Welcome to <span className="font-semibold">Thanks Daisy</span>. By
+          using our services, you agree to the following terms and conditions.
+          Please read them carefully before placing an order.
         </p>
       </div>
 
@@ -20,7 +21,9 @@ const Terms = () => {
           Orders & Acceptance
         </h2>
         <p className="text-sm xl:text-base">
-          All orders placed through our platform are subject to availability and confirmation. We reserve the right to cancel or refuse any order if required.
+          All orders placed through our platform are subject to availability and
+          confirmation. We reserve the right to cancel or refuse any order if
+          required.
         </p>
       </div>
 
@@ -42,9 +45,11 @@ const Terms = () => {
         <h2 className="text-lg xl:text-xl font-semibold text-stone-800">
           Delivery Policy
         </h2>
-        <p className="text-sm xl:text-base">
-          We currently deliver only in Delhi NCR. Delivery timeslots are indicative and may vary due to traffic, weather, or unforeseen circumstances.
-        </p>
+        We currently offer next-day scheduled delivery across Delhi NCR.
+        Customers can select their preferred delivery slot while placing the
+        order. We also provide 12 AM midnight delivery for special occasions.
+        Delivery timeslots are indicative and may vary due to traffic, weather,
+        or unforeseen circumstances.
       </div>
 
       {/* Customer Responsibility */}
@@ -56,6 +61,7 @@ const Terms = () => {
           <li>Provide accurate delivery details</li>
           <li>Ensure recipient availability at the delivery location</li>
           <li>Incorrect details may lead to failed deliveries</li>
+          <li>Ensure someone is available to receive midnight deliveries</li>
         </ul>
       </div>
 
@@ -65,7 +71,9 @@ const Terms = () => {
           Cancellation & Refunds
         </h2>
         <p className="text-sm xl:text-base">
-          Orders once placed may not be eligible for cancellation once processing has begun. Refunds, if applicable, will be processed based on the situation at our discretion.
+          Orders once placed may not be eligible for cancellation once
+          processing has begun. Refunds, if applicable, will be processed based
+          on the situation at our discretion.
         </p>
       </div>
 
@@ -75,7 +83,9 @@ const Terms = () => {
           Product Nature
         </h2>
         <p className="text-sm xl:text-base">
-          As flowers are natural products, slight variations in color, size, or arrangement may occur. These differences are normal and not considered defects.
+          As flowers are natural products, slight variations in color, size, or
+          arrangement may occur. These differences are normal and not considered
+          defects.
         </p>
       </div>
 
@@ -85,7 +95,9 @@ const Terms = () => {
           Messages & Content
         </h2>
         <p className="text-sm xl:text-base">
-          Customers are responsible for the messages and voice notes they submit. We reserve the right to refuse inappropriate or harmful content.
+          Customers are responsible for the messages and voice notes they
+          submit. We reserve the right to refuse inappropriate or harmful
+          content.
         </p>
       </div>
 
@@ -95,7 +107,9 @@ const Terms = () => {
           Limitation of Liability
         </h2>
         <p className="text-sm xl:text-base">
-          Thanks Daisy shall not be liable for delays, damages, or losses caused due to circumstances beyond our control, including but not limited to weather, traffic, or incorrect information provided.
+          Thanks Daisy shall not be liable for delays, damages, or losses caused
+          due to circumstances beyond our control, including but not limited to
+          weather, traffic, or incorrect information provided.
         </p>
       </div>
 
@@ -105,7 +119,9 @@ const Terms = () => {
           Changes to Terms
         </h2>
         <p className="text-sm xl:text-base">
-          We reserve the right to update or modify these terms at any time without prior notice. Continued use of our services implies acceptance of the updated terms.
+          We reserve the right to update or modify these terms at any time
+          without prior notice. Continued use of our services implies acceptance
+          of the updated terms.
         </p>
       </div>
 
@@ -123,7 +139,6 @@ const Terms = () => {
       <p className="text-xs text-stone-400">
         Last updated: {new Date().getFullYear()}
       </p>
-
     </div>
   );
 };

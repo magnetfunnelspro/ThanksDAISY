@@ -52,7 +52,7 @@ const Card = ({ data }) => {
       {/* Content */}
       <div className="flex flex-col">
         {/* Title Clickable */}
-        <Link to={`/product/${data.id}`}>
+        <Link to={`/product/${data.route}`}>
           <h4 className="xl:text-lg font-semibold line-clamp-1 hover:underline">
             {data.name}
           </h4>

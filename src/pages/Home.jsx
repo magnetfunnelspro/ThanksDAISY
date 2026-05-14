@@ -505,7 +505,7 @@ const Home = () => {
               >
                 <img
                   src={item.image}
-                  alt="ThanksDAISY Instagram Post"
+                  alt="Thanks Daisy Instagram Post"
                   className="w-full aspect-square object-cover"
                 />
               </div>
@@ -587,7 +587,7 @@ const Home = () => {
           </h2>
 
           <p className="mt-2 text-sm xl:text-base text-center text-stone-600">
-            Join ThanksDAISY on WhatsApp for exclusive offers, early access, and
+            Join Thanks Daisy on WhatsApp for exclusive offers, early access, and
             beautiful floral surprises crafted just for you.
           </p>
         </div>

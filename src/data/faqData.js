@@ -1,36 +1,42 @@
 const faqData = [
   {
     id: "faq-001",
-    question: "Do you offer same day or fast delivery?",
+    question: "Do you offer next-day and midnight delivery?",
     answer:
-      "Yes, we offer super-fast delivery within 4 hours across Delhi NCR. Simply place your order and we’ll make sure it reaches on time.",
+      "Yes, we currently offer advance booking for next-day delivery across Delhi NCR. We also provide 12 AM midnight delivery for birthdays, anniversaries, and special occasions.",
   },
   {
     id: "faq-002",
-    question: "Where do you currently deliver?",
+    question: "Do you provide midnight delivery?",
     answer:
-      "We currently deliver exclusively within Delhi NCR to ensure speed, freshness, and a premium experience for every order.",
+      "Yes, we offer 12 AM midnight delivery for special occasions like birthdays, anniversaries, and surprises. Simply select the midnight delivery option while placing your order.",
   },
   {
     id: "faq-003",
+    question: "Where do you currently deliver?",
+    answer:
+      "We currently deliver exclusively within Delhi NCR to ensure freshness, timely delivery, and a premium gifting experience.",
+  },
+  {
+    id: "faq-004",
     question: "Do you include a message card with the bouquet?",
     answer:
       "Yes, every order comes with a personalized message card. You can add your custom message while placing the order.",
   },
   {
-    id: "faq-004",
+    id: "faq-005",
     question: "Do you offer replacements in case of damaged products?",
     answer:
-      "Yes, we offer a hassle-free replacement if your order arrives damaged. Just share clear photos or videos of the product with us immediately, and we'll arrange a fresh replacement.",
+      "Yes, we offer a hassle-free replacement if your order arrives damaged. Just share clear photos or videos of the product immediately, and we'll arrange a fresh replacement.",
   },
   {
-    id: "faq-005",
+    id: "faq-006",
     question: "How fresh are your flowers?",
     answer:
       "Our flowers are freshly sourced and carefully arranged to ensure they look beautiful and stay fresh for days.",
   },
   {
-    id: "faq-006",
+    id: "faq-007",
     question: "Can I customize my bouquet?",
     answer:
       "Absolutely. You can request custom bouquets based on your preferences, occasion, and budget.",

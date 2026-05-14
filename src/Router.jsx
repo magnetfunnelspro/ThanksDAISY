@@ -50,13 +50,13 @@ const AppRouter = () => {
         href="https://wa.me/918287340065"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 p-2.5 px-3.5 rounded-full text-white bg-green-500 z-[1000]"
+        className="fixed bottom-4 right-4 p-0.5 px-1.5 rounded-full text-white bg-[#25d366] z-[1000]"
       >
         <i className="ri-whatsapp-line text-2xl"></i>
       </a>
 
       {/* Marquee */}
-      <div className="w-full p-2 px-0 overflow-hidden text-white bg-green-600 font-['Nohemi']">
+      <div className="w-full p-2 px-0 overflow-hidden text-white bg-rose-400 font-['Nohemi']">
         <motion.div
           className="flex w-max"
           animate={{

@@ -21,9 +21,12 @@ const Shipping = () => {
           Delivery
         </h2>
         <p className="text-sm xl:text-base">
-          We offer free delivery within 3–4 hours across Delhi NCR. In select
-          locations, including parts of Gurugram, Noida, and Ghaziabad,
-          additional delivery charges may apply depending on the delivery area.
+          We currently offer advance booking for next-day delivery across Delhi
+          NCR. Customers can schedule their preferred delivery slot while
+          placing the order. We also provide 12 AM midnight delivery for
+          birthdays, anniversaries, and special occasions. In select locations,
+          including parts of Gurugram, and Noida, additional delivery charges
+          may apply depending on the delivery area.
         </p>
       </div>
 

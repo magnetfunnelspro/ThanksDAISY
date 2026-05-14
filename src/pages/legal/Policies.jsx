@@ -90,8 +90,10 @@ const Policies = () => {
           Service Availability
         </h2>
         <p className="text-sm xl:text-base">
-          Currently, our services are available only in Delhi NCR. We use your
-          pincode to verify delivery availability.
+          Currently, our services are available only in Delhi NCR. Orders are
+          accepted for next-day scheduled delivery, including 12 AM midnight
+          delivery slots for special occasions. We use your pincode to verify
+          delivery availability.
         </p>
       </div>
 

@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <h4 className="text-base xl:text-lg font-semibold">Shop</h4>
             <Link to="/shop">All Products</Link>
-            <Link to="/collection">Collections</Link>
+            <Link to="/shop">Collections</Link>
           </div>
 
           <div className="flex flex-col gap-2 text-right">
