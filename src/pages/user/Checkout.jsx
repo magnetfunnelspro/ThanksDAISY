@@ -24,6 +24,7 @@ const Checkout = () => {
     senderName: "",
     receiverName: "",
     phone: "",
+    receiverPhone: "",
     street: "",
     city: "",
     state: "",
@@ -320,10 +321,11 @@ const Checkout = () => {
   };
 
   const stopRecording = () => {
-    mediaRecorder.stop();
+    if (mediaRecorder) {
+      mediaRecorder.stop();
+      mediaRecorder.stream.getTracks().forEach((track) => track.stop());
+    }
     setIsRecording(false);
-    // Stop all tracks to turn off the recording light/icon in browser
-    mediaRecorder.stream.getTracks().forEach((track) => track.stop());
   };
 
   const [recordingTime, setRecordingTime] = useState(0);
@@ -359,7 +361,8 @@ const Checkout = () => {
 👤 Receiver - ${order.address.receiverName || "N/A"}
 💑 Relation - ${order.address.relation || "N/A"}
 📢 Referral - ${order.address.referral || "N/A"}
-📞 Contact - ${order.address.phone}
+📞 Sender Contact - ${order.address.phone}
+📞 Receiver Contact - ${order.address.receiverPhone || "N/A"}
 
 📍 Address - ${order.address.street}, ${order.address.city}, ${order.address.state} - ${order.address.pincode}
 
@@ -407,14 +410,20 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
   // Order Placement
   const midnightCharge = form.timeSlot === "Midnight (12 AM*) +₹600" ? 600 : 0;
-  const grandTotal = finalTotal + midnightCharge;
+
+  // Shipping Charges
+  const shippingCost = totalPrice >= 1199 ? 0 : 250;
+
+  const grandTotal = finalTotal + shippingCost + midnightCharge;
 
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePlaceOrder = async (paymentMethod) => {
     if (
       !form.senderName ||
+      (orderFor === "someone" && !form.senderName) ||
       !form.phone ||
+      (orderFor === "someone" && !form.receiverPhone) ||
       !form.street ||
       !form.pincode ||
       !form.date ||
@@ -598,15 +607,28 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
           </div>
 
           {/* Phone */}
-          <input
-            required
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={handleChange}
-            className="p-4 border rounded-md outline-none"
-          />
+          <div className="grid grid-cols-1 gap-4">
+            <input
+              required
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={form.phone}
+              onChange={handleChange}
+              className="p-4 border rounded-md outline-none"
+            />
+
+            {orderFor === "someone" && (
+              <input
+                type="tel"
+                name="receiverPhone"
+                placeholder="Receiver's Phone Number"
+                value={form.receiverPhone}
+                onChange={handleChange}
+                className="p-4 border rounded-md outline-none"
+              />
+            )}
+          </div>
 
           {/* Address */}
           <div className="grid md:grid-cols-2 gap-4">
@@ -879,6 +901,12 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                 <span className="text-green-600">-₹{discount}</span>
               </div>
             )}
+
+            {/* Shipping Charge */}
+            <div className="flex justify-between">
+              <span className="font-semibold">Delivery Charges</span>
+              <span>{shippingCost === 0 ? "Free" : `₹${shippingCost}`}</span>
+            </div>
 
             {/* Midnight Delivery */}
             {midnightCharge > 0 && (

@@ -203,7 +203,7 @@ const Home = () => {
         className="w-full rounded-md overflow-hidden"
       >
         <SwiperSlide>
-          <Link to="/product/petal-post">
+          <Link to="/product/red-edit">
             <img
               loading="lazy"
               src="/AdBanner1.webp"
@@ -214,7 +214,7 @@ const Home = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <Link to="/product/minty-harvest">
+          <Link to="/product/earth-aura">
             <img
               loading="lazy"
               src="/AdBanner2.webp"
@@ -225,7 +225,7 @@ const Home = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <Link to="/product/soft-grace">
+          <Link to="/product/petal-post">
             <img
               loading="lazy"
               src="/AdBanner3.webp"
@@ -405,14 +405,14 @@ const Home = () => {
 
       {/* Ad Banners */}
       <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-center gap-4 xl:gap-8">
-        <Link to="/product/petal-post">
+        <Link to="/product/peach-amber">
           <img
             src="/Banner1.webp"
             alt=""
             className="w-full aspect-video rounded-md"
           />
         </Link>
-        <Link to="/product/soft-grace">
+        <Link to="/product/night-garden">
           <img
             src="/Banner2.webp"
             alt=""

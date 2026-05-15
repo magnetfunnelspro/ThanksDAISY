@@ -62,17 +62,13 @@ const Cart = () => {
     setCouponMsg(message);
 
     // Save valid coupons to localStorage for the Checkout page
-    if (
-      disc > 0 ||
-      code === "MOM10" ||
-      code === "MEET250" ||
-      code === "FREESHIP"
-    ) {
+    if (disc > 0) {
       localStorage.setItem(
         "coupon",
         JSON.stringify({
           code: code,
           discount: disc,
+          shippingCost,
         }),
       );
       trackCustomPixel("CouponApplied", {
