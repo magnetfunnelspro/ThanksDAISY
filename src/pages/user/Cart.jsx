@@ -44,15 +44,12 @@ const Cart = () => {
     let message = "";
     const code = activeCoupon;
 
-    if (code === "MOM10") {
+    if (code === "DAISY10") {
       disc = Math.round(totalPrice * 0.1);
       message = "Horah! You got 10% discount.";
     } else if (code === "MEET250") {
       disc = 250;
       message = "Yahoo! You got ₹250 discount.";
-    } else if (code === "LOVEUMOM") {
-      disc = 150;
-      message = "Yahoo! You got ₹150 discount.";
     } else {
       disc = 0;
       message = "Oops! Invalid coupon code.";
