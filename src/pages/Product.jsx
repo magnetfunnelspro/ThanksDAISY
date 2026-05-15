@@ -26,6 +26,8 @@ const Product = () => {
     (item) => item.route.toLowerCase() === route?.toLowerCase(),
   );
 
+  const [swiperRef, setSwiperRef] = useState(null);
+
   // Prevent crash
   if (!product)
     return (
@@ -93,6 +95,7 @@ const Product = () => {
         <div className="w-full xl:w-1/2 flex flex-col xl:flex-row-reverse gap-4">
           {/* Main Slider */}
           <Swiper
+            modules={[Navigation]}
             spaceBetween={16}
             breakpoints={{
               1280: {
@@ -100,6 +103,7 @@ const Product = () => {
               },
             }}
             loop={true}
+            onSwiper={setSwiperRef}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             className="w-full aspect-square rounded-md overflow-hidden"
           >
@@ -121,6 +125,7 @@ const Product = () => {
             {product.images.map((img, index) => (
               <div
                 key={index}
+                onClick={() => swiperRef?.slideToLoop(index)}
                 className={`cursor-pointer rounded-md overflow-hidden border-2 transition ${
                   activeIndex === index
                     ? "border-stone-800"

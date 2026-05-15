@@ -486,44 +486,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Social Content */}
-      {/* <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
-        <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
-          Instagram Posts
-        </h2>
-        <p className="xl:w-1/2 xl:text-lg text-center">
-          A little glimpse into our floral world — handcrafted bouquets and
-          beautiful gifting moments captured with love.
-        </p>
-
-        <div className="w-full mt-4 flex flex-col items-center gap-4 xl:gap-8">
-          <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-4 xl:gap-8">
-            {socialData.map((item) => (
-              <div
-                key={item.id}
-                className="w-full aspect-square rounded-md overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  alt="Thanks Daisy Instagram Post"
-                  className="w-full aspect-square object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          <a
-            href="https://www.instagram.com/thanksdaisyofficial/"
-            target="_blank"
-            className="mt-4 p-4 px-8 xl:text-lg font-semibold rounded-md border-2 border-r-4 border-b-4 border-stone-800 text-stone-800"
-          >
-            <span>
-              Follow <i className="ri-threads-line"></i>thanksdaisyofficial
-            </span>
-          </a>
-        </div>
-      </div> */}
-
       {/* FAQ Section */}
       <div className="w-full flex flex-col items-center gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold text-center leading-none">
