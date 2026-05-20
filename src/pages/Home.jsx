@@ -28,6 +28,34 @@ import { trackPixel } from "../utils/metaPixel";
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
+  const imagesData = [
+    {
+      id: 1,
+      src: "/reviews/img1.webp",
+      alt: "Customer Review",
+    },
+    {
+      id: 2,
+      src: "/reviews/img2.webp",
+      alt: "Customer Review",
+    },
+    {
+      id: 3,
+      src: "/reviews/img3.webp",
+      alt: "Customer Review",
+    },
+    {
+      id: 4,
+      src: "/reviews/img4.webp",
+      alt: "Customer Review",
+    },
+    {
+      id: 5,
+      src: "/reviews/img5.webp",
+      alt: "Customer Review",
+    },
+  ];
+
   // Bestsellers
   const specialEvent = [
     // Red Edit
@@ -484,6 +512,47 @@ const Home = () => {
             ))}
           </Swiper>
         </div>
+        <div className="w-full mt-4 relative review-fade">
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={1.2}
+            spaceBetween={16}
+            loop={true}
+            speed={5000}
+            allowTouchMove={false}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+              reverseDirection: true, // 👈 opposite direction
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+              },
+            }}
+            className="w-full review-swiper"
+          >
+            {imagesData.map((image) => (
+              <SwiperSlide key={image.id}>
+                <div className="w-full aspect-square overflow-hidden rounded-md">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
 
       {/* FAQ Section */}
@@ -549,8 +618,8 @@ const Home = () => {
           </h2>
 
           <p className="mt-2 text-sm xl:text-base text-center text-stone-600">
-            Join Thanks Daisy on WhatsApp for exclusive offers, early access, and
-            beautiful floral surprises crafted just for you.
+            Join Thanks Daisy on WhatsApp for exclusive offers, early access,
+            and beautiful floral surprises crafted just for you.
           </p>
         </div>
 
