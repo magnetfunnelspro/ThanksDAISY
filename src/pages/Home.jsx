@@ -8,6 +8,7 @@ import { Autoplay } from "swiper/modules";
 import { Pagination } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // Components
@@ -27,6 +28,7 @@ import { trackPixel } from "../utils/metaPixel";
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const imagesData = [
     {
@@ -512,20 +514,12 @@ const Home = () => {
             ))}
           </Swiper>
         </div>
-        <div className="w-full mt-4 relative review-fade">
+        {/* Image Slider */}
+        <div className="w-full mt-4 relative">
           <Swiper
-            modules={[Autoplay]}
-            slidesPerView={1.2}
+            slidesPerView={2}
             spaceBetween={16}
             loop={true}
-            speed={5000}
-            allowTouchMove={false}
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-              reverseDirection: true, // 👈 opposite direction
-            }}
             breakpoints={{
               640: {
                 slidesPerView: 2,
@@ -538,21 +532,67 @@ const Home = () => {
                 spaceBetween: 24,
               },
             }}
-            className="w-full review-swiper"
+            className="w-full"
           >
-            {imagesData.map((image) => (
+            {imagesData.map((image, index) => (
               <SwiperSlide key={image.id}>
-                <div className="w-full aspect-square overflow-hidden rounded-md">
+                <button
+                  onClick={() => setSelectedImageIndex(index)}
+                  className="w-full aspect-square overflow-hidden rounded-md"
+                >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition duration-300"
                   />
-                </div>
+                </button>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
+
+        {/* Modal */}
+        {selectedImageIndex !== null && (
+          <div
+            onClick={() => setSelectedImageIndex(null)}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute top-4 right-4 z-50 text-white text-xl"
+            >
+              <i class="ri-close-large-line"></i>
+            </button>
+
+            {/* Swiper Gallery */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl"
+            >
+              <Swiper
+                modules={[Pagination]}
+                initialSlide={selectedImageIndex}
+                pagination={{ clickable: true }}
+                spaceBetween={20}
+                slidesPerView={1}
+                className="rounded-md overflow-hidden"
+              >
+                {imagesData.map((image) => (
+                  <SwiperSlide key={image.id}>
+                    <div className="w-full flex items-center justify-center">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full max-h-[85vh] aspect-square object-cover rounded-md"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* FAQ Section */}
