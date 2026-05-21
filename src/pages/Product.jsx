@@ -43,7 +43,7 @@ const Product = () => {
             onClick={() => navigate("/shop")}
             className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-stone-800"
           >
-            Continue Shopping
+            Back to Shopping
           </button>
         </div>
       </div>
@@ -321,7 +321,7 @@ const Product = () => {
                 onClick={() => setShowCartDrawer(false)}
                 className="p-4 rounded-md font-semibold border-2 border-stone-800 text-stone-800"
               >
-                Continue Shopping
+                Back to Shopping
               </button>
             </div>
           )}

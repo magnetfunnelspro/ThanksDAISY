@@ -129,7 +129,7 @@ const Contact = () => {
             <i className="ri-customer-service-line text-2xl text-stone-800"></i>
             <h4 className="font-semibold text-stone-800">Call Us</h4>
             <p className="text-sm text-stone-600 text-center">
-              Talk to our expert
+              Talk to our team
             </p>
           </button>
         </div>

@@ -110,7 +110,7 @@ const Cart = () => {
             onClick={() => navigate("/shop")}
             className="mt-2 p-4 px-8 font-semibold rounded-md text-white bg-stone-800"
           >
-            Continue Shopping
+            Back to Shopping
           </button>
         </div>
       ) : (
@@ -265,7 +265,7 @@ const Cart = () => {
                   onClick={() => navigate("/shop")}
                   className="w-full p-4 font-semibold border-2 border-r-4 border-b-4 border-stone-800 text-stone-800 rounded-md"
                 >
-                  Continue Shopping
+                  Back to Shopping
                 </button>
               </div>
             </div>
