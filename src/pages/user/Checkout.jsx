@@ -36,6 +36,49 @@ const Checkout = () => {
     timeSlot: "",
   });
 
+  // CHANGE THIS TO TRUE/FALSE
+  const allowTodayOrders = true;
+
+  const today = new Date();
+
+  const todayDateString = `${today.getFullYear()}-${String(
+    today.getMonth() + 1,
+  ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+  const currentHour = today.getHours();
+
+  // Delivery slots
+  const deliverySlots = [
+    {
+      label: "Morning (10 AM - 2 PM)",
+      closeHour: 12,
+    },
+    {
+      label: "Afternoon (2 PM - 6 PM)",
+      closeHour: 16,
+    },
+    {
+      label: "Evening (6 PM - 10 PM)",
+      closeHour: 20,
+    },
+    {
+      label: "Midnight (12 AM*) +₹600",
+      closeHour: 22,
+    },
+  ];
+
+  // Check if selected date is today
+  const isTodaySelected = form.date === todayDateString;
+
+  // Filter slots for same-day delivery
+  const availableTimeSlots = deliverySlots.filter((slot) => {
+    // Tomorrow/future => show all slots
+    if (!isTodaySelected) return true;
+
+    // Today => close slot 2 hours before
+    return currentHour < slot.closeHour;
+  });
+
   // Date Picker
   const [selectedDate, setSelectedDate] = useState(null);
   useEffect(() => {
@@ -264,21 +307,31 @@ const Checkout = () => {
 
   const fetchLocation = async (pin) => {
     if (pin.length !== 6) return;
+
     setIsFetchingZip(true);
 
     try {
-      const res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
+      const res = await fetch(`https://api.zippopotam.us/in/${pin}`);
+
+      if (!res.ok) {
+        throw new Error("Invalid pincode");
+      }
+
       const data = await res.json();
 
-      if (data[0].Status === "Success") {
-        const loc = data[0].PostOffice[0];
+      setForm((prev) => ({
+        ...prev,
+        city: data.places?.[0]?.["place name"] || "",
+        state: data.places?.[0]?.state || "",
+      }));
+    } catch (error) {
+      console.error("Pincode fetch error:", error);
 
-        setForm((prev) => ({
-          ...prev,
-          city: loc.District,
-          state: loc.State,
-        }));
-      }
+      setForm((prev) => ({
+        ...prev,
+        city: "",
+        state: "",
+      }));
     } finally {
       setIsFetchingZip(false);
     }
@@ -647,7 +700,12 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                 value={form.pincode}
                 onChange={(e) => {
                   handleChange(e);
-                  fetchLocation(e.target.value);
+
+                  const value = e.target.value;
+
+                  if (value.length === 6) {
+                    fetchLocation(value);
+                  }
                 }}
                 className="p-4 border rounded-md outline-none"
               />
@@ -722,15 +780,29 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
 
           {/* Delivery Date */}
           <div className="w-full flex flex-col gap-2">
-            <p className="text-xs text-stone-600">
-              Orders are accepted for next-day delivery and scheduled slots
-              only*
-            </p>
+            {!allowTodayOrders && (
+              <p className="text-xs pl-2 text-stone-600 font-medium">
+                *We have closed booking for today due to heavy demand.
+              </p>
+            )}
+
             <div className="relative w-full">
               <DatePicker
                 selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                minDate={new Date(new Date().setDate(new Date().getDate() + 1))}
+                onChange={(date) => {
+                  setSelectedDate(date);
+
+                  // Reset time slot if date changes
+                  setForm((prev) => ({
+                    ...prev,
+                    timeSlot: "",
+                  }));
+                }}
+                minDate={
+                  allowTodayOrders
+                    ? new Date()
+                    : new Date(new Date().setDate(new Date().getDate() + 1))
+                }
                 dateFormat="dd MMMM, yyyy"
                 placeholderText="Select Delivery Date"
                 wrapperClassName="w-full"
@@ -756,24 +828,29 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
             </div>
 
             {showTime && (
-              <div className="absolute w-full mt-2 rounded-md border bg-white z-10">
-                {[
-                  "Morning (8 AM - 12 PM)",
-                  "Afternoon (12 PM - 4 PM)",
-                  "Evening (4 PM - 8 PM)",
-                  "Midnight (12 AM*) +₹600",
-                ].map((t) => (
-                  <div
-                    key={t}
-                    onClick={() => {
-                      setForm({ ...form, timeSlot: t });
-                      setShowTime(false);
-                    }}
-                    className="p-4 border-b hover:bg-stone-50 cursor-pointer"
-                  >
-                    {t}
+              <div className="absolute w-full mt-2 rounded-md border bg-white z-10 overflow-hidden">
+                {availableTimeSlots.length > 0 ? (
+                  availableTimeSlots.map((slot) => (
+                    <div
+                      key={slot.label}
+                      onClick={() => {
+                        setForm({
+                          ...form,
+                          timeSlot: slot.label,
+                        });
+
+                        setShowTime(false);
+                      }}
+                      className="p-4 border-b last:border-b-0 hover:bg-stone-50 cursor-pointer"
+                    >
+                      {slot.label}
+                    </div>
+                  ))
+                ) : (
+                  <div className="p-4 text-sm text-red-600">
+                    No delivery slots available for today.
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>

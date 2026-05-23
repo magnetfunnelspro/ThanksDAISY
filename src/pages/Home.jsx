@@ -394,9 +394,9 @@ const Home = () => {
         <div className="w-full xl:w-[80%] grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8">
           {/* Express */}
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
-            <i className="ri-calendar-view text-2xl xl:text-4xl text-stone-800"></i>
+            <i className="ri-takeaway-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Remember All Important Dates
+              3-4 Hrs Express Delivery
             </h4>
           </div>
           {/* Voice notes */}
