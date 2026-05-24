@@ -46,6 +46,11 @@ const Home = () => {
       src: "/reviews/img3.webp",
       alt: "Customer Review",
     },
+    {
+      id: 4,
+      src: "/reviews/img4.webp",
+      alt: "Customer Review",
+    },
   ];
 
   // Bestsellers
@@ -55,7 +60,7 @@ const Home = () => {
       name: "Red Edit",
       route: "red-edit",
       images: ["/images/td-021/1.webp"],
-      price: 699,
+      price: 999,
       originalPrice: 1299,
     },
 
@@ -73,7 +78,7 @@ const Home = () => {
       name: "Golden Lace",
       route: "golden-lace",
       images: ["/images/td-018/1.webp"],
-      price: 899,
+      price: 999,
       originalPrice: 1399,
     },
 
@@ -139,14 +144,14 @@ const Home = () => {
       name: "Red Edit",
       route: "red-edit",
       images: ["/images/td-021/1.webp"],
-      price: 699,
+      price: 999,
       originalPrice: 1299,
     },
     {
       name: "Golden Lace",
       route: "golden-lace",
       images: ["/images/td-018/1.webp"],
-      price: 899,
+      price: 999,
       originalPrice: 1399,
     },
   ];
@@ -396,7 +401,7 @@ const Home = () => {
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-takeaway-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              3-4 Hrs Express Delivery
+              Same-day Express Delivery
             </h4>
           </div>
           {/* Voice notes */}
