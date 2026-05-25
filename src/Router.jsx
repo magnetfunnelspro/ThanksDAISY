@@ -34,9 +34,9 @@ import Returns from "./pages/legal/Returns";
 const AppRouter = () => {
   const marqueeText = [
     "Cash on delivery available",
-    "Cash on delivery available",
-    "Cash on delivery available",
-    "Cash on delivery available",
+    "Free flower care kit",
+    "Scan QR code to hear voice note",
+    "Same-day express delivery",
   ];
 
   return (
