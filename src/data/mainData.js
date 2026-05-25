@@ -686,7 +686,7 @@ const mainData = [
       "/images/td-021/3.webp",
       "/images/td-021/4.webp",
     ],
-    price: 999,
+    price: 799,
     originalPrice: 1299,
   },
   {

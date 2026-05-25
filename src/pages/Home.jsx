@@ -60,7 +60,7 @@ const Home = () => {
       name: "Red Edit",
       route: "red-edit",
       images: ["/images/td-021/1.webp"],
-      price: 999,
+      price: 799,
       originalPrice: 1299,
     },
 
@@ -144,7 +144,7 @@ const Home = () => {
       name: "Red Edit",
       route: "red-edit",
       images: ["/images/td-021/1.webp"],
-      price: 999,
+      price: 799,
       originalPrice: 1299,
     },
     {
