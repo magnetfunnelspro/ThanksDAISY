@@ -34,9 +34,9 @@ import Returns from "./pages/legal/Returns";
 const AppRouter = () => {
   const marqueeText = [
     "Cash on delivery available",
-    "Free flower care kit",
-    "Scan QR code to hear voice note",
-    "Same-day express delivery",
+    "Cash on delivery available",
+    "Cash on delivery available",
+    "Cash on delivery available",
   ];
 
   return (
@@ -52,7 +52,7 @@ const AppRouter = () => {
         rel="noopener noreferrer"
         className="fixed bottom-4 right-4 p-0.5 px-1.5 rounded-full text-white bg-[#25d366] z-[1000]"
       >
-        <i className="ri-whatsapp-line text-2xl"></i>
+        <i className="ri-whatsapp-line text-3xl"></i>
       </a>
 
       {/* Marquee */}

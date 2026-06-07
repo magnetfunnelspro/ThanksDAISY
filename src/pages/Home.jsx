@@ -401,7 +401,7 @@ const Home = () => {
           <div className="p-4 xl:p-8 rounded-md flex flex-col items-center gap-2 xl:gap-4 bg-stone-100">
             <i className="ri-takeaway-fill text-2xl xl:text-4xl text-stone-800"></i>
             <h4 className="xl:text-lg font-semibold text-center">
-              Same-day Express Delivery
+              3-4 Hrs Express Delivery
             </h4>
           </div>
           {/* Voice notes */}
