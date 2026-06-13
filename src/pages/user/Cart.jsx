@@ -19,8 +19,11 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
   const [couponMsg, setCouponMsg] = useState("");
 
+  // Min Free Shipping
+  const minFreeShip = 999;
+
   // Shipping Charges
-  const shippingCost = totalPrice >= 899 ? 0 : 150;
+  const shippingCost = totalPrice >= minFreeShip ? 0 : 150;
 
   // This ONLY sets the active coupon when clicked. It hands the math off to the useEffect.
   const handleAppliedCoupon = () => {
@@ -222,8 +225,8 @@ const Cart = () => {
 
                 {shippingCost > 0 ? (
                   <p className="text-xs text-stone-600">
-                    Add items worth ₹{1199 - totalPrice} more to unlock free
-                    delivery.
+                    Add items worth ₹{minFreeShip - totalPrice} more to unlock
+                    free delivery.
                   </p>
                 ) : (
                   <p className="text-xs text-green-600">
