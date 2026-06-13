@@ -50,15 +50,22 @@ const Product = () => {
     );
 
   // Meta Pixel
-  useEffect(() => {
-    trackPixel("ViewContent", {
+  const eventId = crypto.randomUUID();
+
+  fbq(
+    "track",
+    "ViewContent",
+    {
       content_ids: [product.id],
       content_name: product.name,
       content_type: "product",
       value: product.price,
       currency: "INR",
-    });
-  }, [product]);
+    },
+    {
+      eventID: eventId,
+    },
+  );
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [showCartDrawer, setShowCartDrawer] = useState(false);
