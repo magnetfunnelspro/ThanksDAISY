@@ -55,58 +55,58 @@ const Home = () => {
 
   // Bestsellers
   const specialEvent = [
-    // Red Edit
-    {
-      name: "Red Edit",
-      route: "red-edit",
-      images: ["/images/td-021/1.webp"],
-      price: 799,
-      originalPrice: 1299,
-    },
-
-    // Pink Lily Vase
-    {
-      name: "Pink Lily Vase",
-      route: "pink-lily-vase",
-      images: ["/images/td-024/1.webp"],
-      price: 1899,
-      originalPrice: 2699,
-    },
-
     // Golden Lace
     {
       name: "Golden Lace",
       route: "golden-lace",
       images: ["/images/td-018/1.webp"],
-      price: 999,
+      price: 1299,
       originalPrice: 1399,
     },
 
-    // Petal Post
+    // Green Star
     {
-      name: "Petal Post",
-      route: "petal-post",
-      images: ["/images/td-010/1.webp"],
-      price: 1499,
-      originalPrice: 2199,
+      name: "Green Star",
+      route: "green-star",
+      images: ["/images/td-008/1.webp"],
+      price: 1799,
+      originalPrice: 4399,
     },
 
-    // Presses Purple
+    // Night Garden
+    {
+      name: "Night Garden",
+      route: "night-garden",
+      images: ["/images/td-006/1.webp"],
+      price: 1999,
+      originalPrice: 5199,
+    },
+
+    // Solar Smiles
+    {
+      name: "Solar Smiles",
+      route: "solar-smiles",
+      images: ["/images/td-020/1.webp"],
+      price: 1599,
+      originalPrice: 1799,
+    },
+
+    // Pressed Purple
     {
       name: "Pressed Purple",
       route: "pressed-purple",
       images: ["/images/td-011/1.webp"],
-      price: 899,
+      price: 1399,
       originalPrice: 2199,
     },
 
-    // Minty Harvest
+    // White Star
     {
-      name: "Minty Harvest",
-      route: "minty-harvest",
-      images: ["/images/td-001/1.webp"],
-      price: 1999,
-      originalPrice: 3799,
+      name: "White Star",
+      route: "white-star",
+      images: ["/images/td-004/1.webp"],
+      price: 2399,
+      originalPrice: 3999,
     },
   ];
 
@@ -123,36 +123,36 @@ const Home = () => {
       name: "Green Star",
       route: "green-star",
       images: ["/images/td-008/1.webp"],
-      price: 1599,
+      price: 1799,
       originalPrice: 4399,
     },
     {
-      name: "Morning Garden",
-      route: "morning-garden",
-      images: ["/images/td-007/1.webp"],
-      price: 4999,
-      originalPrice: 5499,
-    },
-    {
-      name: "Petal Post",
-      route: "petal-post",
-      images: ["/images/td-010/1.webp"],
-      price: 1499,
+      name: "Pressed Purple",
+      route: "pressed-purple",
+      images: ["/images/td-011/1.webp"],
+      price: 1399,
       originalPrice: 2199,
-    },
-    {
-      name: "Red Edit",
-      route: "red-edit",
-      images: ["/images/td-021/1.webp"],
-      price: 799,
-      originalPrice: 1299,
     },
     {
       name: "Golden Lace",
       route: "golden-lace",
       images: ["/images/td-018/1.webp"],
-      price: 999,
+      price: 1299,
       originalPrice: 1399,
+    },
+    {
+      name: "Red Edit",
+      route: "red-edit",
+      images: ["/images/td-021/1.webp"],
+      price: 1199,
+      originalPrice: 1299,
+    },
+    {
+      name: "Solar Smiles",
+      route: "solar-smiles",
+      images: ["/images/td-020/1.webp"],
+      price: 1599,
+      originalPrice: 1799,
     },
   ];
 
@@ -262,9 +262,9 @@ const Home = () => {
       </Swiper>
 
       {/* Special Event */}
-      {/* <div className="w-full px-4 xl:px-16 flex flex-col gap-4 xl:gap-8">
+      <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
-          Mother's Day Special
+          Fathers's Day Special
         </h2>
 
         <Swiper
@@ -295,7 +295,7 @@ const Home = () => {
         <Link to="/shop" className="text-center underline">
           View all
         </Link>
-      </div> */}
+      </div>
 
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">

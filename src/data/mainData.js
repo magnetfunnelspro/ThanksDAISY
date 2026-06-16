@@ -267,7 +267,7 @@ const mainData = [
       "/images/td-008/3.webp",
       "/images/td-008/4.webp",
     ],
-    price: 1599,
+    price: 1799,
     originalPrice: 4399,
   },
   {
@@ -300,7 +300,7 @@ const mainData = [
       "/images/td-009/3.webp",
       "/images/td-009/4.webp",
     ],
-    price: 1599,
+    price: 1899,
     originalPrice: 2799,
   },
   {
@@ -358,7 +358,7 @@ const mainData = [
       "/images/td-011/3.webp",
       "/images/td-011/4.webp",
     ],
-    price: 899,
+    price: 1399,
     originalPrice: 2199,
   },
   {
@@ -407,7 +407,7 @@ const mainData = [
       "/images/td-013/3.webp",
       "/images/td-013/4.webp",
     ],
-    price: 1599,
+    price: 1799,
     originalPrice: 3399,
   },
   {
@@ -605,7 +605,7 @@ const mainData = [
       "/images/td-018/3.webp",
       "/images/td-018/4.webp",
     ],
-    price: 999,
+    price: 1299,
     originalPrice: 1399,
   },
   {
@@ -660,7 +660,7 @@ const mainData = [
       "/images/td-020/3.webp",
       "/images/td-020/4.webp",
     ],
-    price: 1199,
+    price: 1599,
     originalPrice: 1799,
   },
   {
@@ -686,7 +686,7 @@ const mainData = [
       "/images/td-021/3.webp",
       "/images/td-021/4.webp",
     ],
-    price: 799,
+    price: 1199,
     originalPrice: 1299,
   },
   {
@@ -792,7 +792,7 @@ const mainData = [
       "/images/td-025/3.webp",
       "/images/td-025/4.webp",
     ],
-    price: 899,
+    price: 1399,
     originalPrice: 1799,
   },
   {

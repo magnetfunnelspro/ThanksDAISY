@@ -1,9 +1,9 @@
 const faqData = [
   {
     id: "faq-001",
-    question: "Do you offer next-day and midnight delivery?",
+    question: "Do you offer fast delivery?",
     answer:
-      "Yes, we currently offer advance booking for next-day delivery across Delhi NCR. We also provide 12 AM midnight delivery for birthdays, anniversaries, and special occasions.",
+      "Yes, we offer 3-4 hours express delivery across Delhi NCR on all orders.",
   },
   {
     id: "faq-002",

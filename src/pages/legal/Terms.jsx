@@ -45,7 +45,7 @@ const Terms = () => {
         <h2 className="text-lg xl:text-xl font-semibold text-stone-800">
           Delivery Policy
         </h2>
-        We currently offer next-day scheduled delivery across Delhi NCR.
+        We currently offer 3-4 hours express delivery across Delhi NCR.
         Customers can select their preferred delivery slot while placing the
         order. We also provide 12 AM midnight delivery for special occasions.
         Delivery timeslots are indicative and may vary due to traffic, weather,

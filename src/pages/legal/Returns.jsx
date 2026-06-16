@@ -21,7 +21,7 @@ const Shipping = () => {
           Delivery
         </h2>
         <p className="text-sm xl:text-base">
-          We currently offer advance booking for next-day delivery across Delhi
+          We currently offer 3-4 hours express delivery across Delhi
           NCR. Customers can schedule their preferred delivery slot while
           placing the order. We also provide 12 AM midnight delivery for
           birthdays, anniversaries, and special occasions. In select locations,
