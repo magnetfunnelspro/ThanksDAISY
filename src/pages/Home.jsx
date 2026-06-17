@@ -69,7 +69,7 @@ const Home = () => {
       name: "Green Star",
       route: "green-star",
       images: ["/images/td-008/1.webp"],
-      price: 1999,
+      price: 1899,
       originalPrice: 4399,
     },
 
