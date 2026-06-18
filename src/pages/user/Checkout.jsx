@@ -461,6 +461,21 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     }
   };
 
+  // Send Data to Gmail
+  const sendOrderNotification = async (order) => {
+    try {
+      await fetch("/api/send-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+    } catch (err) {
+      console.error("Notification Error:", err);
+    }
+  };
+
   // Order Placement
   const midnightCharge = form.timeSlot === "Midnight (12 AM*) +₹600" ? 600 : 0;
 
@@ -523,7 +538,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     try {
       localStorage.setItem("order", JSON.stringify(order));
 
-      await sendToTelegram(order);
+      await sendOrderNotification(order);
 
       if (typeof clearCart === "function") clearCart();
 
