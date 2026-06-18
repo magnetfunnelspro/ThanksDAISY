@@ -518,7 +518,7 @@ ${form.message}
 ORDER ITEMS
 
 ${cart
-  .map((item) => `• ${item.name} × ${item.qty} = ₹${item.price * item.qty}`)
+  .map((item) => `• ${item.name} x ${item.qty} = ₹${item.price * item.qty}`)
   .join("\n")}
 
 ORDER SUMMARY
@@ -800,8 +800,8 @@ Please confirm my order. Thank you!
               >
                 {form.pincode.length === 6 &&
                   (isDeliverable
-                    ? "Great! Next-day delivery available in your area."
-                    : "Sorry, we are currently available only in Delhi NCR.")}
+                    ? "Great! Express delivery available in your area."
+                    : "Sorry, we are currently available only in some places of Delhi NCR.")}
               </span>
             </div>
             <input
@@ -1083,11 +1083,10 @@ Please confirm my order. Thank you!
 
         {/* ACTION */}
         <div className="flex flex-col gap-3">
-          <div className="bg-yellow-100 border border-yellow-300 text-yellow-900 p-3 rounded-md text-sm">
-            ⚠️ Our ordering server is currently down and will be fixed before
-            <strong> 1 July 2026</strong>. Please place your order through
-            WhatsApp.
-          </div>
+          <h4 className="p-2.5 rounded-md text-sm border border-amber-400 text-amber-800 bg-amber-100">
+            ⚠️ Our ordering server is currently down so we're accepting orders via WhatsApp. Your order
+            details will be filled automatically, just tap below to continue.
+          </h4>
 
           <button
             onClick={handleWhatsAppOrder}

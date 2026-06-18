@@ -51,6 +51,11 @@ const Home = () => {
       src: "/reviews/img4.webp",
       alt: "Customer Review",
     },
+    {
+      id: 5,
+      src: "/reviews/img5.webp",
+      alt: "Customer Review",
+    },
   ];
 
   // Bestsellers
