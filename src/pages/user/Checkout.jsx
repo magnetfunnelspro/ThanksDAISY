@@ -1082,19 +1082,12 @@ Please confirm my order. Thank you!
         </div>
 
         {/* ACTION */}
-        <div className="flex flex-col gap-3">
-          <h4 className="p-2.5 rounded-md text-sm border border-amber-400 text-amber-800 bg-amber-100">
-            ⚠️ Our ordering server is currently down so we're accepting orders via WhatsApp. Your order
-            details will be filled automatically, just tap below to continue.
-          </h4>
-
-          <button
-            onClick={handleWhatsAppOrder}
-            className="w-full p-4 rounded-md font-semibold bg-green-600 text-white"
-          >
-            Order on WhatsApp
-          </button>
-        </div>
+        <button
+          onClick={handleWhatsAppOrder}
+          className="w-full p-4 rounded-md font-semibold bg-green-600 text-white"
+        >
+          Place Order on WhatsApp
+        </button>
 
         <div className="hidden flex-col xl:flex-row gap-2">
           <button
