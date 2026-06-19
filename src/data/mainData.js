@@ -950,6 +950,35 @@ const mainData = [
     price: 1399,
     originalPrice: 2199,
   },
+  {
+    id: "td-031",
+    cat: "vase arrangement",
+    emotion: ["gratitude", "best-wishes", "get-well-soon"],
+    occasion: ["event", "birthday", "anniversary"],
+    name: "Pink Serenity",
+    route: "pink-serenity",
+    dimension: {
+      width: "12 inch",
+      height: "15 inch",
+    },
+    flowers: [
+      { name: "Pink Oriental Lilies", quantity: 6 },
+      { name: "Light Pink Roses", quantity: 8 },
+      { name: "Spray Chrysanthemums", quantity: 22 },
+      { name: "Limonium", quantity: 4 },
+      { name: "Misty Filler Greens", quantity: 4 },
+    ],
+    description:
+      "Pink Serenity is a graceful blend of pink lilies, soft roses, and delicate daisies, arranged in a modern white vase to create timeless elegance and charm.",
+    images: [
+      "/images/td-031/1.webp",
+      "/images/td-031/2.webp",
+      "/images/td-031/3.webp",
+      "/images/td-031/4.webp",
+    ],
+    price: 1899,
+    originalPrice: 2999,
+  },
 ];
 
 const updatedData = mainData.map((item) => {
