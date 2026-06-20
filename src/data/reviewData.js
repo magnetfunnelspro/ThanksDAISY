@@ -1,37 +1,37 @@
 const reviewData = [
   {
     id: "r-001",
-    name: "Priya Sharma",
+    name: "Sakshi Sharma",
     review:
-      "Absolutely loved the bouquet. The flowers were super fresh and looked even better than the pictures.",
+      "Ordered for a birthday, delivered on time and the quality was really good.",
     rating: 5,
   },
   {
     id: "r-002",
-    name: "Ankit Verma",
+    name: "Shivam Mishra",
     review:
-      "Ordered for my anniversary and the delivery was right on time. Packaging and presentation were beautiful.",
+      "Beautiful arrangement and fresh flowers. Looks even better in person.",
     rating: 5,
   },
   {
     id: "r-003",
-    name: "Neha Kapoor",
+    name: "Vidhi",
     review:
-      "ThanksDAISY made gifting so easy. The flowers felt premium and the entire experience was smooth.",
+      "They have customization option also and staff guys are so creative based on your budget.",
     rating: 5,
   },
   {
     id: "r-004",
-    name: "Rohit Singh",
+    name: "Aishani",
     review:
-      "Very elegant bouquet and amazing service. Will definitely order again for birthdays and special occasions.",
+      "Ordered for my parents anniversary and the arrangement looked even more beautiful in real life.",
     rating: 5,
   },
   {
     id: "r-005",
-    name: "Sneha Patel",
+    name: "Ujjwal Bagri",
     review:
-      "The flowers arrived fresh and fragrant. It instantly made the whole surprise feel extra special.",
+      "Smooth ordering process and fresh flowers, the final arrangement looked elegant and exactly as expected.",
     rating: 5,
   },
 ];

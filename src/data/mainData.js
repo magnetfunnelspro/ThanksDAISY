@@ -979,6 +979,34 @@ const mainData = [
     price: 1899,
     originalPrice: 2999,
   },
+  {
+    id: "td-032",
+    cat: "vase arrangement",
+    emotion: ["gratitude", "best-wishes", "get-well-soon"],
+    occasion: ["event", "birthday", "anniversary"],
+    name: "Summer Glow",
+    route: "summer-glow",
+    dimension: {
+      width: "16 inch",
+      height: "18 inch",
+    },
+    flowers: [
+      { name: "Sunflowers", quantity: 3 },
+      { name: "Solidago Stems", quantity: 5 },
+      { name: "Spray Chrysanthemums", quantity: 14 },
+      { name: "Filler Greens", quantity: 6 },
+    ],
+    description:
+      "Summer Glow is a radiant vase arrangement of sunflowers and golden blooms, thoughtfully arranged to bring warmth, happiness, and cheerful elegance to any celebration or space.",
+    images: [
+      "/images/td-032/1.webp",
+      "/images/td-032/2.webp",
+      "/images/td-032/3.webp",
+      "/images/td-032/4.webp",
+    ],
+    price: 1799,
+    originalPrice: 2399,
+  },
 ];
 
 const updatedData = mainData.map((item) => {

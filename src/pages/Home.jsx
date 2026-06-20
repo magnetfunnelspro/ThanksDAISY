@@ -69,13 +69,13 @@ const Home = () => {
       originalPrice: 1399,
     },
 
-    // Green Star
+    // Summer Glow
     {
-      name: "Green Star",
-      route: "green-star",
-      images: ["/images/td-008/1.webp"],
-      price: 1899,
-      originalPrice: 4399,
+      name: "Summer Glow",
+      route: "summer-glow",
+      images: ["/images/td-032/1.webp"],
+      price: 1799,
+      originalPrice: 2399,
     },
 
     // Night Garden
@@ -87,13 +87,13 @@ const Home = () => {
       originalPrice: 5199,
     },
 
-    // Solar Smiles
+    // Pink Serenity
     {
-      name: "Solar Smiles",
-      route: "solar-smiles",
-      images: ["/images/td-020/1.webp"],
-      price: 1599,
-      originalPrice: 1799,
+      name: "Pink Serenity",
+      route: "pink-serenity",
+      images: ["/images/td-031/1.webp"],
+      price: 1899,
+      originalPrice: 2999,
     },
 
     // Pressed Purple
@@ -462,27 +462,19 @@ const Home = () => {
         </p>
         <div className="w-full mt-4 relative review-fade">
           <Swiper
-            modules={[Autoplay]}
-            slidesPerView={1.15}
+            slidesPerView={1}
             spaceBetween={16}
             loop={true}
-            speed={5000}
-            allowTouchMove={false}
-            autoplay={{
-              delay: 0,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
             breakpoints={{
               640: {
-                slidesPerView: 1.6,
+                slidesPerView: 1.5,
               },
               768: {
-                slidesPerView: 2.2,
+                slidesPerView: 2,
               },
               1024: {
-                spaceBetween: 32,
                 slidesPerView: 3,
+                spaceBetween: 24,
               },
             }}
             className="w-full review-swiper"
