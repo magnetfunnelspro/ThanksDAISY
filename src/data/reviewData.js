@@ -8,7 +8,7 @@ const reviewData = [
   },
   {
     id: "r-002",
-    name: "Shivam Mishra",
+    name: "Aman Mishra",
     review:
       "Beautiful arrangement and fresh flowers. Looks even better in person.",
     rating: 5,
@@ -29,7 +29,7 @@ const reviewData = [
   },
   {
     id: "r-005",
-    name: "Ujjwal Bagri",
+    name: "Kartik Raj",
     review:
       "Smooth ordering process and fresh flowers, the final arrangement looked elegant and exactly as expected.",
     rating: 5,
