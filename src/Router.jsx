@@ -11,6 +11,7 @@ import PixelTracker from "./components/PixelTracker";
 
 // Pages
 import Loader from "./pages/Loader";
+import Portal from "./pages/Portal";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
@@ -116,6 +117,9 @@ const AppRouter = () => {
         <Route path="/privacy-policy" element={<Policies />} />
         <Route path="/terms-conditions" element={<Terms />} />
         <Route path="/shipping-returns" element={<Returns />} />
+
+        {/* Portal */}
+        <Route path="/portal" element={<Portal />} />
 
         {/* Not Found Page */}
         <Route path="*" element={<NotFound />} />
