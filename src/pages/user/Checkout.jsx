@@ -461,86 +461,6 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
     }
   };
 
-  const handleWhatsAppOrder = () => {
-    if (
-      !form.senderName ||
-      !form.phone ||
-      !form.street ||
-      !form.pincode ||
-      !form.date ||
-      !form.timeSlot
-    ) {
-      alert("Fill required fields");
-      return;
-    }
-
-    const message = `
-Hi! ${form.senderName} this side,
-
-I would like to place an order.
-
-Phone: ${form.phone}
-
-${
-  orderFor === "someone"
-    ? `
-
-RECIPIENT DETAILS
-
-Name: ${form.receiverName || "N/A"}
-Phone: ${form.receiverPhone || "N/A"}
-Relationship: ${form.relation || "N/A"}
-`
-    : ""
-}
-
-DELIVERY ADDRESS
-
-${form.street}
-${form.city}, ${form.state}
-Pincode: ${form.pincode}
-
-DELIVERY PREFERENCE
-
-Date: ${form.date}
-Time Slot: ${form.timeSlot}
-
-${
-  form.message
-    ? `
-PERSONAL MESSAGE
-
-${form.message}
-`
-    : ""
-}
-
-ORDER ITEMS
-
-${cart
-  .map((item) => `• ${item.name} x ${item.qty} = ₹${item.price * item.qty}`)
-  .join("\n")}
-
-ORDER SUMMARY
-
-Coupon: ${couponCode || "None"}
-Discount: ₹${discount}
-Shipping: ₹${shippingCost}
-${midnightCharge > 0 ? `Midnight Charge: ₹${midnightCharge}` : ""}
-
-Total Amount: ₹${grandTotal}
-
-Please confirm my order. Thank you!
-`;
-
-    const whatsappNumber = "918287340065"; // Your WhatsApp number
-
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
-      "_blank",
-    );
-  };
-
   // Order Placement
   const midnightCharge = form.timeSlot === "Midnight (12 AM*) +₹600" ? 600 : 0;
 
@@ -1082,14 +1002,7 @@ Please confirm my order. Thank you!
         </div>
 
         {/* ACTION */}
-        <button
-          onClick={handleWhatsAppOrder}
-          className="w-full p-4 rounded-md font-semibold bg-green-600 text-white"
-        >
-          Place Order on WhatsApp
-        </button>
-
-        <div className="hidden flex-col xl:flex-row gap-2">
+        <div className="flex flex-col xl:flex-row gap-4">
           <button
             onClick={() => handlePlaceOrder("ONLINE")} // Pass "Online"
             disabled={isProcessing}
