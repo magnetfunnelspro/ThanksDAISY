@@ -112,235 +112,45 @@ const Checkout = () => {
     };
   }, [totalPrice]);
 
-  // Delhi NCR Pincodes
-  const validPincodes = [
-    // Delhi (UT)
-    "110001",
-    "110002",
-    "110003",
-    "110004",
-    "110005",
-    "110006",
-    "110007",
-    "110008",
-    "110009",
-    "110010",
-    "110011",
-    "110012",
-    "110013",
-    "110014",
-    "110015",
-    "110016",
-    "110017",
-    "110018",
-    "110019",
-    "110020",
-    "110021",
-    "110022",
-    "110023",
-    "110024",
-    "110025",
-    "110026",
-    "110027",
-    "110028",
-    "110029",
-    "110030",
-    "110031",
-    "110032",
-    "110033",
-    "110034",
-    "110035",
-    "110036",
-    "110037",
-    "110038",
-    "110039",
-    "110040",
-    "110041",
-    "110042",
-    "110043",
-    "110044",
-    "110045",
-    "110046",
-    "110047",
-    "110048",
-    "110049",
-    "110051",
-    "110052",
-    "110053",
-    "110054",
-    "110055",
-    "110056",
-    "110057",
-    "110058",
-    "110059",
-    "110060",
-    "110061",
-    "110062",
-    "110063",
-    "110064",
-    "110065",
-    "110066",
-    "110067",
-    "110068",
-    "110069",
-    "110070",
-    "110071",
-    "110072",
-    "110073",
-    "110074",
-    "110075",
-    "110076",
-    "110077",
-    "110078",
-    "110079",
-    "110080",
-    "110081",
-    "110082",
-    "110083",
-    "110084",
-    "110085",
-    "110086",
-    "110087",
-    "110088",
-    "110089",
-    "110090",
-    "110091",
-    "110092",
-    "110093",
-    "110094",
-    "110095",
-    "110096",
-    "110097",
+  // Delhi NCR Pincode Prefixes
+  const ncrAreas = {
+    110: { city: "Delhi", state: "Delhi" },
 
-    // Ghaziabad
-    "201001",
-    "201002",
-    "201003",
-    "201004",
-    "201005",
-    "201006",
-    "201007",
-    "201008",
-    "201009",
-    "201010",
-    "201011",
-    "201012",
-    "201013",
-    "201014",
-    "201015",
-    "201016",
-    "201017",
-    "201018",
-    "201019",
-    "201101",
-    "201102",
-    "201201",
-    "201204",
-    "201206",
+    121: { city: "Faridabad", state: "Haryana" },
+    122: { city: "Gurugram", state: "Haryana" },
 
-    // Noida
-    "201301",
-    "201302",
-    "201303",
-    "201304",
-    "201305",
-    "201306",
-    "201307",
-    "201308",
-    "201309",
+    201: { city: "Noida / Ghaziabad", state: "Uttar Pradesh" },
+  };
 
-    // Greater Noida
-    "201310",
-    "201311",
-    "201312",
-    "201313",
-    "201314",
-    "201315",
-    "201316",
-    "201317",
-    "201318",
-    "203207",
+  const validNcrPrefixes = Object.keys(ncrAreas);
 
-    // Gurgaon / Gurugram
-    "122001",
-    "122002",
-    "122003",
-    "122004",
-    "122005",
-    "122006",
-    "122007",
-    "122008",
-    "122009",
-    "122010",
-    "122011",
-    "122012",
-    "122015",
-    "122016",
-    "122017",
-    "122018",
-    "122051",
-    "122101",
-    "122102",
-    "122103",
-    "122105",
-    "122106",
-    "122107",
-    "122108",
-    "122109",
-    "122413",
+  const isDeliverable =
+    /^\d{6}$/.test(form.pincode) &&
+    validNcrPrefixes.includes(form.pincode.substring(0, 3));
 
-    // Faridabad
-    "121001",
-    "121002",
-    "121003",
-    "121004",
-    "121005",
-    "121006",
-    "121007",
-    "121008",
-  ];
-
-  const isDeliverable = validPincodes.includes(form.pincode);
-
-  // Pincode Auto Detect
-  const [isFetchingZip, setIsFetchingZip] = useState(false);
-
-  const fetchLocation = async (pin) => {
+  const fetchLocation = (pin) => {
     if (pin.length !== 6) return;
 
-    setIsFetchingZip(true);
+    const prefix = pin.substring(0, 3);
+    const area = ncrAreas[prefix];
 
-    try {
-      const res = await fetch(`https://api.zippopotam.us/in/${pin}`);
-
-      if (!res.ok) {
-        throw new Error("Invalid pincode");
-      }
-
-      const data = await res.json();
-
+    if (area) {
       setForm((prev) => ({
         ...prev,
-        city: data.places?.[0]?.["place name"] || "",
-        state: data.places?.[0]?.state || "",
+        city: area.city,
+        state: area.state,
       }));
-    } catch (error) {
-      console.error("Pincode fetch error:", error);
-
+    } else {
       setForm((prev) => ({
         ...prev,
         city: "",
         state: "",
       }));
-    } finally {
-      setIsFetchingZip(false);
     }
-
-    const available = validPincodes.includes(pin);
 
     trackCustomPixel("DeliveryCheck", {
       pincode: pin,
-      available,
+      available: !!area,
     });
   };
 
@@ -483,6 +293,17 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
       !form.timeSlot
     ) {
       alert("Fill required fields");
+      return;
+    }
+
+    // Phone validation
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      alert("Please enter a valid 10-digit phone number");
+      return;
+    }
+
+    if (orderFor === "someone" && !/^[6-9]\d{9}$/.test(form.receiverPhone)) {
+      alert("Please enter a valid receiver phone number");
       return;
     }
 
@@ -699,12 +520,30 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
                 placeholder="Pincode"
                 value={form.pincode}
                 onChange={(e) => {
-                  handleChange(e);
-
-                  const value = e.target.value;
+                  const value = e.target.value.replace(/\D/g, "").slice(0, 6);
 
                   if (value.length === 6) {
-                    fetchLocation(value);
+                    const prefix = value.substring(0, 3);
+                    const area = ncrAreas[prefix];
+
+                    setForm((prev) => ({
+                      ...prev,
+                      pincode: value,
+                      city: area?.city || "",
+                      state: area?.state || "",
+                    }));
+
+                    trackCustomPixel("DeliveryCheck", {
+                      pincode: value,
+                      available: !!area,
+                    });
+                  } else {
+                    setForm((prev) => ({
+                      ...prev,
+                      pincode: value,
+                      city: "",
+                      state: "",
+                    }));
                   }
                 }}
                 className="p-4 border rounded-md outline-none"
@@ -726,11 +565,12 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
             </div>
             <input
               name="city"
-              placeholder={isFetchingZip ? "Detecting City..." : "City"}
+              placeholder="City"
               value={form.city}
               readOnly
-              className={`p-4 border rounded-md outline-none ${isFetchingZip ? "animate-pulse" : ""}`}
+              className="p-4 border rounded-md outline-none"
             />
+
             <input
               name="state"
               placeholder="State"
