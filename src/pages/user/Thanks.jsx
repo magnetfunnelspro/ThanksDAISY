@@ -19,8 +19,8 @@ const Thanks = () => {
 
   const steps = [
     {
-      title: "Call Confirmation",
-      desc: "We will call you shortly to confirm your order details.",
+      title: "Call/Message Confirmation",
+      desc: "We will call or message you shortly to confirm your order details.",
     },
     {
       title: "Making Your Bouquet",

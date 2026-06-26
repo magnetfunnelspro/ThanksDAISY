@@ -51,15 +51,15 @@ const Checkout = () => {
   const deliverySlots = [
     {
       label: "Morning (10 AM - 2 PM)",
-      closeHour: 12,
+      closeHour: 10,
     },
     {
       label: "Afternoon (2 PM - 6 PM)",
-      closeHour: 16,
+      closeHour: 14,
     },
     {
       label: "Evening (6 PM - 10 PM)",
-      closeHour: 20,
+      closeHour: 18,
     },
     {
       label: "Midnight (12 AM*) +₹600",
