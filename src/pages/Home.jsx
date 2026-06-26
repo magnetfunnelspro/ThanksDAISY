@@ -58,7 +58,7 @@ const Home = () => {
     },
   ];
 
-  // Bestsellers
+  // Special Event
   const specialEvent = [
     // Golden Lace
     {
@@ -267,7 +267,7 @@ const Home = () => {
       </Swiper>
 
       {/* Special Event */}
-      <div className="w-full flex flex-col gap-4 xl:gap-8">
+      {/* <div className="w-full flex flex-col gap-4 xl:gap-8">
         <h2 className="text-2xl xl:text-4xl font-semibold leading-none flex gap-2 items-center">
           Fathers's Day Special
         </h2>
@@ -300,7 +300,7 @@ const Home = () => {
         <Link to="/shop" className="text-center underline">
           View all
         </Link>
-      </div>
+      </div> */}
 
       {/* Bestsellers */}
       <div className="w-full flex flex-col gap-4 xl:gap-8">

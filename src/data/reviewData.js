@@ -34,6 +34,13 @@ const reviewData = [
       "Smooth ordering process and fresh flowers, the final arrangement looked elegant and exactly as expected.",
     rating: 5,
   },
+  {
+    id: "r-006",
+    name: "Rinku",
+    review:
+      "Thank you for the lovely flowers delivery was a bit late but nicely completed on time.",
+    rating: 5,
+  },
 ];
 
 export default reviewData;
