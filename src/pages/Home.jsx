@@ -30,6 +30,7 @@ const Home = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
+  // Reviews
   const imagesData = [
     {
       id: 1,
@@ -54,6 +55,11 @@ const Home = () => {
     {
       id: 5,
       src: "/reviews/img5.webp",
+      alt: "Customer Review",
+    },
+    {
+      id: 6,
+      src: "/reviews/img6.webp",
       alt: "Customer Review",
     },
   ];
@@ -460,7 +466,7 @@ const Home = () => {
           Every arrangement tells a story of thoughtful gifting and beautiful
           moments.
         </p>
-        <div className="w-full mt-4 relative review-fade">
+        <div className="w-full mt-4 relative">
           <Swiper
             slidesPerView={1}
             spaceBetween={16}
