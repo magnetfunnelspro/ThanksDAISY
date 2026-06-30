@@ -275,7 +275,7 @@ ${order.items.map((i) => `${i.name} x ${i.qty}`).join("\n")}
   const midnightCharge = form.timeSlot === "Midnight (12 AM*) +₹600" ? 600 : 0;
 
   // Shipping Charges
-  const shippingCost = totalPrice >= 899 ? 0 : 0;
+  const shippingCost = totalPrice >= 899 ? 0 : 150;
 
   const grandTotal = finalTotal + shippingCost + midnightCharge;
 
